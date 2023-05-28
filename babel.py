@@ -4,5 +4,4 @@ if __name__=='__main__':
 	if not len(sa) == 4:
 		error = "Must have form ~`babel aa bb target.file`"
 		raise ValueError(error)
-	print(f"Converting {argv[1]} => {argv[2]} on {argv[3]}")
-	
+	print(f"Converting {sa[1]} => {sa[2]} on {sa[3]}...")
