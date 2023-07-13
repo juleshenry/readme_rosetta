@@ -1,1 +1,1 @@
-pip install argostranslate
+argostranslate = "^1.0.0"
