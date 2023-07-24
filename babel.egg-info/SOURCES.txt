@@ -1,8 +1,0 @@
-LICENSE
-README.md
-babel.py
-pyproject.toml
-babel.egg-info/PKG-INFO
-babel.egg-info/SOURCES.txt
-babel.egg-info/dependency_links.txt
-babel.egg-info/top_level.txt
