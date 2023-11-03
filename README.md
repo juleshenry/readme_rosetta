@@ -1,7 +1,7 @@
 # Readme Rosetta
 Consumes README.md's, yields folders and hyperlinks to translated README.md's
 
-![alt text](https://upload.wikimedia.org/wikipedia/commons/7/72/The_Tower_of_Babel.jpg)
+![Rosetta Realm](readme_image.png)
 
 CLI: `readme-babel kor esp zh README.md --out READMEs` -> 
 
