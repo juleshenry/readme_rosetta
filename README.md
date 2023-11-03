@@ -10,19 +10,8 @@ READMEs\
 	--README.md.esp
 	--README.md.zh
 
-default --out : "README-translations"
 
-Update: 
-
-Wed Jul 12 22:42:16 CDT 2023
-
-Argostranslate is broken. I cannot verify SSL required for its index.json data.
-
-I may tact a new tact or library to accomplish this initiative
-
-Mon Jul 24 16:56:30 CDT 2023
-
-Libretranslate solution ... local API host. Will need runner script.
+https://www.sphinx-doc.org/en/master/usage/installation.html
 
 ```libretranslate -q "Hello" -source "en" target "es" 
 
