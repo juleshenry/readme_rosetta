@@ -23,6 +23,7 @@ def readme_md_translate(md_text):
         lnz.replace("\n", "")
         a = translate_text("en", "es", lnz)
         translated_text += a
+    print('finishing translate')
     return translated_text
 
 
