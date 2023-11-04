@@ -1,3 +1,0 @@
-#!/bin/bash
-# Leading script to add on path
-python3 babel.py $1 $2 $3

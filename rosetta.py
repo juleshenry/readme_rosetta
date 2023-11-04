@@ -3,7 +3,7 @@ import argostranslate.translate
 import sys
 
 
-def trans(from_code, to_code, text):
+def translate_text(from_code, to_code, text):
     # Download and install Argos Translate package
     argostranslate.package.update_package_index()
     available_packages = argostranslate.package.get_available_packages()
