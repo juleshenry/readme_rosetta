@@ -4,7 +4,7 @@ Readme Rosetta is a tool designed to facilitate the translation of documentation
 
 ## Features
 
-- Translate GitHub README.md files and Python libraries to make documentation more accessible globally.
+- Translate GitHub README.md files and Python libraries to make documentation more accessible world-wide.
 
 ## Getting Started
 
@@ -17,7 +17,7 @@ pip install readme-rosetta
 ```
 
 ## Usage
-bash
+
 `readme-rosetta translate --input <path_to_input_file> --output <path_to_output_file> --target <target_language>`
 
 --input: Path to the input README.md file.
@@ -63,7 +63,287 @@ We are planning to add support for more programming languages and expand the lis
 # Contact Information
 For questions or feedback, please reach out to us at contact@example.com.
 
-SETUP
+# Getting Started
+https://www.sphinx-doc.org/en/master/usage/installation.html
+
+<!-- toc -->
+
+# Readme Rosetta
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+# Readme Rosetta
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+#### Instalación
+
+Para instalar Readme Rosetta, siga estos pasos:
+
+``bash
+pip install readme-rosetta
+`` `
+
+## Usage
+
+# Readme Rosetta
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+#### Instalación
+
+Para instalar Readme Rosetta, siga estos pasos:
+
+``bash
+pip install readme-rosetta
+`` `
+
+## Usage
+
+`readme-rosetta traduce --input יpat_to_input_file] --output --target ■target_language
+
+--input: Path to the input README.md file.
+--output: Path to the output translated file.
+--target: Lenguaje objetivo para la traducción.
+
+# Lenguas apoyadas
+Actualmente, Readme Rosetta es compatible con los siguientes idiomas:
+- en inglés
+- ar - árabe
+# Readme Rosetta
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+#### Instalación
+
+Para instalar Readme Rosetta, siga estos pasos:
+
+``bash
+pip install readme-rosetta
+`` `
+
+## Usage
+
+`readme-rosetta traduce --input יpat_to_input_file] --output --target ■target_language
+
+--input: Path to the input README.md file.
+--output: Path to the output translated file.
+--target: Lenguaje objetivo para la traducción.
+
+# Lenguas apoyadas
+Actualmente, Readme Rosetta es compatible con los siguientes idiomas:
+- en inglés
+- ar - árabe
+- Chino
+- fr - francés
+- de - Alemán
+- Hola - Hindi
+- id - indonesio
+- ga - Irlandés
+- it - Italian
+- ja - japonés
+- Ko - Korean
+- pl - polaco
+# Readme Rosetta
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+#### Instalación
+
+Para instalar Readme Rosetta, siga estos pasos:
+
+``bash
+pip install readme-rosetta
+`` `
+
+## Usage
+
+`readme-rosetta traduce --input יpat_to_input_file] --output --target ■target_language
+
+--input: Path to the input README.md file.
+--output: Path to the output translated file.
+--target: Lenguaje objetivo para la traducción.
+
+# Lenguas apoyadas
+Actualmente, Readme Rosetta es compatible con los siguientes idiomas:
+- en inglés
+- ar - árabe
+- Chino
+- fr - francés
+- de - Alemán
+- Hola - Hindi
+- id - indonesio
+- ga - Irlandés
+- it - Italian
+- ja - japonés
+- Ko - Korean
+- pl - polaco
+- pt - portugués
+- Ruso - Ruso
+- es - Español
+- Turco
+
+
+# Contribución
+¡Agradecemos las contribuciones! Si desea contribuir, por favor vea nuestras pautas de contribución.
+
+# Bug Reporting and Support
+# Readme Rosetta
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+#### Instalación
+
+Para instalar Readme Rosetta, siga estos pasos:
+
+``bash
+pip install readme-rosetta
+`` `
+
+## Usage
+
+`readme-rosetta traduce --input יpat_to_input_file] --output --target ■target_language
+
+--input: Path to the input README.md file.
+--output: Path to the output translated file.
+--target: Lenguaje objetivo para la traducción.
+
+# Lenguas apoyadas
+Actualmente, Readme Rosetta es compatible con los siguientes idiomas:
+- en inglés
+- ar - árabe
+- Chino
+- fr - francés
+- de - Alemán
+- Hola - Hindi
+- id - indonesio
+- ga - Irlandés
+- it - Italian
+- ja - japonés
+- Ko - Korean
+- pl - polaco
+- pt - portugués
+- Ruso - Ruso
+- es - Español
+- Turco
+
+
+# Contribución
+¡Agradecemos las contribuciones! Si desea contribuir, por favor vea nuestras pautas de contribución.
+
+# Bug Reporting and Support
+Si usted encuentra cualquier problema o necesita apoyo, por favor abra un problema.
+
+# License
+Este proyecto está bajo la licencia MIT License.
+
+# Reconocimientos
+Deseamos dar las gracias a las siguientes bibliotecas e instrumentos por sus contribuciones:
+
+
+# Future Development
+# Readme Rosetta
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+#### Instalación
+
+Para instalar Readme Rosetta, siga estos pasos:
+
+``bash
+pip install readme-rosetta
+`` `
+
+## Usage
+
+`readme-rosetta traduce --input יpat_to_input_file] --output --target ■target_language
+
+--input: Path to the input README.md file.
+--output: Path to the output translated file.
+--target: Lenguaje objetivo para la traducción.
+
+# Lenguas apoyadas
+Actualmente, Readme Rosetta es compatible con los siguientes idiomas:
+- en inglés
+- ar - árabe
+- Chino
+- fr - francés
+- de - Alemán
+- Hola - Hindi
+- id - indonesio
+- ga - Irlandés
+- it - Italian
+- ja - japonés
+- Ko - Korean
+- pl - polaco
+- pt - portugués
+- Ruso - Ruso
+- es - Español
+- Turco
+
+
+# Contribución
+¡Agradecemos las contribuciones! Si desea contribuir, por favor vea nuestras pautas de contribución.
+
+# Bug Reporting and Support
+Si usted encuentra cualquier problema o necesita apoyo, por favor abra un problema.
+
+# License
+Este proyecto está bajo la licencia MIT License.
+
+# Reconocimientos
+Deseamos dar las gracias a las siguientes bibliotecas e instrumentos por sus contribuciones:
+
+
+# Future Development
+Estamos planeando añadir apoyo para más idiomas de programación y ampliar la lista de idiomas compatibles.
+
+# Información de contacto
+Para preguntas o comentarios, comuníquese con nosotros en contact@example.com.
+
+# Get Started
 https://www.sphinx-doc.org/en/master/usage/installation.html
 
 
