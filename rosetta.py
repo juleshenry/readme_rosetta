@@ -4,21 +4,27 @@ import sys
 
 
 def readme_md_translate(md_text):
-    for line in md_text.split('\n'):
+    for line in md_text.split("\n"):
         line
     translated_text = ""
     with open(md_text) as f:
         i = 0
         lnz = ""
         for o in f.readlines():
-            i+=1
-            i%=10
-            lnz+=o
+            i += 1
+            i %= 10
+            lnz += o
             if not i:
-                lnz.replace('\n','')
-                a = translate_text('en','es',lnz)
+                lnz.replace("\n", "")
+                a = translate_text("en", "es", lnz)
                 translated_text += a
+                lnz = ""
+        # Finish up remaining
+        lnz.replace("\n", "")
+        a = translate_text("en", "es", lnz)
+        translated_text += a
     return translated_text
+
 
 def translate_text(from_code, to_code, text):
     # Download and install Argos Translate package
@@ -44,7 +50,7 @@ def translate_text(from_code, to_code, text):
 
 if __name__ == "__main__":
     CLI = False
-    if CLI:    
+    if CLI:
         sa = sys.argv
         if len(sa) != 4:
             error = "Must have form ~`babel aa bb target.file`"
@@ -52,7 +58,9 @@ if __name__ == "__main__":
         print(f"Converting {sa[1]} => {sa[2]} on {sa[3]}...")
         Iam = translate_text(*sa[1:])
         print(Iam)
-    with open('newREADME.md','a+') as nrm:
-        nrm.write(readme_md_translate('README.md'))
-        
-    
+    md_text = 'pytorch_README.md'
+    with open("newREADME.md", "a+") as nrm:
+        with open(md_text) as og:
+            nrm.write(og.read())
+            nrm.write('<!-- toc -->')
+        nrm.write(readme_md_translate(md_text))

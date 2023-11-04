@@ -17,5 +17,5 @@ es - Spanish
 tr - Turkish
 """
 
-for o in z.split('\n'):
-	print('- '+o)
+for o in z.split("\n"):
+    print("- " + o)
