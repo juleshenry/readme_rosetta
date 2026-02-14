@@ -1,1 +1,38 @@
-argostranslate = "^1.0.0"
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readme-rosetta"
+version = "0.1.0"
+description = "A tool to facilitate the translation of GitHub README.md files using NLLB-200."
+readme = "README_SOURCE.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Julian Henry"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "transformers",
+    "torch",
+    "sentencepiece",
+    "protobuf",
+]
+
+[project.urls]
+Homepage = "https://github.com/juleshenry/readme_rosetta"
+"Bug Tracker" = "https://github.com/juleshenry/readme_rosetta/issues"
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+readme-rosetta = "readme_rosetta.rosetta:main"

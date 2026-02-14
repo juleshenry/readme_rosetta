@@ -1,0 +1,12 @@
+LICENSE
+README_SOURCE.md
+pyproject.toml
+src/readme_rosetta/__init__.py
+src/readme_rosetta/lang_codes.py
+src/readme_rosetta/rosetta.py
+src/readme_rosetta.egg-info/PKG-INFO
+src/readme_rosetta.egg-info/SOURCES.txt
+src/readme_rosetta.egg-info/dependency_links.txt
+src/readme_rosetta.egg-info/entry_points.txt
+src/readme_rosetta.egg-info/requires.txt
+src/readme_rosetta.egg-info/top_level.txt

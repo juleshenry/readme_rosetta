@@ -1,0 +1,5 @@
+sphinx
+sphinx-intl
+argostranslate
+jieba
+janome

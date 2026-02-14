@@ -1,0 +1,236 @@
+Metadata-Version: 2.4
+Name: readme-rosetta
+Version: 0.1.0
+Summary: A tool to facilitate the translation of GitHub README.md files using NLLB-200.
+Author: Julian Henry
+License: MIT
+Project-URL: Homepage, https://github.com/juleshenry/readme_rosetta
+Project-URL: Bug Tracker, https://github.com/juleshenry/readme_rosetta/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: transformers
+Requires-Dist: torch
+Requires-Dist: sentencepiece
+Requires-Dist: protobuf
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: pytest-cov; extra == "test"
+Dynamic: license-file
+
+
+<!-- <Original README.md> -->
+# [Documentation Support in Multiple Languages](https://www.github.com/juleshenry/readme_rosetta)
+| About | |
+| ------ | ---- |
+| English | [Link to Head of Docs](#readme-rosetta) |
+| Spanish | [Link to Head of Docs](#readme-rosetta-español) |
+# Readme Rosetta
+
+Readme Rosetta is a tool designed to facilitate the translation of documentation, with a current focus on GitHub README.md files and Python libraries.
+
+## Features
+
+- Translate GitHub README.md files and Python libraries to make documentation more accessible world-wide.
+
+## Getting Started
+
+### Installation
+
+To install Readme Rosetta, follow these steps:
+
+```bash
+pip install readme-rosetta
+```
+
+## Usage
+
+`readme-rosetta translate --input <path_to_input_file> --output <path_to_output_file> --target <target_language>`
+
+--input: Path to the input README.md file.
+--output: Path to the output translated file.
+--target: Target language for translation.
+
+## Documentation
+
+Comprehensive documentation is available in the `docs` directory. It is built using Sphinx and supports multiple languages.
+
+### Building Documentation
+
+To build the HTML documentation in English:
+
+```bash
+cd docs
+pip install -r requirements.txt
+make html
+```
+
+### Multilingual Support (i18n)
+
+The documentation is prepared for internationalization. To update or build translations for specific languages (e.g., Spanish):
+
+```bash
+cd docs
+# Update translation catalogs
+make translate-update LANGS=es
+
+# Build translated HTML
+make translate-build LANGS=es
+```
+
+You can build all supported languages at once by running `make translate-build` without the `LANGS` argument.
+
+#### Supported Documentation Languages
+The documentation setup includes optimized search support for:
+*   **Built-in Support:** English, Arabic, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese (via janome), Norwegian, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish.
+*   **Additional Support:** Chinese (via jieba), Hindi.
+
+The translated documentation will be available at `docs/build/html/<language>/`.
+
+# Supported Languages
+Currently, Readme Rosetta supports the following 10 languages:
+- en - English
+- es - Spanish
+- fr - French
+- de - German
+- it - Italian
+- pt - Portuguese
+- ru - Russian
+- zh - Chinese
+- ja - Japanese
+- ar - Arabic
+
+# Translator Backend
+Readme Rosetta now defaults to using the **NLLB-200** model via the `transformers` library ([facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
+
+To use this:
+1. Ensure the required packages are installed:
+   ```bash
+   pip install transformers torch sentencepiece protobuf
+   ```
+2. The model will be automatically downloaded from Hugging Face on first run.
+
+
+# Contributing
+We welcome contributions! If you'd like to contribute, please see our contributing guidelines.
+
+# Bug Reporting and Support
+If you encounter any issues or need support, please open an issue.
+
+# License
+This project is licensed under the MIT License.
+
+# Acknowledgments
+We would like to thank the following libraries and tools for their contributions:
+
+
+# Future Development
+We are planning to add support for more programming languages and expand the list of supported languages.
+
+# Contact Information
+For questions or feedback, please reach out to us at contact@example.com.
+
+# Getting Started
+https://www.sphinx-doc.org/en/master/usage/installation.html
+<!-- toc -->
+# Readme Rosetta Español
+
+Readme Rosetta es una herramienta diseñada para facilitar la traducción de la documentación, con un enfoque actual en los archivos GitHub README.md y las bibliotecas Python.
+
+## Características
+
+- Traducir archivos GitHub README.md y bibliotecas Python para hacer la documentación más accesible en todo el mundo.
+
+## Get Started
+
+#### Instalación
+
+Para instalar Readme Rosetta, siga estos pasos:
+
+``bash
+pip install readme-rosetta
+`` `
+
+## Usage
+
+`readme-rosetta traduce --input יpat_to_input_file] --output --target ■target_language
+
+--input: Path to the input README.md file.
+--output: Path to the output translated file.
+--target: Lenguaje objetivo para la traducción.
+
+## Documentación
+
+La documentación completa está disponible en el directorio `docs`. Está construida con Sphinx y soporta múltiples idiomas.
+
+### Construir la Documentación
+
+Para construir la documentación HTML en inglés:
+
+```bash
+cd docs
+pip install -r requirements.txt
+make html
+```
+
+### Soporte Multilingüe (i18n)
+
+La documentación está preparada para la internacionalización. Para actualizar o construir traducciones para idiomas específicos (por ejemplo, español):
+
+```bash
+cd docs
+# Actualizar catálogos de traducción
+make translate-update LANGS=es
+
+# Construir HTML traducido
+make translate-build LANGS=es
+```
+
+Puede construir todos los idiomas soportados a la vez ejecutando `make translate-build` sin el argumento `LANGS`.
+
+#### Idiomas de documentación soportados
+La configuración de la documentación incluye soporte de búsqueda optimizado para:
+*   **Soporte integrado:** Inglés, árabe, danés, holandés, finlandés, francés, alemán, húngaro, italiano, japonés (vía janome), noruego, portugués, rumano, ruso, español, sueco, turco.
+*   **Soporte adicional:** Chino (vía jieba), hindi.
+
+La documentación traducida estará disponible en `docs/build/html/<idioma>/`.
+
+# Lenguas apoyadas
+Actualmente, Readme Rosetta es compatible con los siguientes 10 idiomas:
+- en - Inglés
+- es - Español
+- fr - Francés
+- de - Alemán
+- it - Italiano
+- pt - Portugués
+- ru - Ruso
+- zh - Chino
+- ja - Japonés
+- ar - Árabe
+
+
+
+# Contribución
+¡Agradecemos las contribuciones! Si desea contribuir, por favor vea nuestras pautas de contribución.
+
+# Bug Reporting and Support
+Si usted encuentra cualquier problema o necesita apoyo, por favor abra un problema.
+
+# License
+Este proyecto está bajo la licencia MIT License.
+
+# Reconocimientos
+Deseamos dar las gracias a las siguientes bibliotecas e instrumentos por sus contribuciones:
+
+
+# Future Development
+Estamos planeando añadir apoyo para más idiomas de programación y ampliar la lista de idiomas compatibles.
+
+# Información de contacto
+Para preguntas o comentarios, comuníquese con nosotros en contact@example.com.
+
+# Get Started
+https://www.sphinx-doc.org/en/master/usage/installation.html

@@ -1,0 +1,8 @@
+transformers
+torch
+sentencepiece
+protobuf
+
+[test]
+pytest
+pytest-cov
