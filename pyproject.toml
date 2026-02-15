@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "readme-rosetta"
-version = "0.1.0"
+version = "0.1.1"
 description = "A tool to facilitate the translation of GitHub README.md files using NLLB-200."
-readme = "README_SOURCE.md"
+readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
@@ -18,21 +18,26 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
 ]
 dependencies = [
-    "transformers",
-    "torch",
-    "sentencepiece",
-    "protobuf",
+    "ollama",
+    "tqdm",
+    "polib",
+    "rich",
 ]
-
-[project.urls]
-Homepage = "https://github.com/juleshenry/readme_rosetta"
-"Bug Tracker" = "https://github.com/juleshenry/readme_rosetta/issues"
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
+dev = ["ruff"]
+
+[tool.ruff]
+line-length = 88
+target-version = "0.1.1"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "N"]
+ignore = []
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [project.scripts]
-readme-rosetta = "readme_rosetta.rosetta:main"
+readme-rosetta = "readme_rosetta.cli:main"
