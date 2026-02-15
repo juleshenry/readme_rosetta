@@ -4,18 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "readme-rosetta"
-version = "0.1.1"
+version = "0.1.2"
 description = "A tool to facilitate the translation of GitHub README.md files using NLLB-200."
 readme = "README.md"
 requires-python = ">=3.8"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "Julian Henry"}
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
-    "License :: OSI Approved :: MIT License",
 ]
 dependencies = [
     "ollama",
@@ -30,7 +29,7 @@ dev = ["ruff"]
 
 [tool.ruff]
 line-length = 88
-target-version = "0.1.1"
+target-version = "0.1.2"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "N"]
