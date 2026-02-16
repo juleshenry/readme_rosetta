@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "readme-rosetta"
-version = "0.1.2"
-description = "A tool to facilitate the translation of GitHub README.md files using NLLB-200."
+version = "0.1.3"
+description = "A tool to facilitate the translation of GitHub README.md files using Ollama."
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
@@ -29,7 +29,7 @@ dev = ["ruff"]
 
 [tool.ruff]
 line-length = 88
-target-version = "0.1.2"
+target-version = "0.1.3"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "N"]
@@ -40,3 +40,7 @@ where = ["src"]
 
 [project.scripts]
 readme-rosetta = "readme_rosetta.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
