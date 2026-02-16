@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "readme-rosetta"
-version = "0.1.4"
+version = "opencode"
 description = "A tool to facilitate the translation of GitHub README.md files using Ollama."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -29,7 +29,7 @@ dev = ["ruff"]
 
 [tool.ruff]
 line-length = 88
-target-version = "0.1.4"
+target-version = "opencode"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "N"]

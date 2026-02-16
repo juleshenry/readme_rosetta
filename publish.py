@@ -5,7 +5,16 @@ import re
 from datetime import datetime
 
 
-def run_command(command, error_msg=None):
+from typing import Optional, List
+
+
+def run_command(command: str, error_msg: Optional[str] = None) -> None:
+    """
+    Runs a shell command and exits if it fails.
+
+    :param command: The shell command to run.
+    :param error_msg: Optional error message to display on failure.
+    """
     print(f"Running: {command}")
     process = subprocess.run(command, shell=True, capture_output=False, text=True)
     if process.returncode != 0:
@@ -16,7 +25,14 @@ def run_command(command, error_msg=None):
         sys.exit(1)
 
 
-def update_file(file_path, old_pattern, new_text):
+def update_file(file_path: str, old_pattern: str, new_text: str) -> None:
+    """
+    Replaces a pattern in a file with new text.
+
+    :param file_path: Path to the file.
+    :param old_pattern: Regex pattern to search for.
+    :param new_text: Text to replace the pattern with.
+    """
     if not os.path.exists(file_path):
         print(f"Warning: {file_path} not found.")
         return
@@ -29,7 +45,12 @@ def update_file(file_path, old_pattern, new_text):
         f.write(new_content)
 
 
-def update_changelog(new_version):
+def update_changelog(new_version: str) -> None:
+    """
+    Adds a new entry to the CHANGELOG.md file.
+
+    :param new_version: The version string to add.
+    """
     file_path = "CHANGELOG.md"
     if not os.path.exists(file_path):
         return
@@ -58,7 +79,12 @@ def update_changelog(new_version):
         f.writelines(lines)
 
 
-def get_current_version():
+def get_current_version() -> str:
+    """
+    Reads the current version from pyproject.toml.
+
+    :return: The version string.
+    """
     if not os.path.exists("pyproject.toml"):
         return "0.0.0"
     with open("pyproject.toml", "r") as f:
@@ -67,7 +93,11 @@ def get_current_version():
     return match.group(1) if match else "0.0.0"
 
 
-def main():
+def main() -> None:
+    """
+    Main entry point for the publish script.
+    Increments version, updates files, builds the package, and pushes to git.
+    """
     current_version = get_current_version()
 
     if len(sys.argv) < 2:

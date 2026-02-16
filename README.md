@@ -1,839 +1,111 @@
 <!-- <Original README.md> -->
-# [Documentation Support in Multiple Languages](https://www.github.com/juleshenry/readme_rosetta)
+# [Documentation Support in Multiple Languages](https://github.com/juleshenry/readme_rosetta/blob/main)
 | About | |
 | ------ | ---- |
-| English | [Link to Head of Docs](#readme-rosetta) |
-| Spanish | [Link to Head of Docs](#readme-rosetta-español) |
-| French | [Link to Head of Docs](#-french) |
-| German | [Link to Head of Docs](#-german) |
-| Italian | [Link to Head of Docs](#-italian) |
-| Portuguese | [Link to Head of Docs](#-portuguese) |
+| English | [Link to Head of Docs](#🗿-readme-rosetta) |
+| Spanish | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.es.md#🗿-readme-rosetta) |
 
+# 🗿 README Rosetta
 
-<!-- <Original README.md> -->
-# [Documentation Support in Multiple Languages](https://www.github.com/juleshenry/readme_rosetta)
-| About | |
-| ------ | ---- |
-| English | [Link to Head of Docs](#readme-rosetta) |
-| Spanish | [Link to Head of Docs](#readme-rosetta-español) |
-# Readme Rosetta
+**README Rosetta** is a powerful automation tool designed to translate your documentation into multiple languages using local LLMs via [Ollama](https://ollama.ai/). It ensures your project is accessible to a global audience while maintaining perfect Markdown formatting and document structure.
 
-Readme Rosetta is a tool designed to facilitate the translation of documentation, with a current focus on GitHub README.md files and Python libraries. It is fully compatible with GitBook and utilizes state-of-the-art Transformers models for high-quality translations.
+---
 
-## Features
+## 🌍 README Translation
 
-- **Transformers Powered:** Uses NLLB-200 via the `transformers` library for accurate multilingual translations.
-- **GitBook Compatible:** Generates documentation that can be easily imported and hosted on GitBook.
-- **Bulk Translation:** Support for translating into 30+ languages in a single pass.
-- **Sphinx Integration:** Automatically handles Sphinx i18n workflows.
-- **Universal Documentation:** Makes Python libraries and READMEs accessible world-wide.
+README Rosetta specializes in making your GitHub project international with minimal effort.
 
-## Getting Started
+- **Multi-language Support:** Translate your `README.md` into dozens of languages simultaneously.
+- **Navigation Table:** Automatically prepends a navigation "stone" (table) at the top of your README, allowing users to quickly switch between languages.
+- **Flexible Modes:**
+    - **Split Mode (Default):** Generates separate files (e.g., `README.es.md`, `README.fr.md`) for a clean project structure.
+    - **Unified Mode (`--no-split`):** Appends all translations to the main `README.md` file, separated by HTML comments.
+- **Markdown Preservation:** Intelligently handles headers, lists, and code blocks to ensure the translated output remains functional and well-formatted.
+
+```bash
+# Translate README.md to Spanish, French, and German
+readme-rosetta --langs es fr de
+```
+
+---
+
+## 🛠 Command Line Interface (CLI)
+
+The CLI is designed to be intuitive yet powerful.
 
 ### Installation
-
-To install Readme Rosetta, follow these steps:
 
 ```bash
 pip install readme-rosetta
 ```
 
-## Usage
+*Note: Requires [Ollama](https://ollama.ai/) to be installed and running on your system.*
 
-`readme-rosetta translate --input <path_to_input_file> --output <path_to_output_file> --target <target_language>`
+### Global Options
 
---input: Path to the input README.md file.
---output: Path to the output translated file.
---target: Target language for translation.
+| Option | Description | Default |
+| :--- | :--- | :--- |
+| `path` | Path to source file or project directory. | `README.md` |
+| `--langs` | List of target language codes (e.g., `es fr de`). | `[]` |
+| `--src-lang` | Source language code. | `en` |
+| `--model` | Ollama model ID to use. | `llama3.2` |
+| `--readme` | Path to the main output README file. | `README.md` |
+| `--no-split` | Append translations to a single file. | `False` |
+| `--dry-run` | Simulate the process without writing files. | `False` |
+| `--verbose` | Enable detailed logging for debugging. | `False` |
 
-## Documentation
+---
 
-Comprehensive documentation is available in the `docs` directory. It is built using Sphinx and supports multiple languages.
+## 📚 Sphinx Integration
 
-### Building Documentation
+Scale your documentation to professional levels with automated Sphinx i18n support.
 
-To build the HTML documentation in English:
-
-```bash
-cd docs
-pip install -r requirements.txt
-make html
-```
-
-### Multilingual Support (i18n)
-
-The documentation is prepared for internationalization. To update or build translations for specific languages (e.g., Spanish):
-
-```bash
-cd docs
-# Update translation catalogs
-make translate-update LANGS=es
-
-# Build translated HTML
-make translate-build LANGS=es
-```
-
-You can build all supported languages at once by running `make translate-build` without the `LANGS` argument.
-
-#### Supported Documentation Languages
-The documentation setup includes optimized search support for:
-*   **Built-in Support:** English, Arabic, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese (via janome), Norwegian, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish.
-*   **Additional Support:** Chinese (via jieba), Hindi.
-
-The translated documentation will be available at `docs/build/html/<language>/`.
-
-### GitBook Integration
-
-Readme Rosetta is designed to work seamlessly with GitBook. Since it generates standard Markdown, you can point GitBook to your repository or the generated `README.md` to have a multi-language documentation site in minutes.
-
-### Supported Languages (30+)
-
-The following languages are supported and tested:
-- en - English
-- es - Spanish
-- fr - French
-- de - German
-- it - Italian
-- pt - Portuguese
-- ru - Russian
-- zh - Chinese
-- ja - Japanese
-- ar - Arabic
-- hi - Hindi
-- bn - Bengali
-- id - Indonesian
-- tr - Turkish
-- vi - Vietnamese
-- pl - Polish
-- nl - Dutch
-- sv - Swedish
-- no - Norwegian
-- da - Danish
-- fi - Finnish
-- el - Greek
-- cs - Czech
-- hu - Hungarian
-- ro - Romanian
-- uk - Ukrainian
-- th - Thai
-- ko - Korean
-- he - Hebrew
-- fa - Persian
-- ms - Malay
-
-## Translator Backend
-Readme Rosetta now defaults to using the **NLLB-200** model via the `transformers` library ([facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
-
-To use this:
-1. Ensure the required packages are installed:
-   ```bash
-   pip install transformers torch sentencepiece protobuf
-   ```
-2. The model will be automatically downloaded from Hugging Face on first run.
-
-
-# Contributing
-We welcome contributions! If you'd like to contribute, please see our contributing guidelines.
-
-# Bug Reporting and Support
-If you encounter any issues or need support, please open an issue.
-
-# License
-This project is licensed under the MIT License.
-
-
-<!-- toc -->
-
-
-# Readme Rosetta Spanish
-
-Readme Rosetta is a tool designed to facilitate the translation of documentation, with a current focus on GitHub README.md files and Python libraries. It is fully compatible with GitBook and utilizes state-of-the-art Transformers models for high-quality translations.
-
-## Features
-
-- **Transformers Powered:** Uses NLLB-200 via the `transformers` library for accurate multilingual translations.
-- **GitBook Compatible:** Generates documentation that can be easily imported and hosted on GitBook.
-- **Bulk Translation:** Support for translating into 30+ languages in a single pass.
-- **Sphinx Integration:** Automatically handles Sphinx i18n workflows.
-- **Universal Documentation:** Makes Python libraries and READMEs accessible world-wide.
-
-## Getting Started
-
-### Installation
-
-To install Readme Rosetta, follow these steps:
+When you run with the `--sphinx` flag, README Rosetta:
+1.  **Initializes Sphinx:** Sets up a `docs/` directory if it doesn't exist.
+2.  **Auto-configures i18n:** Updates `conf.py` with the necessary `locale_dirs` and `gettext` settings.
+3.  **Extracts Strings:** Runs `gettext` to find all translatable strings in your documentation.
+4.  **Translates PO Files:** Uses the LLM to translate `.po` files, preserving Sphinx-specific syntax like `:role:` or `.. directive::`.
+5.  **Builds HTML:** Automatically generates localized HTML builds for every target language.
 
 ```bash
-pip install readme-rosetta
+# Setup Sphinx with translations for Spanish and Japanese
+readme-rosetta --sphinx --langs es ja
 ```
 
-## Usage
+---
 
-`readme-rosetta translate --input <path_to_input_file> --output <path_to_output_file> --target <target_language>`
+## 📖 GitBook Support
 
---input: Path to the input README.md file.
---output: Path to the output translated file.
---target: Target language for translation.
+Easily maintain a multi-language GitBook.
 
-## Documentation
+The `--gitbook` flag generates a `SUMMARY.md` file that maps your translated READMEs into a structure compatible with GitBook's navigation.
 
-Comprehensive documentation is available in the `docs` directory. It is built using Sphinx and supports multiple languages.
-
-### Building Documentation
-
-To build the HTML documentation in English:
+- **Automatic Linking:** Links the Introduction to your main README and creates list items for every translated version.
+- **Language Names:** Automatically resolves language codes (like `es`) into their full names (like `Spanish`).
 
 ```bash
-cd docs
-pip install -r requirements.txt
-make html
+# Generate localized READMEs and a SUMMARY.md for GitBook
+readme-rosetta --gitbook --langs hi zh pt
 ```
 
-### Multilingual Support (i18n)
+---
 
-The documentation is prepared for internationalization. To update or build translations for specific languages (e.g., Spanish):
+## ⚙️ Configuration
 
-```bash
-cd docs
-# Update translation catalogs
-make translate-update LANGS=es
+Save time by defining your project defaults in `pyproject.toml`:
 
-# Build translated HTML
-make translate-build LANGS=es
+```toml
+[tool.readme-rosetta]
+model = "llama3.2"
+src-lang = "en"
+langs = ["es", "fr", "de"]
+path = "README.md"
+sphinx = true
+gitbook = false
 ```
 
-You can build all supported languages at once by running `make translate-build` without the `LANGS` argument.
+---
 
-#### Supported Documentation Languages
-The documentation setup includes optimized search support for:
-*   **Built-in Support:** English, Arabic, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese (via janome), Norwegian, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish.
-*   **Additional Support:** Chinese (via jieba), Hindi.
+## 📜 License
 
-The translated documentation will be available at `docs/build/html/<language>/`.
-
-### GitBook Integration
-
-Readme Rosetta is designed to work seamlessly with GitBook. Since it generates standard Markdown, you can point GitBook to your repository or the generated `README.md` to have a multi-language documentation site in minutes.
-
-### Supported Languages (30+)
-
-The following languages are supported and tested:
-- en - English
-- es - Spanish
-- fr - French
-- de - German
-- it - Italian
-- pt - Portuguese
-- ru - Russian
-- zh - Chinese
-- ja - Japanese
-- ar - Arabic
-- hi - Hindi
-- bn - Bengali
-- id - Indonesian
-- tr - Turkish
-- vi - Vietnamese
-- pl - Polish
-- nl - Dutch
-- sv - Swedish
-- no - Norwegian
-- da - Danish
-- fi - Finnish
-- el - Greek
-- cs - Czech
-- hu - Hungarian
-- ro - Romanian
-- uk - Ukrainian
-- th - Thai
-- ko - Korean
-- he - Hebrew
-- fa - Persian
-- ms - Malay
-
-## Translator Backend
-Readme Rosetta now defaults to using the **NLLB-200** model via the `transformers` library ([facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
-
-To use this:
-1. Ensure the required packages are installed:
-   ```bash
-   pip install transformers torch sentencepiece protobuf
-   ```
-2. The model will be automatically downloaded from Hugging Face on first run.
-
-
-# Contributing
-We welcome contributions! If you'd like to contribute, please see our contributing guidelines.
-
-# Bug Reporting and Support
-If you encounter any issues or need support, please open an issue.
-
-# License
-This project is licensed under the MIT License.
-
-
-<!-- toc -->
-
-
-# Readme Rosetta French
-
-Readme Rosetta is a tool designed to facilitate the translation of documentation, with a current focus on GitHub README.md files and Python libraries. It is fully compatible with GitBook and utilizes state-of-the-art Transformers models for high-quality translations.
-
-## Features
-
-- **Transformers Powered:** Uses NLLB-200 via the `transformers` library for accurate multilingual translations.
-- **GitBook Compatible:** Generates documentation that can be easily imported and hosted on GitBook.
-- **Bulk Translation:** Support for translating into 30+ languages in a single pass.
-- **Sphinx Integration:** Automatically handles Sphinx i18n workflows.
-- **Universal Documentation:** Makes Python libraries and READMEs accessible world-wide.
-
-## Getting Started
-
-### Installation
-
-To install Readme Rosetta, follow these steps:
-
-```bash
-pip install readme-rosetta
-```
-
-## Usage
-
-### Sphinx Documentation Setup & Translation
-To automatically setup Sphinx, generate API documentation, and translate all `.po` files for multiple languages:
-
-```bash
-readme-rosetta . --sphinx --langs es fr hi de it ja ko ru
-```
-
-### Bulk README Translation
-To translate your `README_SOURCE.md` into multiple languages and append them to `README.md` with a language selector table:
-
-```bash
-readme-rosetta README_SOURCE.md --langs es fr hi de it ja
-```
-
-### Legacy / Single Translation
-```bash
-readme-rosetta en es README_SOURCE.md
-```
-
-## Documentation
-
-Comprehensive documentation is available in the `docs` directory. It is built using Sphinx and supports multiple languages.
-
-### Building Documentation
-
-To build the HTML documentation in English:
-
-```bash
-cd docs
-pip install -r requirements.txt
-make html
-```
-
-### Multilingual Support (i18n)
-
-The documentation is prepared for internationalization. To update or build translations for specific languages (e.g., Spanish):
-
-```bash
-cd docs
-# Update translation catalogs
-make translate-update LANGS=es
-
-# Build translated HTML
-make translate-build LANGS=es
-```
-
-You can build all supported languages at once by running `make translate-build` without the `LANGS` argument.
-
-#### Supported Documentation Languages
-The documentation setup includes optimized search support for:
-*   **Built-in Support:** English, Arabic, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese (via janome), Norwegian, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish.
-*   **Additional Support:** Chinese (via jieba), Hindi.
-
-The translated documentation will be available at `docs/build/html/<language>/`.
-
-### GitBook Integration
-
-Readme Rosetta is designed to work seamlessly with GitBook. Since it generates standard Markdown, you can point GitBook to your repository or the generated `README.md` to have a multi-language documentation site in minutes.
-
-### Supported Languages (30+)
-
-The following languages are supported and tested:
-- en - English
-- es - Spanish
-- fr - French
-- de - German
-- it - Italian
-- pt - Portuguese
-- ru - Russian
-- zh - Chinese
-- ja - Japanese
-- ar - Arabic
-- hi - Hindi
-- bn - Bengali
-- id - Indonesian
-- tr - Turkish
-- vi - Vietnamese
-- pl - Polish
-- nl - Dutch
-- sv - Swedish
-- no - Norwegian
-- da - Danish
-- fi - Finnish
-- el - Greek
-- cs - Czech
-- hu - Hungarian
-- ro - Romanian
-- uk - Ukrainian
-- th - Thai
-- ko - Korean
-- he - Hebrew
-- fa - Persian
-- ms - Malay
-
-## Translator Backend
-Readme Rosetta now defaults to using the **NLLB-200** model via the `transformers` library ([facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
-
-To use this:
-1. Ensure the required packages are installed:
-   ```bash
-   pip install transformers torch sentencepiece protobuf
-   ```
-2. The model will be automatically downloaded from Hugging Face on first run.
-
-
-# Contributing
-We welcome contributions! If you'd like to contribute, please see our contributing guidelines.
-
-# Bug Reporting and Support
-If you encounter any issues or need support, please open an issue.
-
-# License
-This project is licensed under the MIT License.
-
-
-<!-- toc -->
-
-
-# Readme Rosetta German
-
-Readme Rosetta is a tool designed to facilitate the translation of documentation, with a current focus on GitHub README.md files and Python libraries. It is fully compatible with GitBook and utilizes state-of-the-art Transformers models for high-quality translations.
-
-## Features
-
-- **Transformers Powered:** Uses NLLB-200 via the `transformers` library for accurate multilingual translations.
-- **GitBook Compatible:** Generates documentation that can be easily imported and hosted on GitBook.
-- **Bulk Translation:** Support for translating into 30+ languages in a single pass.
-- **Sphinx Integration:** Automatically handles Sphinx i18n workflows.
-- **Universal Documentation:** Makes Python libraries and READMEs accessible world-wide.
-
-## Getting Started
-
-### Installation
-
-To install Readme Rosetta, follow these steps:
-
-```bash
-pip install readme-rosetta
-```
-
-## Usage
-
-### Sphinx Documentation Setup & Translation
-To automatically setup Sphinx, generate API documentation, and translate all `.po` files for multiple languages:
-
-```bash
-readme-rosetta . --sphinx --langs es fr hi de it ja ko ru
-```
-
-### Bulk README Translation
-To translate your `README_SOURCE.md` into multiple languages and append them to `README.md` with a language selector table:
-
-```bash
-readme-rosetta README_SOURCE.md --langs es fr hi de it ja
-```
-
-### Legacy / Single Translation
-```bash
-readme-rosetta en es README_SOURCE.md
-```
-
-## Documentation
-
-Comprehensive documentation is available in the `docs` directory. It is built using Sphinx and supports multiple languages.
-
-### Building Documentation
-
-To build the HTML documentation in English:
-
-```bash
-cd docs
-pip install -r requirements.txt
-make html
-```
-
-### Multilingual Support (i18n)
-
-The documentation is prepared for internationalization. To update or build translations for specific languages (e.g., Spanish):
-
-```bash
-cd docs
-# Update translation catalogs
-make translate-update LANGS=es
-
-# Build translated HTML
-make translate-build LANGS=es
-```
-
-You can build all supported languages at once by running `make translate-build` without the `LANGS` argument.
-
-#### Supported Documentation Languages
-The documentation setup includes optimized search support for:
-*   **Built-in Support:** English, Arabic, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese (via janome), Norwegian, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish.
-*   **Additional Support:** Chinese (via jieba), Hindi.
-
-The translated documentation will be available at `docs/build/html/<language>/`.
-
-### GitBook Integration
-
-Readme Rosetta is designed to work seamlessly with GitBook. Since it generates standard Markdown, you can point GitBook to your repository or the generated `README.md` to have a multi-language documentation site in minutes.
-
-### Supported Languages (30+)
-
-The following languages are supported and tested:
-- en - English
-- es - Spanish
-- fr - French
-- de - German
-- it - Italian
-- pt - Portuguese
-- ru - Russian
-- zh - Chinese
-- ja - Japanese
-- ar - Arabic
-- hi - Hindi
-- bn - Bengali
-- id - Indonesian
-- tr - Turkish
-- vi - Vietnamese
-- pl - Polish
-- nl - Dutch
-- sv - Swedish
-- no - Norwegian
-- da - Danish
-- fi - Finnish
-- el - Greek
-- cs - Czech
-- hu - Hungarian
-- ro - Romanian
-- uk - Ukrainian
-- th - Thai
-- ko - Korean
-- he - Hebrew
-- fa - Persian
-- ms - Malay
-
-## Translator Backend
-Readme Rosetta now defaults to using the **NLLB-200** model via the `transformers` library ([facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
-
-To use this:
-1. Ensure the required packages are installed:
-   ```bash
-   pip install transformers torch sentencepiece protobuf
-   ```
-2. The model will be automatically downloaded from Hugging Face on first run.
-
-
-# Contributing
-We welcome contributions! If you'd like to contribute, please see our contributing guidelines.
-
-# Bug Reporting and Support
-If you encounter any issues or need support, please open an issue.
-
-# License
-This project is licensed under the MIT License.
-
-
-<!-- toc -->
-
-
-# Readme Rosetta Italian
-
-Readme Rosetta is a tool designed to facilitate the translation of documentation, with a current focus on GitHub README.md files and Python libraries. It is fully compatible with GitBook and utilizes state-of-the-art Transformers models for high-quality translations.
-
-## Features
-
-- **Transformers Powered:** Uses NLLB-200 via the `transformers` library for accurate multilingual translations.
-- **GitBook Compatible:** Generates documentation that can be easily imported and hosted on GitBook.
-- **Bulk Translation:** Support for translating into 30+ languages in a single pass.
-- **Sphinx Integration:** Automatically handles Sphinx i18n workflows.
-- **Universal Documentation:** Makes Python libraries and READMEs accessible world-wide.
-
-## Getting Started
-
-### Installation
-
-To install Readme Rosetta, follow these steps:
-
-```bash
-pip install readme-rosetta
-```
-
-## Usage
-
-### Sphinx Documentation Setup & Translation
-To automatically setup Sphinx, generate API documentation, and translate all `.po` files for multiple languages:
-
-```bash
-readme-rosetta . --sphinx --langs es fr hi de it ja ko ru
-```
-
-### Bulk README Translation
-To translate your `README_SOURCE.md` into multiple languages and append them to `README.md` with a language selector table:
-
-```bash
-readme-rosetta README_SOURCE.md --langs es fr hi de it ja
-```
-
-### Legacy / Single Translation
-```bash
-readme-rosetta en es README_SOURCE.md
-```
-
-## Documentation
-
-Comprehensive documentation is available in the `docs` directory. It is built using Sphinx and supports multiple languages.
-
-### Building Documentation
-
-To build the HTML documentation in English:
-
-```bash
-cd docs
-pip install -r requirements.txt
-make html
-```
-
-### Multilingual Support (i18n)
-
-The documentation is prepared for internationalization. To update or build translations for specific languages (e.g., Spanish):
-
-```bash
-cd docs
-# Update translation catalogs
-make translate-update LANGS=es
-
-# Build translated HTML
-make translate-build LANGS=es
-```
-
-You can build all supported languages at once by running `make translate-build` without the `LANGS` argument.
-
-#### Supported Documentation Languages
-The documentation setup includes optimized search support for:
-*   **Built-in Support:** English, Arabic, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese (via janome), Norwegian, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish.
-*   **Additional Support:** Chinese (via jieba), Hindi.
-
-The translated documentation will be available at `docs/build/html/<language>/`.
-
-### GitBook Integration
-
-Readme Rosetta is designed to work seamlessly with GitBook. Since it generates standard Markdown, you can point GitBook to your repository or the generated `README.md` to have a multi-language documentation site in minutes.
-
-### Supported Languages (30+)
-
-The following languages are supported and tested:
-- en - English
-- es - Spanish
-- fr - French
-- de - German
-- it - Italian
-- pt - Portuguese
-- ru - Russian
-- zh - Chinese
-- ja - Japanese
-- ar - Arabic
-- hi - Hindi
-- bn - Bengali
-- id - Indonesian
-- tr - Turkish
-- vi - Vietnamese
-- pl - Polish
-- nl - Dutch
-- sv - Swedish
-- no - Norwegian
-- da - Danish
-- fi - Finnish
-- el - Greek
-- cs - Czech
-- hu - Hungarian
-- ro - Romanian
-- uk - Ukrainian
-- th - Thai
-- ko - Korean
-- he - Hebrew
-- fa - Persian
-- ms - Malay
-
-## Translator Backend
-Readme Rosetta now defaults to using the **NLLB-200** model via the `transformers` library ([facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
-
-To use this:
-1. Ensure the required packages are installed:
-   ```bash
-   pip install transformers torch sentencepiece protobuf
-   ```
-2. The model will be automatically downloaded from Hugging Face on first run.
-
-
-# Contributing
-We welcome contributions! If you'd like to contribute, please see our contributing guidelines.
-
-# Bug Reporting and Support
-If you encounter any issues or need support, please open an issue.
-
-# License
-This project is licensed under the MIT License.
-
-
-<!-- toc -->
-
-
-# Readme Rosetta Portuguese
-
-Readme Rosetta is a tool designed to facilitate the translation of documentation, with a current focus on GitHub README.md files and Python libraries. It is fully compatible with GitBook and utilizes state-of-the-art Transformers models for high-quality translations.
-
-## Features
-
-- **Transformers Powered:** Uses NLLB-200 via the `transformers` library for accurate multilingual translations.
-- **GitBook Compatible:** Generates documentation that can be easily imported and hosted on GitBook.
-- **Bulk Translation:** Support for translating into 30+ languages in a single pass.
-- **Sphinx Integration:** Automatically handles Sphinx i18n workflows.
-- **Universal Documentation:** Makes Python libraries and READMEs accessible world-wide.
-
-## Getting Started
-
-### Installation
-
-To install Readme Rosetta, follow these steps:
-
-```bash
-pip install readme-rosetta
-```
-
-## Usage
-
-### Sphinx Documentation Setup & Translation
-To automatically setup Sphinx, generate API documentation, and translate all `.po` files for multiple languages:
-
-```bash
-readme-rosetta . --sphinx --langs es fr hi de it ja ko ru
-```
-
-### Bulk README Translation
-To translate your `README_SOURCE.md` into multiple languages and append them to `README.md` with a language selector table:
-
-```bash
-readme-rosetta README_SOURCE.md --langs es fr hi de it ja
-```
-
-### Legacy / Single Translation
-```bash
-readme-rosetta en es README_SOURCE.md
-```
-
-## Documentation
-
-Comprehensive documentation is available in the `docs` directory. It is built using Sphinx and supports multiple languages.
-
-### Building Documentation
-
-To build the HTML documentation in English:
-
-```bash
-cd docs
-pip install -r requirements.txt
-make html
-```
-
-### Multilingual Support (i18n)
-
-The documentation is prepared for internationalization. To update or build translations for specific languages (e.g., Spanish):
-
-```bash
-cd docs
-# Update translation catalogs
-make translate-update LANGS=es
-
-# Build translated HTML
-make translate-build LANGS=es
-```
-
-You can build all supported languages at once by running `make translate-build` without the `LANGS` argument.
-
-#### Supported Documentation Languages
-The documentation setup includes optimized search support for:
-*   **Built-in Support:** English, Arabic, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese (via janome), Norwegian, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish.
-*   **Additional Support:** Chinese (via jieba), Hindi.
-
-The translated documentation will be available at `docs/build/html/<language>/`.
-
-### GitBook Integration
-
-Readme Rosetta is designed to work seamlessly with GitBook. Since it generates standard Markdown, you can point GitBook to your repository or the generated `README.md` to have a multi-language documentation site in minutes.
-
-### Supported Languages (30+)
-
-The following languages are supported and tested:
-- en - English
-- es - Spanish
-- fr - French
-- de - German
-- it - Italian
-- pt - Portuguese
-- ru - Russian
-- zh - Chinese
-- ja - Japanese
-- ar - Arabic
-- hi - Hindi
-- bn - Bengali
-- id - Indonesian
-- tr - Turkish
-- vi - Vietnamese
-- pl - Polish
-- nl - Dutch
-- sv - Swedish
-- no - Norwegian
-- da - Danish
-- fi - Finnish
-- el - Greek
-- cs - Czech
-- hu - Hungarian
-- ro - Romanian
-- uk - Ukrainian
-- th - Thai
-- ko - Korean
-- he - Hebrew
-- fa - Persian
-- ms - Malay
-
-## Translator Backend
-Readme Rosetta now defaults to using the **NLLB-200** model via the `transformers` library ([facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
-
-To use this:
-1. Ensure the required packages are installed:
-   ```bash
-   pip install transformers torch sentencepiece protobuf
-   ```
-2. The model will be automatically downloaded from Hugging Face on first run.
-
-
-# Contributing
-We welcome contributions! If you'd like to contribute, please see our contributing guidelines.
-
-# Bug Reporting and Support
-If you encounter any issues or need support, please open an issue.
-
-# License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

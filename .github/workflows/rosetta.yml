@@ -1,0 +1,42 @@
+name: Readme Rosetta i18n
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+      - 'src/**'
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install .
+          # We need Ollama. In a real CI, you might need a service or a runner with Ollama.
+          # For now, this is a template showing the intent.
+          curl -fsSL https://ollama.com/install.sh | sh
+          ollama serve &
+          sleep 10
+          ollama pull llama3.2
+
+      - name: Run Rosetta
+        run: |
+          readme-rosetta README.md --langs es fr de it ja --readme README.md
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README*.md
+          git commit -m "docs: update translations [skip ci]" || echo "No changes to commit"
+          git push

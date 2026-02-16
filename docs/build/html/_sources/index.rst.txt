@@ -18,14 +18,11 @@ Features
 API Reference
 -------------
 
-.. automodule:: rosetta
-   :members:
-   :undoc-members:
-   :show-inheritance:
+See the :doc:`modules` for the full API documentation.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   new/modules
+   modules
 

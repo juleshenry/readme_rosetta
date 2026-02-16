@@ -1,2 +1,0 @@
-[console_scripts]
-readme-rosetta = readme_rosetta.rosetta:main

@@ -18,12 +18,11 @@ Features
 API Reference
 -------------
 
-See the :doc:`new/modules` for the full API documentation.
+See the :doc:`modules` for the full API documentation.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    modules
-   new/modules
 

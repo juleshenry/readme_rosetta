@@ -5,3 +5,4 @@ venv/
 *.model
 *.gguf
 .rosetta_cache/
+.rosetta_cache.json
