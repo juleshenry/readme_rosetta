@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 15:52-0600\n"
+"POT-Creation-Date: 2026-02-16 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fi <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: ../../source/index.rst:26
+#: ../../source/index.rst:23
 msgid "Contents:"
 msgstr "Contents:"
 
@@ -55,3 +55,7 @@ msgstr "Easy to use CLI."
 #: ../../source/index.rst:19
 msgid "API Reference"
 msgstr "API Reference"
+
+#: ../../source/index.rst:21
+msgid "See the :doc:`modules` for the full API documentation."
+msgstr "Katsotaan :doc:`modules` käytännössä täysin."

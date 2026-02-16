@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Enrique
+# This file is distributed under the same license as the readme-rosetta
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: readme-rosetta 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-16 10:17-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: da <LL@li.org>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../source/readme_rosetta.rst:2
+msgid "readme_rosetta package"
+msgstr "README (rosetta pakke)"
+
+#: ../../source/readme_rosetta.rst:5
+msgid "Submodules"
+msgstr "Undermoduler"
+
+#: ../../source/readme_rosetta.rst:8
+msgid "readme_rosetta.cli module"
+msgstr "En modul til Rosetta CLI."
+
+#: of readme_rosetta.cli.get_git_remote_url:1
+msgid "Attempts to get the git remote origin URL."
+msgstr "Forsøg at få URL'en til den lokale git-remotens \"origin\"."
+
+#: of readme_rosetta.cli.load_config:1
+msgid "Loads configuration from pyproject.toml if available."
+msgstr "Lastes konfiguration op fra `pyproject.toml` hvis tilgængelig."
+
+#: of readme_rosetta.cli.main:1
+msgid "Main entry point for the README Rosetta CLI."
+msgstr "Hovedindgangspunkt for README Rosetta CLI."
+
+#: of readme_rosetta.cli.setup_logging:1
+msgid "Sets up the logging configuration using Rich."
+msgstr "Konfigurerer logindstillingen ved hjævne Rich."
+
+#: ../../source/readme_rosetta.rst
+msgid "Parameters"
+msgstr "Parameterer"
+
+#: of readme_rosetta.cli.setup_logging:3
+msgid "Whether to enable verbose (DEBUG) logging."
+msgstr "Hertil bestemmer man om at aktivere detaljeret (DEBUG) loggning."
+
+#: ../../source/readme_rosetta.rst:16
+msgid "readme_rosetta.lang_codes module"
+msgstr ""
+
+#: of readme_rosetta.lang_codes:1
+msgid "Mapping of ISO language codes to their full English names."
+msgstr ""
+
+#: ../../source/readme_rosetta.rst:24
+msgid "readme_rosetta.markdown_handler module"
+msgstr ""
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler:1
+msgid "Handles parsing and translation of Markdown files."
+msgstr "Behandler af indlægning og oversætning af Markdown-filer."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:1
+msgid "Cleans a Markdown header to be used as an anchor link."
+msgstr "Renser en Markdown-overskrift til at anvendes som et hänkelninkel."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:3
+msgid "The header text."
+msgstr "Indledning"
+
+#: ../../source/readme_rosetta.rst
+msgid "Returns"
+msgstr ""
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:4
+msgid "The cleaned header link (e.g., \"#my-header\")."
+msgstr "Den renskudsadgangslinje (#my-header)."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:1
+msgid "Scans the directory for existing translated README files."
+msgstr "Søgger efter eksisterende oversatte README-filer i directoryn."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:3
+msgid "Path to the main README file."
+msgstr "Stien til hovedindlægget README-fil."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:4
+msgid "List of language codes found."
+msgstr ""
+"Økonomiske og sociale kode: ISO 4217\n"
+"Valg af landskode: ISO 3166-1\n"
+"Språkekoder for internationale kommunikation"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:1
+msgid "Generates or updates the Rosetta translation table in the README."
+msgstr "Opdaterer eller genererer Rosettatranslations-filen i README-filen."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:3
+msgid "The first header of the document."
+msgstr "Første afhandling"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:4
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:4
+#: readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:5
+#: readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:4
+#: readme_rosetta.translator.Translator.translate:4
+#: readme_rosetta.translator.Translator.translate_batch:4
+msgid "The source language code."
+msgstr "`en`"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:5
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:5
+#: readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:5
+#: readme_rosetta.translator.Translator.translate:5
+#: readme_rosetta.translator.Translator.translate_batch:5
+msgid "The target language code."
+msgstr "Dansk (da)"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:6
+msgid "The existing Rosetta table, if any."
+msgstr "Det eksisterende Rosetta-bord, hvis det er sådanne."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:7
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:9
+msgid "The name of the target file (for split mode)."
+msgstr "Navlen på målfilen (for splittest modus)."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:8
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:10
+msgid "The base URL for absolute links."
+msgstr "Baseroten for absolutte linker."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:9
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:11
+msgid "Whether to append ?raw=true to links."
+msgstr ""
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:10
+msgid "The updated Rosetta table Markdown."
+msgstr ""
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:1
+msgid "Replaces code blocks with placeholders to prevent translation."
+msgstr ""
+"Replacer-kodebløcjer erstattes med placeholder'erne for at "
+"forbydeoversættelse"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:3
+msgid "The Markdown text."
+msgstr ""
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:4
+msgid "A tuple containing the protected text and original code blocks."
+msgstr "En tupel med beskyttet tekst og oprigcodeblokker."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:1
+msgid "Restores code blocks from placeholders after translation."
+msgstr "Gemmer kodeblokke fra stedpladser efter oversættelse."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:3
+msgid "The translated text with placeholders."
+msgstr ""
+"Tak for at du vil have brug for en oversættelse til [INDTASTS PROTOCOL]."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:4
+msgid "The list of original code blocks."
+msgstr "Den liste over ursprunglige kodeblokke."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:5
+msgid "The restored Markdown text."
+msgstr "Den restaerede Markdown tekst."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:1
+msgid "Translates a Markdown file using block-level context."
+msgstr "Oversætter et Markdown-fil med blockniveau."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:3
+msgid "The path to the Markdown file."
+msgstr "Vejen til det Markdown-fil"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:6
+msgid "The position of the progress bar."
+msgstr "Fortsættelsesindikeringsstørrelsesposition."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:7
+msgid "Whether to simulate translation."
+msgstr "Om at simulere Oversættelse"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:8
+msgid "Whether to add the target language name to the first header."
+msgstr "Hvis man skal tilføje målretningens navn til den første hovedafdeling"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:12
+msgid ""
+"A tuple containing (translated_content, rosetta_table, "
+"original_content_without_rosetta, identified_first_header)."
+msgstr ""
+"En tupel med indholdet `(oversættet_inhalt, rosettatablet, originalinhalt "
+"uden rosettabel, identificeret_første_bruksnavn)` ."
+
+#: ../../source/readme_rosetta.rst:32
+msgid "readme_rosetta.rosetta module"
+msgstr ""
+
+#: ../../source/readme_rosetta.rst:40
+msgid "readme_rosetta.sphinx_handler module"
+msgstr ""
+"Siden for Rosetta Toolbox er tilgængelig på GitHub, og den kan lastes ned "
+"via `git clone https://github.com/rosettatype/rosettatype-sphinx.git` eller "
+"`svn http://svn.rosettatype.org/svn/sphinxhandler`."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler:1
+msgid "Handles Sphinx documentation translation using gettext and PO files."
+msgstr ""
+"Håndterer afspanskning af Sphinx-dokumentation med gettext og PO-filer."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
+msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+msgstr ""
+"Erstatter rST-spesifik syntax med placeholder for at forhindre oversættelse."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+msgid "The rST text."
+msgstr ""
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
+msgid "A tuple containing the protected text and original constructs."
+msgstr "En tupel med beskyttet tekst og oprindelige konstruktioner."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:1
+msgid "Restores rST-specific syntax from placeholders after translation."
+msgstr "Genbruger rST-specifik syntax fra placeholder efter oversættelse."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:4
+msgid "The list of original rST constructs."
+msgstr ""
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:5
+msgid "The restored rST text."
+msgstr "Restaureret rST tekst."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:1
+msgid "Sets up Sphinx documentation, generates API docs, and translates them."
+msgstr ""
+"Indsætter Sphinx-dokumentation, genererer API-dokumentation og Oversætter "
+"dem."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:3
+msgid "The path to the project source code."
+msgstr "Vejen til projektets kilder."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:4
+msgid "A list of target language codes."
+msgstr ""
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:1
+msgid "Translates a Sphinx PO file."
+msgstr "Oversætter en Sphinx PO-fil."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:3
+msgid "The path to the .po file."
+msgstr "Gaden til den .po-fil"
+
+#: ../../source/readme_rosetta.rst:48
+msgid "readme_rosetta.translator module"
+msgstr "Fremførselsmodul for Rosetta, README-filen"
+
+#: of readme_rosetta.translator.Translator:1
+msgid "Handles translation using Ollama LLM models."
+msgstr "Hænder forklaring af ophavsret med Ollama LLM-modellerne."
+
+#: of readme_rosetta.translator.Translator.load:1
+msgid "Ensure the model is available in Ollama."
+msgstr "Sørg for at modellen er tilgængelig i Ollama."
+
+#: of readme_rosetta.translator.Translator.load:3
+msgid "Legacy parameter for compatibility."
+msgstr "Erifugir parameter for kompatibilitet."
+
+#: of readme_rosetta.translator.Translator.translate:1
+msgid "Translate a single string from one language to another."
+msgstr ""
+"Jeg kan hjælpe med at oversætte teksten. Hvem er du, og hvad skal "
+"jegoversætte?"
+
+#: of readme_rosetta.translator.Translator.translate:3
+msgid "The text to translate."
+msgstr "Vil du give din tekst til mig at oversætte?"
+
+#: of readme_rosetta.translator.Translator.translate:6
+msgid "The translated text."
+msgstr "Teksten er oversatt."
+
+#: of readme_rosetta.translator.Translator.translate_batch:1
+msgid "Translate a list of strings from one language to another."
+msgstr ""
+
+#: of readme_rosetta.translator.Translator.translate_batch:3
+msgid "The list of strings to translate."
+msgstr "Listen til listen til at oversætte en liste afstrings"
+
+#: of readme_rosetta.translator.Translator.translate_batch:6
+msgid "A list of translated strings."
+msgstr "En liste med oversatte strænger."
+
+#: ../../source/readme_rosetta.rst:56
+msgid "Module contents"
+msgstr "Emnet indhold"
+
+#~ msgid "readme\\_rosetta package"
+#~ msgstr ""
+#~ "Fremfører RosettaNet-dokument til udvikler af produkter, der er tilgængelige"
+#~ " under Creative Commons-licensen og brugervenlig."
+
+#~ msgid "readme\\_rosetta.cli module"
+#~ msgstr "Readme-Rosetta CLI Modul"
+
+#~ msgid "readme\\_rosetta.lang\\_codes module"
+#~ msgstr "README rosetta.lang_codes modul"
+
+#~ msgid "readme\\_rosetta.markdown\\_handler module"
+#~ msgstr "Lidelse\\_Rosetta\\_marker.markdown\\_handler Modul"
+
+#~ msgid "readme\\_rosetta.rosetta module"
+#~ msgstr "Færgesnit for rosetta modulene readme_rosetta"
+
+#~ msgid "readme\\_rosetta.sphinx\\_handler module"
+#~ msgstr "Lesinger_rosetta_sphinx_handler modul"
+
+#~ msgid "readme\\_rosetta.translator module"
+#~ msgstr "README-rosetta.translator-modul"

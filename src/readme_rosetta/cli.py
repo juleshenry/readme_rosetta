@@ -25,18 +25,18 @@ def setup_logging(verbose: bool) -> None:
     :param verbose: Whether to enable verbose (DEBUG) logging.
     """
     level = logging.DEBUG if verbose else logging.INFO
-    
+
     # Configure root logger directly to allow re-configuration
     root = logging.getLogger()
     root.setLevel(level)
-    
+
     # Clear existing handlers
     for handler in root.handlers[:]:
         root.removeHandler(handler)
-        
+
     handler = RichHandler(rich_tracebacks=True, console=console)
     root.addHandler(handler)
-    
+
     # Set levels for noisy libraries
     if not verbose:
         logging.getLogger("ollama").setLevel(logging.ERROR)
@@ -222,15 +222,33 @@ def main() -> None:
                     )
             else:
                 logging.info(f"Source file detected: {src_file}")
+
+                # Discover existing translations to populate the stone
+                discovered_langs = md_handler.discover_translations(src_file)
+                if discovered_langs:
+                    logging.info(
+                        f"Discovered existing translations: {', '.join(discovered_langs)}"
+                    )
+
+                # We need the first header to forge the stone correctly
+                with open(src_file, "r", encoding="utf-8") as f:
+                    first_header = ""
+                    for line in f:
+                        if line.startswith("#") and "Documentation Support" not in line:
+                            first_header = line
+                            break
+
+                # Initialize current_rosetta with existing table if it exists
+                # translate_markdown will handle extracting it from the file during the first run
+                current_rosetta = ""
+
                 console.print(
                     f"[bold green]Starting translation of {src_file} to "
                     f"{len(target_codes)} languages...[/bold green]"
                 )
 
-                current_rosetta = ""
                 translated_sections = []
                 source_without_rosetta = ""
-                first_header = ""
 
                 for code in tqdm(target_codes, desc="Languages", position=0):
                     target_file = None
@@ -285,15 +303,35 @@ def main() -> None:
                                 f.write(trans_text)
 
                         # Update rosetta table for main file
-                        current_rosetta = md_handler.forge_stone(
-                            first_header,
-                            start_code,
-                            code,
-                            existing_table=current_rosetta,
-                            target_file=lang_output,
-                            base_url=base_url,
-                            raw=args.raw,
-                        )
+                        if not current_rosetta:
+                            current_rosetta = rosetta_part
+                        else:
+                            current_rosetta = md_handler.forge_stone(
+                                first_header,
+                                start_code,
+                                code,
+                                existing_table=current_rosetta,
+                                target_file=lang_output,
+                                base_url=base_url,
+                                raw=args.raw,
+                            )
+
+                # After the translation loop, ensure ALL discovered translations are in the stone
+                for code in discovered_langs:
+                    if code == start_code:
+                        continue
+
+                    base, ext = os.path.splitext(output_file)
+                    lang_output = f"{base}.{code}{ext}"
+                    current_rosetta = md_handler.forge_stone(
+                        first_header,
+                        start_code,
+                        code,
+                        existing_table=current_rosetta,
+                        target_file=lang_output,
+                        base_url=base_url,
+                        raw=args.raw,
+                    )
 
                 if not args.dry_run:
                     with open(output_file, "w", encoding="utf-8") as out:
@@ -307,16 +345,21 @@ def main() -> None:
                 console.print(f"[bold green]Done! {output_file} updated.[/bold green]")
 
         if args.gitbook and not args.dry_run:
-            target_codes = args.langs
-            if not target_codes:
+            # Include both new translations and existing discovered ones
+            discovered_langs = md_handler.discover_translations(args.readme)
+            all_langs = sorted(list(set(args.langs) | set(discovered_langs)))
+
+            if not all_langs:
                 console.print(
-                    "[yellow]Warning: --gitbook requires --langs to generate links.[/yellow]"
+                    "[yellow]Warning: --gitbook requires translations to generate links.[/yellow]"
                 )
             else:
                 with open("SUMMARY.md", "w", encoding="utf-8") as summary:
                     summary.write("# Summary\n\n")
                     summary.write(f"* [Introduction]({args.readme})\n")
-                    for code in target_codes:
+                    for code in all_langs:
+                        if code == args.src_lang:
+                            continue
                         lang_name = str(lang_codes.get(code, code))
                         if args.no_split:
                             summary.write(f"* [{lang_name}]({args.readme})\n")

@@ -82,15 +82,21 @@
             <span class="k">return</span> <span class="n">placeholder</span>
 
         <span class="c1"># Protect :role:`text`</span>
-        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;:\w+:`[^`]+`&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;:\w+:`[^`]+`|:\w+:</span><span class="se">\&quot;</span><span class="s2">.*?</span><span class="se">\&quot;</span><span class="s2">|:\w+:&#39;.*?&#39;&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
         <span class="c1"># Protect ``inline literal``</span>
         <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;``[^`]+``&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+        <span class="c1"># Protect `interpreted text` (single backticks)</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?&lt;!`)(`[^`]+`)(?!`)&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
         <span class="c1"># Protect `link &lt;url&gt;`_</span>
         <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;`[^`]+ &lt;[^&gt;]+&gt;`_+&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
         <span class="c1"># Protect `target`_</span>
         <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;`[^`]+`_+&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
         <span class="c1"># Protect |substitution|</span>
         <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\|\w+\|&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+        <span class="c1"># Protect directive-like things at the start of lines</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+            <span class="sa">r</span><span class="s2">&quot;^\.\. \w+::&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span>
+        <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">protected_text</span><span class="p">,</span> <span class="n">placeholders</span></div>
 
@@ -156,7 +162,11 @@
                 <span class="n">all_placeholders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">placeholders</span><span class="p">)</span>
 
             <span class="n">translated_msgs</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">protected_msgids</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span>
+                <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">protected_msgids</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">),</span>
+                <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Translating chunks&quot;</span><span class="p">,</span>
+                <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">):</span>
                 <span class="n">batch</span> <span class="o">=</span> <span class="n">protected_msgids</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">]</span>
                 <span class="n">translated_msgs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="o">.</span><span class="n">translate_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">from_code</span><span class="p">,</span> <span class="n">to_code</span><span class="p">)</span>
@@ -286,11 +296,11 @@
 
             <span class="n">locale_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="s2">&quot;locale&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="s2">&quot;LC_MESSAGES&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.po&quot;</span><span class="p">):</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">translate_po_file</span><span class="p">(</span>
-                            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="n">start_code</span><span class="p">,</span> <span class="n">lang</span>
-                        <span class="p">)</span>
+                <span class="n">po_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.po&quot;</span><span class="p">)]</span>
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">po_files</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;PO files (</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">translate_po_file</span><span class="p">(</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="n">start_code</span><span class="p">,</span> <span class="n">lang</span>
+                    <span class="p">)</span>
 
             <span class="c1"># Build HTML for this language</span>
             <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Building HTML for </span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>

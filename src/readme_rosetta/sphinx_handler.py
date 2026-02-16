@@ -44,15 +44,21 @@ class SphinxHandler:
             return placeholder
 
         # Protect :role:`text`
-        protected_text = re.sub(r":\w+:`[^`]+`", replace, text)
+        protected_text = re.sub(r":\w+:`[^`]+`|:\w+:\".*?\"|:\w+:'.*?'", replace, text)
         # Protect ``inline literal``
         protected_text = re.sub(r"``[^`]+``", replace, protected_text)
+        # Protect `interpreted text` (single backticks)
+        protected_text = re.sub(r"(?<!`)(`[^`]+`)(?!`)", replace, protected_text)
         # Protect `link <url>`_
         protected_text = re.sub(r"`[^`]+ <[^>]+>`_+", replace, protected_text)
         # Protect `target`_
         protected_text = re.sub(r"`[^`]+`_+", replace, protected_text)
         # Protect |substitution|
         protected_text = re.sub(r"\|\w+\|", replace, protected_text)
+        # Protect directive-like things at the start of lines
+        protected_text = re.sub(
+            r"^\.\. \w+::", replace, protected_text, flags=re.MULTILINE
+        )
 
         return protected_text, placeholders
 
@@ -112,7 +118,11 @@ class SphinxHandler:
                 all_placeholders.append(placeholders)
 
             translated_msgs = []
-            for i in range(0, len(protected_msgids), batch_size):
+            for i in tqdm(
+                range(0, len(protected_msgids), batch_size),
+                desc="Translating chunks",
+                leave=False,
+            ):
                 batch = protected_msgids[i : i + batch_size]
                 translated_msgs.extend(
                     self.translator.translate_batch(batch, from_code, to_code)
@@ -239,11 +249,11 @@ class SphinxHandler:
 
             locale_dir = os.path.join(source_dir, "locale", lang, "LC_MESSAGES")
             if os.path.exists(locale_dir):
-                for f in os.listdir(locale_dir):
-                    if f.endswith(".po"):
-                        self.translate_po_file(
-                            os.path.join(locale_dir, f), start_code, lang
-                        )
+                po_files = [f for f in os.listdir(locale_dir) if f.endswith(".po")]
+                for f in tqdm(po_files, desc=f"PO files ({lang})", leave=False):
+                    self.translate_po_file(
+                        os.path.join(locale_dir, f), start_code, lang
+                    )
 
             # Build HTML for this language
             console.print(f"Building HTML for {lang}...")

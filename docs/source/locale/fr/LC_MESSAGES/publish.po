@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 16:05-0600\n"
+"POT-Creation-Date: 2026-02-16 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -23,3 +23,66 @@ msgstr ""
 #: ../../source/publish.rst:2
 msgid "publish module"
 msgstr "publish module"
+
+#: of publish.get_current_version:1
+msgid "Reads the current version from pyproject.toml."
+msgstr ""
+"Lise actuellement la version actuelle de la plateforme provenant de "
+"pyproject.toml."
+
+#: ../../source/publish.rst
+msgid "Returns"
+msgstr "Retourne"
+
+#: of publish.get_current_version:3
+msgid "The version string."
+msgstr "La chaîne de version."
+
+#: of publish.main:1
+msgid ""
+"Main entry point for the publish script. Increments version, updates files, "
+"builds the package, and pushes to git."
+msgstr ""
+"Point d'accueil principal pour le script de publication. Incrémente la "
+"version, met à jour les fichiers, construit la bibliothèque et pousse vers "
+"Git."
+
+#: of publish.run_command:1
+msgid "Runs a shell command and exits if it fails."
+msgstr "Exécute une commande de ligne et quitte si celle-ci échoue."
+
+#: ../../source/publish.rst
+msgid "Parameters"
+msgstr "Paramètres"
+
+#: of publish.run_command:3
+msgid "The shell command to run."
+msgstr "La commande de l'invite de ligne de commande à exécuter."
+
+#: of publish.run_command:4
+msgid "Optional error message to display on failure."
+msgstr "Message d'erreur optionnel à afficher au cas de échec :"
+
+#: of publish.update_changelog:1
+msgid "Adds a new entry to the CHANGELOG.md file."
+msgstr "Ajoute une nouvelle entrée dans le fichier CHANGELOG.md."
+
+#: of publish.update_changelog:3
+msgid "The version string to add."
+msgstr "La chaîne de version à ajouter."
+
+#: of publish.update_file:1
+msgid "Replaces a pattern in a file with new text."
+msgstr "Remplace un modèle dans un fichier avec du texte nouveau."
+
+#: of publish.update_file:3
+msgid "Path to the file."
+msgstr "chemin vers le fichier"
+
+#: of publish.update_file:4
+msgid "Regex pattern to search for."
+msgstr ""
+
+#: of publish.update_file:5
+msgid "Text to replace the pattern with."
+msgstr ""

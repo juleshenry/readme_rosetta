@@ -125,13 +125,13 @@ class Translator:
                 f"Target Language: {to_lang}\n\n"
                 "RULES:\n"
                 f"1. Translate the user's text precisely from {from_lang} to {to_lang}.\n"
-                "2. Respond ONLY with the translated text. No notes, introductions, or explanations.\n"
-                "3. Preserve all Markdown formatting (headers, lists, bold, etc.) exactly.\n"
-                "4. Do NOT hallucinate. Do NOT add any new features, sections, links, or information.\n"
-                "5. Maintain the original structure of the document segment.\n"
-                "6. Do NOT add any links that are not present in the source text.\n"
+                "2. Respond ONLY with the translated text. DO NOT add any explanations, notes, or introductions.\n"
+                "3. Preserve all Markdown/rST formatting (headers, lists, bold, etc.) exactly. DO NOT add new headers or structure.\n"
+                "4. DO NOT hallucinate. DO NOT add any new features, examples, sections, or information.\n"
+                "5. Maintain the original structure of the text exactly. If the input is a single sentence, the output MUST be a single sentence.\n"
+                "6. Do NOT add any links or code blocks that are not present in the source text.\n"
                 "7. If you cannot translate something, return the original text as is.\n"
-                "8. DO NOT assume the project's technology (e.g., don't add 'npm install' if it's not there)."
+                "8. DO NOT assume the project's technology. DO NOT add 'npm install' or similar commands if they are not in the source."
             )
             found_placeholders_types = []
             if "ROSETTA_CB_" in text:
@@ -155,9 +155,11 @@ class Translator:
         max_retries = 2
         for attempt in range(max_retries + 1):
             try:
-                logger.info(f"Querying {self.model_id} for translation ({from_code}->{to_code}, attempt {attempt+1})")
+                logger.info(
+                    f"Querying {self.model_id} for translation ({from_code}->{to_code}, attempt {attempt + 1})"
+                )
                 logger.debug(f"Input text chunk: {text[:100]}...")
-                
+
                 response = ollama.chat(
                     model=self.model_id,
                     messages=[
@@ -182,15 +184,23 @@ class Translator:
                     "here is the translation",
                 ]
                 if any(ind in translated.lower() for ind in bad_indicators):
-                    if len(translated.split()) < len(text.split()) * 0.5 or len(translated.split()) < 10:
+                    if (
+                        len(translated.split()) < len(text.split()) * 0.5
+                        or len(translated.split()) < 10
+                    ):
                         is_bad = True
 
                 # Check for placeholder mismatch
                 trans_cb_count = len(re.findall(r"ROSETTA_CB_\d+", translated))
                 trans_rst_count = len(re.findall(r"ROSETTA_RST_\d+", translated))
-                
-                if trans_cb_count != source_cb_count or trans_rst_count != source_rst_count:
-                    logger.warning(f"Placeholder count mismatch: CB {trans_cb_count}/{source_cb_count}, RST {trans_rst_count}/{source_rst_count}")
+
+                if (
+                    trans_cb_count != source_cb_count
+                    or trans_rst_count != source_rst_count
+                ):
+                    logger.warning(
+                        f"Placeholder count mismatch: CB {trans_cb_count}/{source_cb_count}, RST {trans_rst_count}/{source_rst_count}"
+                    )
                     is_bad = True
 
                 # Check for hallucinated links
@@ -199,12 +209,14 @@ class Translator:
                     if url not in source_urls and not url.startswith("#"):
                         # If it's a completely new external link, it's likely a hallucination
                         if "http" in url and "github.com" in url:
-                             logger.warning(f"Detected hallucinated link: {url}")
-                             is_bad = True
-                             break
+                            logger.warning(f"Detected hallucinated link: {url}")
+                            is_bad = True
+                            break
 
                 if is_bad and attempt < max_retries:
-                    logger.warning(f"Detected bad translation, retrying... (Attempt {attempt+1})")
+                    logger.warning(
+                        f"Detected bad translation, retrying... (Attempt {attempt + 1})"
+                    )
                     system_msg += "\nCRITICAL: DO NOT TALK. ONLY TRANSLATE. PRESERVE PLACEHOLDERS. DO NOT ADD LINKS."
                     continue
 
@@ -235,19 +247,19 @@ class Translator:
                 # Preserve trailing newline if it existed
                 if text.endswith("\n") and not translated.endswith("\n"):
                     translated += "\n"
-                
+
                 # Cross-check: If translation is empty but source wasn't, or it's mostly garbage
                 if not translated.strip() and text.strip():
                     if attempt < max_retries:
                         continue
-                    return text # Fallback to original
+                    return text  # Fallback to original
 
                 return translated
             except Exception as e:
                 logger.error(f"Ollama error (attempt {attempt}): {e}")
                 if attempt == max_retries:
                     return text
-        return text # Ultimate fallback
+        return text  # Ultimate fallback
 
     def translate_batch(
         self, texts: List[str], from_code: str, to_code: str
@@ -263,8 +275,17 @@ class Translator:
         if not texts:
             return []
 
+        from tqdm import tqdm
+
         results = []
-        for text in texts:
+        # Use progress bar if there's more than one item
+        iterable = (
+            tqdm(texts, desc="Translating items", leave=False)
+            if len(texts) > 1
+            else texts
+        )
+
+        for text in iterable:
             if not text.strip():
                 results.append(text)
                 continue

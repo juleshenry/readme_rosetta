@@ -74,6 +74,29 @@ class MarkdownHandler:
         header = header.strip().lstrip("#").strip()
         return "#" + header.lower().replace(" ", "-")
 
+    def discover_translations(self, readme_path: str) -> List[str]:
+        """
+        Scans the directory for existing translated README files.
+
+        :param readme_path: Path to the main README file.
+        :return: List of language codes found.
+        """
+        base_path = os.path.abspath(readme_path)
+        directory = os.path.dirname(base_path)
+        filename = os.path.basename(base_path)
+        name, ext = os.path.splitext(filename)
+
+        pattern = re.compile(rf"^{re.escape(name)}\.([a-z]{{2}}){re.escape(ext)}$")
+        langs = []
+
+        if os.path.exists(directory):
+            for f in os.listdir(directory):
+                match = pattern.match(f)
+                if match:
+                    langs.append(match.group(1))
+
+        return sorted(langs)
+
     def forge_stone(
         self,
         first_header: str,
@@ -236,7 +259,9 @@ class MarkdownHandler:
         # For small enough files, translate the whole thing at once for better context
         # Otherwise, split by sections (headers)
         if len(protected_text) < 4000:
-            logger.info("File size < 4000 chars, translating as a single chunk for better context.")
+            logger.info(
+                "File size < 4000 chars, translating as a single chunk for better context."
+            )
             final_translated_text = self.translator.translate(
                 protected_text, start_code, end_code
             )
@@ -245,8 +270,10 @@ class MarkdownHandler:
             # We use a lookahead to split BEFORE headers
             parts = re.split(r"(?m)^(?=#+ )", protected_text)
             translated_parts = []
-            
-            logger.info(f"File size >= 4000 chars, split into {len(parts)} sections for translation.")
+
+            logger.info(
+                f"File size >= 4000 chars, split into {len(parts)} sections for translation."
+            )
 
             pbar = tqdm(
                 total=len([p for p in parts if p.strip()]),

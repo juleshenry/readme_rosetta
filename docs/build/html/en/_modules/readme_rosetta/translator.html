@@ -166,13 +166,13 @@
                 <span class="sa">f</span><span class="s2">&quot;Target Language: </span><span class="si">{</span><span class="n">to_lang</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
                 <span class="s2">&quot;RULES:</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;1. Translate the user&#39;s text precisely from </span><span class="si">{</span><span class="n">from_lang</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">to_lang</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;2. Respond ONLY with the translated text. No notes, introductions, or explanations.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;3. Preserve all Markdown formatting (headers, lists, bold, etc.) exactly.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;4. Do NOT hallucinate. Do NOT add any new features, sections, links, or information.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;5. Maintain the original structure of the document segment.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;6. Do NOT add any links that are not present in the source text.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;2. Respond ONLY with the translated text. DO NOT add any explanations, notes, or introductions.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;3. Preserve all Markdown/rST formatting (headers, lists, bold, etc.) exactly. DO NOT add new headers or structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;4. DO NOT hallucinate. DO NOT add any new features, examples, sections, or information.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;5. Maintain the original structure of the text exactly. If the input is a single sentence, the output MUST be a single sentence.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;6. Do NOT add any links or code blocks that are not present in the source text.</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="s2">&quot;7. If you cannot translate something, return the original text as is.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;8. DO NOT assume the project&#39;s technology (e.g., don&#39;t add &#39;npm install&#39; if it&#39;s not there).&quot;</span>
+                <span class="s2">&quot;8. DO NOT assume the project&#39;s technology. DO NOT add &#39;npm install&#39; or similar commands if they are not in the source.&quot;</span>
             <span class="p">)</span>
             <span class="n">found_placeholders_types</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">if</span> <span class="s2">&quot;ROSETTA_CB_&quot;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
@@ -196,9 +196,11 @@
         <span class="n">max_retries</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_retries</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Querying </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="si">}</span><span class="s2"> for translation (</span><span class="si">{</span><span class="n">from_code</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">to_code</span><span class="si">}</span><span class="s2">, attempt </span><span class="si">{</span><span class="n">attempt</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Querying </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="si">}</span><span class="s2"> for translation (</span><span class="si">{</span><span class="n">from_code</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">to_code</span><span class="si">}</span><span class="s2">, attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input text chunk: </span><span class="si">{</span><span class="n">text</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
-                
+
                 <span class="n">response</span> <span class="o">=</span> <span class="n">ollama</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span>
                     <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span>
                     <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
@@ -223,15 +225,23 @@
                     <span class="s2">&quot;here is the translation&quot;</span><span class="p">,</span>
                 <span class="p">]</span>
                 <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ind</span> <span class="ow">in</span> <span class="n">translated</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">bad_indicators</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">translated</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">translated</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="nb">len</span><span class="p">(</span><span class="n">translated</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">*</span> <span class="mf">0.5</span>
+                        <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">translated</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mi">10</span>
+                    <span class="p">):</span>
                         <span class="n">is_bad</span> <span class="o">=</span> <span class="kc">True</span>
 
                 <span class="c1"># Check for placeholder mismatch</span>
                 <span class="n">trans_cb_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ROSETTA_CB_\d+&quot;</span><span class="p">,</span> <span class="n">translated</span><span class="p">))</span>
                 <span class="n">trans_rst_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ROSETTA_RST_\d+&quot;</span><span class="p">,</span> <span class="n">translated</span><span class="p">))</span>
-                
-                <span class="k">if</span> <span class="n">trans_cb_count</span> <span class="o">!=</span> <span class="n">source_cb_count</span> <span class="ow">or</span> <span class="n">trans_rst_count</span> <span class="o">!=</span> <span class="n">source_rst_count</span><span class="p">:</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Placeholder count mismatch: CB </span><span class="si">{</span><span class="n">trans_cb_count</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">source_cb_count</span><span class="si">}</span><span class="s2">, RST </span><span class="si">{</span><span class="n">trans_rst_count</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">source_rst_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">trans_cb_count</span> <span class="o">!=</span> <span class="n">source_cb_count</span>
+                    <span class="ow">or</span> <span class="n">trans_rst_count</span> <span class="o">!=</span> <span class="n">source_rst_count</span>
+                <span class="p">):</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Placeholder count mismatch: CB </span><span class="si">{</span><span class="n">trans_cb_count</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">source_cb_count</span><span class="si">}</span><span class="s2">, RST </span><span class="si">{</span><span class="n">trans_rst_count</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">source_rst_count</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
                     <span class="n">is_bad</span> <span class="o">=</span> <span class="kc">True</span>
 
                 <span class="c1"># Check for hallucinated links</span>
@@ -240,12 +250,14 @@
                     <span class="k">if</span> <span class="n">url</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source_urls</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
                         <span class="c1"># If it&#39;s a completely new external link, it&#39;s likely a hallucination</span>
                         <span class="k">if</span> <span class="s2">&quot;http&quot;</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">and</span> <span class="s2">&quot;github.com&quot;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
-                             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected hallucinated link: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                             <span class="n">is_bad</span> <span class="o">=</span> <span class="kc">True</span>
-                             <span class="k">break</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected hallucinated link: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                            <span class="n">is_bad</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">break</span>
 
                 <span class="k">if</span> <span class="n">is_bad</span> <span class="ow">and</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">max_retries</span><span class="p">:</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected bad translation, retrying... (Attempt </span><span class="si">{</span><span class="n">attempt</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Detected bad translation, retrying... (Attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
                     <span class="n">system_msg</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">CRITICAL: DO NOT TALK. ONLY TRANSLATE. PRESERVE PLACEHOLDERS. DO NOT ADD LINKS.&quot;</span>
                     <span class="k">continue</span>
 
@@ -276,19 +288,19 @@
                 <span class="c1"># Preserve trailing newline if it existed</span>
                 <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">translated</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
                     <span class="n">translated</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-                
+
                 <span class="c1"># Cross-check: If translation is empty but source wasn&#39;t, or it&#39;s mostly garbage</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">translated</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">and</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
                     <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">max_retries</span><span class="p">:</span>
                         <span class="k">continue</span>
-                    <span class="k">return</span> <span class="n">text</span> <span class="c1"># Fallback to original</span>
+                    <span class="k">return</span> <span class="n">text</span>  <span class="c1"># Fallback to original</span>
 
                 <span class="k">return</span> <span class="n">translated</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ollama error (attempt </span><span class="si">{</span><span class="n">attempt</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">attempt</span> <span class="o">==</span> <span class="n">max_retries</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">text</span>
-        <span class="k">return</span> <span class="n">text</span> <span class="c1"># Ultimate fallback</span>
+        <span class="k">return</span> <span class="n">text</span>  <span class="c1"># Ultimate fallback</span>
 
 <div class="viewcode-block" id="Translator.translate_batch">
 <a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.translator.Translator.translate_batch">[docs]</a>
@@ -306,8 +318,17 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">texts</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span>
 
+        <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
         <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">:</span>
+        <span class="c1"># Use progress bar if there&#39;s more than one item</span>
+        <span class="n">iterable</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">tqdm</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Translating items&quot;</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+            <span class="k">else</span> <span class="n">texts</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
                 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
                 <span class="k">continue</span>

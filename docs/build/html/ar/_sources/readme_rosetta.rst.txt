@@ -1,51 +1,51 @@
-readme\_rosetta package
-=======================
+readme_rosetta package
+======================
 
 Submodules
 ----------
 
-readme\_rosetta.cli module
---------------------------
+readme_rosetta.cli module
+-------------------------
 
 .. automodule:: readme_rosetta.cli
    :members:
    :show-inheritance:
    :undoc-members:
 
-readme\_rosetta.lang\_codes module
-----------------------------------
+readme_rosetta.lang_codes module
+--------------------------------
 
 .. automodule:: readme_rosetta.lang_codes
    :members:
    :show-inheritance:
    :undoc-members:
 
-readme\_rosetta.markdown\_handler module
-----------------------------------------
+readme_rosetta.markdown_handler module
+--------------------------------------
 
 .. automodule:: readme_rosetta.markdown_handler
    :members:
    :show-inheritance:
    :undoc-members:
 
-readme\_rosetta.rosetta module
-------------------------------
+readme_rosetta.rosetta module
+-----------------------------
 
 .. automodule:: readme_rosetta.rosetta
    :members:
    :show-inheritance:
    :undoc-members:
 
-readme\_rosetta.sphinx\_handler module
---------------------------------------
+readme_rosetta.sphinx_handler module
+------------------------------------
 
 .. automodule:: readme_rosetta.sphinx_handler
    :members:
    :show-inheritance:
    :undoc-members:
 
-readme\_rosetta.translator module
----------------------------------
+readme_rosetta.translator module
+--------------------------------
 
 .. automodule:: readme_rosetta.translator
    :members:

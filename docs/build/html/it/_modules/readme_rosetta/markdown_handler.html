@@ -119,6 +119,32 @@
         <span class="k">return</span> <span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="n">header</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="MarkdownHandler.discover_translations">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler.discover_translations">[documenti]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">discover_translations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">readme_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scans the directory for existing translated README files.</span>
+
+<span class="sd">        :param readme_path: Path to the main README file.</span>
+<span class="sd">        :return: List of language codes found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">readme_path</span><span class="p">)</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;^</span><span class="si">{</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2">\.([a-z]</span><span class="se">{{</span><span class="s2">2</span><span class="se">}}</span><span class="s2">)</span><span class="si">{</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+        <span class="n">langs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+                <span class="n">match</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                    <span class="n">langs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">langs</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="MarkdownHandler.forge_stone">
 <a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler.forge_stone">[documenti]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">forge_stone</span><span class="p">(</span>
@@ -286,7 +312,9 @@
         <span class="c1"># For small enough files, translate the whole thing at once for better context</span>
         <span class="c1"># Otherwise, split by sections (headers)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">protected_text</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4000</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;File size &lt; 4000 chars, translating as a single chunk for better context.&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;File size &lt; 4000 chars, translating as a single chunk for better context.&quot;</span>
+            <span class="p">)</span>
             <span class="n">final_translated_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
                 <span class="n">protected_text</span><span class="p">,</span> <span class="n">start_code</span><span class="p">,</span> <span class="n">end_code</span>
             <span class="p">)</span>
@@ -295,8 +323,10 @@
             <span class="c1"># We use a lookahead to split BEFORE headers</span>
             <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?m)^(?=#+ )&quot;</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
             <span class="n">translated_parts</span> <span class="o">=</span> <span class="p">[]</span>
-            
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File size &gt;= 4000 chars, split into </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span><span class="si">}</span><span class="s2"> sections for translation.&quot;</span><span class="p">)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;File size &gt;= 4000 chars, split into </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span><span class="si">}</span><span class="s2"> sections for translation.&quot;</span>
+            <span class="p">)</span>
 
             <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span>
                 <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()]),</span>

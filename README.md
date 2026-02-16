@@ -3,7 +3,19 @@
 | About | |
 | ------ | ---- |
 | English | [Link to Head of Docs](#🗿-readme-rosetta) |
+| Arabic | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.ar.md#🗿-readme-rosetta) |
+| Danish | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.da.md#🗿-readme-rosetta) |
+| German | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.de.md#🗿-readme-rosetta) |
 | Spanish | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.es.md#🗿-readme-rosetta) |
+| Finnish | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.fi.md#🗿-readme-rosetta) |
+| French | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.fr.md#🗿-readme-rosetta) |
+| Hindi | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.hi.md#🗿-readme-rosetta) |
+| Hungarian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.hu.md#🗿-readme-rosetta) |
+| Italian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.it.md#🗿-readme-rosetta) |
+| Japanese | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.ja.md#🗿-readme-rosetta) |
+| Dutch | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.nl.md#🗿-readme-rosetta) |
+| Norwegian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.no.md#🗿-readme-rosetta) |
+| Portuguese | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.pt.md#🗿-readme-rosetta) |
 
 # 🗿 README Rosetta
 
@@ -105,6 +117,25 @@ gitbook = false
 ```
 
 ---
+
+## ⚠️ Troubleshooting & Limitations
+
+Automated translation using LLMs is powerful but can occasionally introduce formatting artifacts, especially in complex Sphinx/RST environments.
+
+### Common Issues
+- **Mismatched Backticks:** LLMs might fail to close a `` ` `` or ` `` ` ` string.
+- **Header Lengths:** If an LLM adds bolding (`**`) to a title, the Sphinx underline may no longer match the text length.
+- **Structural Hallucinations:** The model might try to add its own summaries or "helpful" code blocks that aren't in the source.
+
+### Cleanup Script
+We provide a utility script to identify and clear common translation errors in your `.po` files. If a translation is cleared, Sphinx will simply fall back to the original English text for that string.
+
+```bash
+# Run the cleanup utility
+python3 scripts/cleanup_translations.py
+```
+
+*Note: Always review your documentation builds. While Rosetta aims for perfection, manual correction of localized `.po` files is sometimes necessary for high-stakes documentation.*
 
 ## 📜 License
 
