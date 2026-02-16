@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="de" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>readme_rosetta.markdown_handler &#8212; readme-rosetta 0.1.0 Dokumentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=7c8c992d"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/translations.js?v=9bf55d28"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../../genindex.html" />
+    <link rel="search" title="Suche" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Quellcode für readme_rosetta.markdown_handler</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.lang_codes</span><span class="w"> </span><span class="kn">import</span> <span class="n">lang_codes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.translator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Translator</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="MarkdownHandler">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler">[Doku]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MarkdownHandler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles parsing and translation of Markdown files.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">translator</span><span class="p">:</span> <span class="n">Translator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the MarkdownHandler.</span>
+
+<span class="sd">        :param translator: The Translator instance to use.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translator</span> <span class="o">=</span> <span class="n">translator</span>
+
+<div class="viewcode-block" id="MarkdownHandler.protect_code_blocks">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">protect_code_blocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replaces code blocks with placeholders to prevent translation.</span>
+
+<span class="sd">        :param text: The Markdown text.</span>
+<span class="sd">        :return: A tuple containing the protected text and original code blocks.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">placeholders</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+            <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ROSETTA_CB_</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">placeholders</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">placeholders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">placeholder</span>
+
+        <span class="c1"># Protect triple backtick blocks</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;```[\s\S]*?```&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="c1"># Protect inline code</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;`[^`\n]+`&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">protected_text</span><span class="p">,</span> <span class="n">placeholders</span></div>
+
+
+<div class="viewcode-block" id="MarkdownHandler.restore_code_blocks">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">restore_code_blocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restores code blocks from placeholders after translation.</span>
+
+<span class="sd">        :param text: The translated text with placeholders.</span>
+<span class="sd">        :param placeholders: The list of original code blocks.</span>
+<span class="sd">        :return: The restored Markdown text.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">replace_match</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">placeholders</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">placeholders</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Regex to find ROSETTA_CB_N with potential minor alterations by the model</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ROSETTA[_\s-]*CB[_\s-]*(\d+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">replace_match</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MarkdownHandler.clean_header_for_link">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clean_header_for_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cleans a Markdown header to be used as an anchor link.</span>
+
+<span class="sd">        :param header: The header text.</span>
+<span class="sd">        :return: The cleaned header link (e.g., &quot;#my-header&quot;).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[([^\]]+)\]\([^\)]+\)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="n">header</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MarkdownHandler.forge_stone">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler.forge_stone">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forge_stone</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">first_header</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">start_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">end_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">existing_table</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">target_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">raw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates or updates the Rosetta translation table in the README.</span>
+
+<span class="sd">        :param first_header: The first header of the document.</span>
+<span class="sd">        :param start_code: The source language code.</span>
+<span class="sd">        :param end_code: The target language code.</span>
+<span class="sd">        :param existing_table: The existing Rosetta table, if any.</span>
+<span class="sd">        :param target_file: The name of the target file (for split mode).</span>
+<span class="sd">        :param base_url: The base URL for absolute links.</span>
+<span class="sd">        :param raw: Whether to append ?raw=true to links.</span>
+<span class="sd">        :return: The updated Rosetta table Markdown.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">header_link</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_header_for_link</span><span class="p">(</span><span class="n">first_header</span><span class="p">)</span>
+        <span class="n">lang_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">lang_codes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">end_code</span><span class="p">,</span> <span class="n">end_code</span><span class="p">))</span>
+
+        <span class="n">translated_lang_name</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">lang_name</span><span class="p">,</span> <span class="n">start_code</span><span class="p">,</span> <span class="n">end_code</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Clean the translated name for the link</span>
+        <span class="n">clean_lang_link</span> <span class="o">=</span> <span class="n">translated_lang_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+        <span class="c1"># Remove common punctuation that might be added</span>
+        <span class="n">clean_lang_link</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^\w-]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">clean_lang_link</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">target_file</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">base_url</span><span class="p">:</span>
+                <span class="n">target_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">target_file</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="n">raw</span><span class="p">:</span>
+                    <span class="n">target_url</span> <span class="o">+=</span> <span class="s2">&quot;?raw=true&quot;</span>
+                <span class="n">new_header_link</span> <span class="o">=</span> <span class="n">target_url</span> <span class="o">+</span> <span class="n">header_link</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new_header_link</span> <span class="o">=</span> <span class="n">target_file</span> <span class="o">+</span> <span class="n">header_link</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_header_link</span> <span class="o">=</span> <span class="n">header_link</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">clean_lang_link</span>
+
+        <span class="n">new_row</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">lang_name</span><span class="si">}</span><span class="s2"> | [Link to Head of Docs](</span><span class="si">{</span><span class="n">new_header_link</span><span class="si">}</span><span class="s2">) |&quot;</span>
+
+        <span class="k">if</span> <span class="n">existing_table</span> <span class="ow">and</span> <span class="s2">&quot;&lt;!-- &lt;Original README.md&gt; --&gt;&quot;</span> <span class="ow">in</span> <span class="n">existing_table</span><span class="p">:</span>
+            <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">lang_name</span><span class="si">}</span><span class="s2"> |&quot;</span> <span class="ow">in</span> <span class="n">existing_table</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Language </span><span class="si">{</span><span class="n">lang_name</span><span class="si">}</span><span class="s2"> already detected in Rosetta table.&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">existing_table</span>
+
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">existing_table</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">last_row_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">):</span>
+                    <span class="n">last_row_idx</span> <span class="o">=</span> <span class="n">i</span>
+
+            <span class="k">if</span> <span class="n">last_row_idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">lines</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">last_row_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">new_row</span><span class="p">)</span>
+                <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="n">project_link</span> <span class="o">=</span> <span class="n">base_url</span> <span class="k">if</span> <span class="n">base_url</span> <span class="k">else</span> <span class="s2">&quot;#&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!-- &lt;Original README.md&gt; --&gt;</span>
+<span class="s2"># [Documentation Support in Multiple Languages](</span><span class="si">{</span><span class="n">project_link</span><span class="si">}</span><span class="s2">)</span>
+<span class="s2">| About | |</span>
+<span class="s2">| ------ | ---- |</span>
+<span class="s2">| English | [Link to Head of Docs](</span><span class="si">{</span><span class="n">header_link</span><span class="si">}</span><span class="s2">) |</span>
+<span class="si">{</span><span class="n">new_row</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="MarkdownHandler.translate_markdown">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">translate_markdown</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">md_text_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">start_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">end_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">pbar_pos</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">dry_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">add_lang_to_header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">target_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">raw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Translates a Markdown file using block-level context.</span>
+
+<span class="sd">        :param md_text_path: The path to the Markdown file.</span>
+<span class="sd">        :param start_code: The source language code.</span>
+<span class="sd">        :param end_code: The target language code.</span>
+<span class="sd">        :param pbar_pos: The position of the progress bar.</span>
+<span class="sd">        :param dry_run: Whether to simulate translation.</span>
+<span class="sd">        :param add_lang_to_header: Whether to add the target language name to the first header.</span>
+<span class="sd">        :param target_file: The name of the target file (for split mode).</span>
+<span class="sd">        :param base_url: The base URL for absolute links.</span>
+<span class="sd">        :param raw: Whether to append ?raw=true to links.</span>
+<span class="sd">        :return: A tuple containing (translated_content, rosetta_table,</span>
+<span class="sd">                 original_content_without_rosetta, identified_first_header).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">md_text_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">md_text_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+        <span class="n">first_header</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">existing_table</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">in_rosetta</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">content_lines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">original_content_without_rosetta</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Extract headers and existing table</span>
+        <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;&lt;!-- &lt;Original README.md&gt; --&gt;&quot;</span> <span class="ow">in</span> <span class="n">o</span><span class="p">:</span>
+                <span class="n">in_rosetta</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">existing_table</span> <span class="o">+=</span> <span class="n">o</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">in_rosetta</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;Documentation Support&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">o</span><span class="p">:</span>
+                    <span class="n">in_rosetta</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">existing_table</span> <span class="o">+=</span> <span class="n">o</span>
+                    <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="s2">&quot;&lt;!-- &lt;Rosetta Translations&gt; --&gt;&quot;</span> <span class="ow">in</span> <span class="n">o</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">original_content_without_rosetta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">first_header</span><span class="p">:</span>
+                <span class="n">first_header</span> <span class="o">=</span> <span class="n">o</span>
+                <span class="k">if</span> <span class="n">add_lang_to_header</span><span class="p">:</span>
+                    <span class="n">lang_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">lang_codes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">end_code</span><span class="p">,</span> <span class="n">end_code</span><span class="p">))</span>
+                    <span class="n">header_for_translation</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; (&quot;</span> <span class="o">+</span> <span class="n">lang_name</span> <span class="o">+</span> <span class="s2">&quot;)</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">content_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">header_for_translation</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">content_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">content_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+        <span class="n">full_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">content_lines</span><span class="p">)</span>
+        <span class="n">source_without_rosetta</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">original_content_without_rosetta</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="s2">&quot;[DRY RUN] Translated Content&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;[DRY RUN] Rosetta Table&quot;</span><span class="p">,</span>
+                <span class="n">source_without_rosetta</span><span class="p">,</span>
+                <span class="n">first_header</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Protect code blocks</span>
+        <span class="n">protected_text</span><span class="p">,</span> <span class="n">placeholders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protect_code_blocks</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
+
+        <span class="c1"># For small enough files, translate the whole thing at once for better context</span>
+        <span class="c1"># Otherwise, split by sections (headers)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">protected_text</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4000</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;File size &lt; 4000 chars, translating as a single chunk for better context.&quot;</span><span class="p">)</span>
+            <span class="n">final_translated_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+                <span class="n">protected_text</span><span class="p">,</span> <span class="n">start_code</span><span class="p">,</span> <span class="n">end_code</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Split by headers (keeping the header with the following block)</span>
+            <span class="c1"># We use a lookahead to split BEFORE headers</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?m)^(?=#+ )&quot;</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+            <span class="n">translated_parts</span> <span class="o">=</span> <span class="p">[]</span>
+            
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File size &gt;= 4000 chars, split into </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span><span class="si">}</span><span class="s2"> sections for translation.&quot;</span><span class="p">)</span>
+
+            <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span>
+                <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()]),</span>
+                <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Translating to </span><span class="si">{</span><span class="n">end_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="n">pbar_pos</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">part</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="n">translated_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+                    <span class="k">continue</span>
+
+                <span class="n">translated_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="n">start_code</span><span class="p">,</span> <span class="n">end_code</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="n">final_translated_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">translated_parts</span><span class="p">)</span>
+
+        <span class="c1"># Restore code blocks</span>
+        <span class="n">final_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">restore_code_blocks</span><span class="p">(</span><span class="n">final_translated_text</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">)</span>
+
+        <span class="n">rosetta_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forge_stone</span><span class="p">(</span>
+            <span class="n">first_header</span><span class="p">,</span>
+            <span class="n">start_code</span><span class="p">,</span>
+            <span class="n">end_code</span><span class="p">,</span>
+            <span class="n">existing_table</span><span class="p">,</span>
+            <span class="n">target_file</span><span class="o">=</span><span class="n">target_file</span><span class="p">,</span>
+            <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span>
+            <span class="n">raw</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">final_text</span><span class="p">,</span> <span class="n">rosetta_table</span><span class="p">,</span> <span class="n">source_without_rosetta</span><span class="p">,</span> <span class="n">first_header</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">readme-rosetta</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Los" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">readme_rosetta</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Modul-Quellcode</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Enrique.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "readme-rosetta"
-version = "opencode"
+version = "0.1.5"
 description = "A tool to facilitate the translation of GitHub README.md files using Ollama."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -29,7 +29,7 @@ dev = ["ruff"]
 
 [tool.ruff]
 line-length = 88
-target-version = "opencode"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "N"]
@@ -42,8 +42,6 @@ where = ["src"]
 readme-rosetta = "readme_rosetta.cli:main"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
+pythonpath = "src"
+testpaths = "tests"
+python_files = "test_*.py"

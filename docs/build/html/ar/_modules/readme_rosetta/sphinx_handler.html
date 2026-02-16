@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="ar" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>readme_rosetta.sphinx_handler &#8212; readme-rosetta 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=e5541c4f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/translations.js?v=87cb2081"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="بحث" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for readme_rosetta.sphinx_handler</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">polib</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">polib</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.console</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.translator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Translator</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="SphinxHandler">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.sphinx_handler.SphinxHandler">[المستندات]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SphinxHandler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles Sphinx documentation translation using gettext and PO files.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">translator</span><span class="p">:</span> <span class="n">Translator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the SphinxHandler.</span>
+
+<span class="sd">        :param translator: The Translator instance to use.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translator</span> <span class="o">=</span> <span class="n">translator</span>
+
+<div class="viewcode-block" id="SphinxHandler.protect_rst">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.sphinx_handler.SphinxHandler.protect_rst">[المستندات]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">protect_rst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replaces rST-specific syntax with placeholders to prevent translation.</span>
+
+<span class="sd">        :param text: The rST text.</span>
+<span class="sd">        :return: A tuple containing the protected text and original constructs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">placeholders</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+            <span class="n">placeholder</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ROSETTA_RST_</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">placeholders</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">placeholders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">placeholder</span>
+
+        <span class="c1"># Protect :role:`text`</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;:\w+:`[^`]+`&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="c1"># Protect ``inline literal``</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;``[^`]+``&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+        <span class="c1"># Protect `link &lt;url&gt;`_</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;`[^`]+ &lt;[^&gt;]+&gt;`_+&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+        <span class="c1"># Protect `target`_</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;`[^`]+`_+&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+        <span class="c1"># Protect |substitution|</span>
+        <span class="n">protected_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\|\w+\|&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">protected_text</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">protected_text</span><span class="p">,</span> <span class="n">placeholders</span></div>
+
+
+<div class="viewcode-block" id="SphinxHandler.restore_rst">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.sphinx_handler.SphinxHandler.restore_rst">[المستندات]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">restore_rst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restores rST-specific syntax from placeholders after translation.</span>
+
+<span class="sd">        :param text: The translated text with placeholders.</span>
+<span class="sd">        :param placeholders: The list of original rST constructs.</span>
+<span class="sd">        :return: The restored rST text.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">replace_match</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">placeholders</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">placeholders</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ROSETTA[_\s-]*RST[_\s-]*(\d+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">replace_match</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SphinxHandler.translate_po_file">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file">[المستندات]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">translate_po_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">po_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">from_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Translates a Sphinx PO file.</span>
+
+<span class="sd">        :param po_path: The path to the .po file.</span>
+<span class="sd">        :param from_code: The source language code.</span>
+<span class="sd">        :param to_code: The target language code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">polib</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;polib not installed, skipping PO translation&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">po</span> <span class="o">=</span> <span class="n">polib</span><span class="o">.</span><span class="n">pofile</span><span class="p">(</span><span class="n">po_path</span><span class="p">)</span>
+        <span class="n">entries_to_translate</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">po</span> <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">msgid</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">msgstr</span> <span class="ow">or</span> <span class="s2">&quot;fuzzy&quot;</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">flags</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">entries_to_translate</span><span class="p">:</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Translating </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_to_translate</span><span class="p">)</span><span class="si">}</span><span class="s2"> entries in &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">po_path</span><span class="p">)</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">to_code</span><span class="si">}</span><span class="s2">...&quot;</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Use batch translation for PO files</span>
+            <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+            <span class="n">msgids</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">msgid</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entries_to_translate</span><span class="p">]</span>
+            <span class="n">protected_msgids</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">all_placeholders</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">msgid</span> <span class="ow">in</span> <span class="n">msgids</span><span class="p">:</span>
+                <span class="n">protected</span><span class="p">,</span> <span class="n">placeholders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protect_rst</span><span class="p">(</span><span class="n">msgid</span><span class="p">)</span>
+                <span class="n">protected_msgids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">protected</span><span class="p">)</span>
+                <span class="n">all_placeholders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">placeholders</span><span class="p">)</span>
+
+            <span class="n">translated_msgs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">protected_msgids</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">):</span>
+                <span class="n">batch</span> <span class="o">=</span> <span class="n">protected_msgids</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">]</span>
+                <span class="n">translated_msgs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="o">.</span><span class="n">translate_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">from_code</span><span class="p">,</span> <span class="n">to_code</span><span class="p">)</span>
+                <span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">entry</span><span class="p">,</span> <span class="n">trans</span><span class="p">,</span> <span class="n">placeholders</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                <span class="n">entries_to_translate</span><span class="p">,</span> <span class="n">translated_msgs</span><span class="p">,</span> <span class="n">all_placeholders</span>
+            <span class="p">):</span>
+                <span class="n">final_trans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">restore_rst</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">)</span>
+                <span class="n">entry</span><span class="o">.</span><span class="n">msgstr</span> <span class="o">=</span> <span class="n">final_trans</span>
+                <span class="k">if</span> <span class="s2">&quot;fuzzy&quot;</span> <span class="ow">in</span> <span class="n">entry</span><span class="o">.</span><span class="n">flags</span><span class="p">:</span>
+                    <span class="n">entry</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;fuzzy&quot;</span><span class="p">)</span>
+
+            <span class="n">po</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="SphinxHandler.setup_sphinx">
+<a class="viewcode-back" href="../../readme_rosetta.html#readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx">[المستندات]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup_sphinx</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">project_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">langs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">start_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets up Sphinx documentation, generates API docs, and translates them.</span>
+
+<span class="sd">        :param project_path: The path to the project source code.</span>
+<span class="sd">        :param langs: A list of target language codes.</span>
+<span class="sd">        :param start_code: The source language code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">docs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
+        <span class="n">source_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span>
+
+        <span class="n">python_exe</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">env</span><span class="p">[</span><span class="s2">&quot;PYTHONPATH&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;src&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sphinx documentation directory detected: </span><span class="si">{</span><span class="n">docs_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">)</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">python_exe</span><span class="p">,</span>
+                    <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;sphinx.cmd.quickstart&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-q&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Project&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-a&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Author&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-v&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+                    <span class="n">docs_dir</span><span class="p">,</span>
+                <span class="p">],</span>
+                <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Ensure conf.py has i18n settings and sys.path for autodoc</span>
+        <span class="n">conf_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">conf_path</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sphinx configuration detected: </span><span class="si">{</span><span class="n">conf_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">conf_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">conf_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+            <span class="n">updates</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="s1">&#39;sys.path.insert(0, os.path.abspath(&quot;../../src&quot;))&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">conf_content</span><span class="p">:</span>
+                <span class="n">updates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="s1">&#39;import sys, os</span><span class="se">\n</span><span class="s1">sys.path.insert(0, os.path.abspath(&quot;../../src&quot;))&#39;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;locale_dirs = [&quot;locale/&quot;]&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">conf_content</span><span class="p">:</span>
+                <span class="n">updates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;locale_dirs = [&quot;locale/&quot;]&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;gettext_compact = False&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">conf_content</span><span class="p">:</span>
+                <span class="n">updates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gettext_compact = False&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">updates</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">conf_path</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">updates</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Run apidoc</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">python_exe</span><span class="p">,</span>
+                <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sphinx.ext.apidoc&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+                <span class="n">source_dir</span><span class="p">,</span>
+                <span class="n">project_path</span><span class="p">,</span>
+                <span class="s2">&quot;-f&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Generate gettext</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">python_exe</span><span class="p">,</span>
+                <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sphinx.cmd.build&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-M&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;gettext&quot;</span><span class="p">,</span>
+                <span class="n">source_dir</span><span class="p">,</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update and translate PO files</span>
+        <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">langs</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Sphinx Languages&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;.&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Updating catalogs for </span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">python_exe</span><span class="p">,</span>
+                    <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;sphinx_intl&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;update&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="s2">&quot;gettext&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
+                    <span class="n">lang</span><span class="p">,</span>
+                <span class="p">],</span>
+                <span class="n">cwd</span><span class="o">=</span><span class="n">docs_dir</span><span class="p">,</span>
+                <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+                <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">locale_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="s2">&quot;locale&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="s2">&quot;LC_MESSAGES&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.po&quot;</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">translate_po_file</span><span class="p">(</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">locale_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="n">start_code</span><span class="p">,</span> <span class="n">lang</span>
+                        <span class="p">)</span>
+
+            <span class="c1"># Build HTML for this language</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Building HTML for </span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">python_exe</span><span class="p">,</span>
+                    <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;sphinx.cmd.build&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;html&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-D&quot;</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">&quot;language=</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">source_dir</span><span class="p">,</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="p">),</span>
+                <span class="p">],</span>
+                <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;[green]Sphinx setup and translation complete.[/green]&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">readme-rosetta</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">readme_rosetta</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Enrique.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

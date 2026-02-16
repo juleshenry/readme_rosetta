@@ -1,6 +1,6 @@
 # Changelog
 
-## vopencode (2026-02-16)
+## v0.1.5 (2026-02-16)
 
 * Automated release update
 
