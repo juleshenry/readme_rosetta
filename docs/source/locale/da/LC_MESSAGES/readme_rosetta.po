@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -366,12 +366,16 @@ msgstr ""
 msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr "Søker efter eksisterende Sphinx-oversættelser i docs/source/locale."
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
-msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
 msgstr ""
-"Erstatter rST-spesifik syntax med placeholder for at forhindre oversættelse."
+"Sikrer at rST-underlininger (====, --- og lignende) er til mindesten så "
+"lange som den førende tekst."
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
 msgid "The rST text."
 msgstr ""
 "**Indledende**\n"
@@ -388,6 +392,34 @@ msgstr ""
 "**Forskellige former for selvstændighed**\n"
 "\n"
 "Det er vigtigt at erkende, at selvstændighed kan være en kompleks og uafhængig koncept."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+".. _fixed_underlines:\n"
+"=================================\n"
+"Fixed Underlines\n"
+"----------------\n"
+"=================================\n"
+"\n"
+"Underlined text is used to draw attention to specific information.\n"
+"\n"
+"    *   This can be used for many things, like in HTML links.\n"
+"    *   In this case, it will highlight the link you clicked on.\n"
+"    *   For example, **This is a fixed underline**.\n"
+"        +   Or it might be used for an important note:\n"
+"            ~  Don't forget to buy milk!\n"
+"    _This is also an underlined text_.\n"
+"\n"
+"    | Column 1          | Column 2          |\n"
+"    |:-------------------:||:------------------:|\n"
+"    | This is a table row | and this is another |\n"
+"    |                       | row in the table."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
+msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+msgstr ""
+"Erstatter rST-spesifik syntax med placeholder for at forhindre oversættelse."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."

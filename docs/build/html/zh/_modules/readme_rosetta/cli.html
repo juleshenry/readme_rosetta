@@ -60,18 +60,18 @@
 <span class="sd">    :param verbose: Whether to enable verbose (DEBUG) logging.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span> <span class="k">if</span> <span class="n">verbose</span> <span class="k">else</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
-    
+
     <span class="c1"># Configure root logger directly to allow re-configuration</span>
     <span class="n">root</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
-    
+
     <span class="c1"># Clear existing handlers</span>
     <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">handlers</span><span class="p">[:]:</span>
         <span class="n">root</span><span class="o">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-        
+
     <span class="n">handler</span> <span class="o">=</span> <span class="n">RichHandler</span><span class="p">(</span><span class="n">rich_tracebacks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">console</span><span class="o">=</span><span class="n">console</span><span class="p">)</span>
     <span class="n">root</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-    
+
     <span class="c1"># Set levels for noisy libraries</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">verbose</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;ollama&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
@@ -266,15 +266,38 @@
                     <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Source file detected: </span><span class="si">{</span><span class="n">src_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="c1"># Discover existing translations to populate the stone</span>
+                <span class="n">discovered_md_langs</span> <span class="o">=</span> <span class="n">md_handler</span><span class="o">.</span><span class="n">discover_translations</span><span class="p">(</span><span class="n">src_file</span><span class="p">)</span>
+                <span class="n">discovered_sphinx_langs</span> <span class="o">=</span> <span class="n">sphinx_handler</span><span class="o">.</span><span class="n">discover_translations</span><span class="p">()</span>
+                <span class="n">discovered_langs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+                    <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">discovered_md_langs</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">discovered_sphinx_langs</span><span class="p">))</span>
+                <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">discovered_langs</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Discovered existing translations: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">discovered_langs</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+
+                <span class="c1"># We need the first header to forge the stone correctly</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">src_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">first_header</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;Documentation Support&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                            <span class="n">first_header</span> <span class="o">=</span> <span class="n">line</span>
+                            <span class="k">break</span>
+
+                <span class="c1"># Initialize current_rosetta with existing table if it exists</span>
+                <span class="c1"># translate_markdown will handle extracting it from the file during the first run</span>
+                <span class="n">current_rosetta</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
                 <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;[bold green]Starting translation of </span><span class="si">{</span><span class="n">src_file</span><span class="si">}</span><span class="s2"> to &quot;</span>
                     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">target_codes</span><span class="p">)</span><span class="si">}</span><span class="s2"> languages...[/bold green]&quot;</span>
                 <span class="p">)</span>
 
-                <span class="n">current_rosetta</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
                 <span class="n">translated_sections</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="n">source_without_rosetta</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-                <span class="n">first_header</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
                 <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">target_codes</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Languages&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
                     <span class="n">target_file</span> <span class="o">=</span> <span class="kc">None</span>
@@ -329,15 +352,35 @@
                                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">trans_text</span><span class="p">)</span>
 
                         <span class="c1"># Update rosetta table for main file</span>
-                        <span class="n">current_rosetta</span> <span class="o">=</span> <span class="n">md_handler</span><span class="o">.</span><span class="n">forge_stone</span><span class="p">(</span>
-                            <span class="n">first_header</span><span class="p">,</span>
-                            <span class="n">start_code</span><span class="p">,</span>
-                            <span class="n">code</span><span class="p">,</span>
-                            <span class="n">existing_table</span><span class="o">=</span><span class="n">current_rosetta</span><span class="p">,</span>
-                            <span class="n">target_file</span><span class="o">=</span><span class="n">lang_output</span><span class="p">,</span>
-                            <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span>
-                            <span class="n">raw</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span>
-                        <span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">current_rosetta</span><span class="p">:</span>
+                            <span class="n">current_rosetta</span> <span class="o">=</span> <span class="n">rosetta_part</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">current_rosetta</span> <span class="o">=</span> <span class="n">md_handler</span><span class="o">.</span><span class="n">forge_stone</span><span class="p">(</span>
+                                <span class="n">first_header</span><span class="p">,</span>
+                                <span class="n">start_code</span><span class="p">,</span>
+                                <span class="n">code</span><span class="p">,</span>
+                                <span class="n">existing_table</span><span class="o">=</span><span class="n">current_rosetta</span><span class="p">,</span>
+                                <span class="n">target_file</span><span class="o">=</span><span class="n">lang_output</span><span class="p">,</span>
+                                <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span>
+                                <span class="n">raw</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span>
+                            <span class="p">)</span>
+
+                <span class="c1"># After the translation loop, ensure ALL discovered translations are in the stone</span>
+                <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">discovered_langs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="n">start_code</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">base</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+                    <span class="n">lang_output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">code</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">current_rosetta</span> <span class="o">=</span> <span class="n">md_handler</span><span class="o">.</span><span class="n">forge_stone</span><span class="p">(</span>
+                        <span class="n">first_header</span><span class="p">,</span>
+                        <span class="n">start_code</span><span class="p">,</span>
+                        <span class="n">code</span><span class="p">,</span>
+                        <span class="n">existing_table</span><span class="o">=</span><span class="n">current_rosetta</span><span class="p">,</span>
+                        <span class="n">target_file</span><span class="o">=</span><span class="n">lang_output</span><span class="p">,</span>
+                        <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span>
+                        <span class="n">raw</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span>
+                    <span class="p">)</span>
 
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">:</span>
                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
@@ -351,16 +394,25 @@
                 <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[bold green]Done! </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2"> updated.[/bold green]&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">gitbook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">:</span>
-            <span class="n">target_codes</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">langs</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">target_codes</span><span class="p">:</span>
+            <span class="c1"># Include both new translations and existing discovered ones</span>
+            <span class="n">discovered_md_langs</span> <span class="o">=</span> <span class="n">md_handler</span><span class="o">.</span><span class="n">discover_translations</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">readme</span><span class="p">)</span>
+            <span class="n">discovered_sphinx_langs</span> <span class="o">=</span> <span class="n">sphinx_handler</span><span class="o">.</span><span class="n">discover_translations</span><span class="p">()</span>
+            <span class="n">discovered_langs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+                <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">discovered_md_langs</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">discovered_sphinx_langs</span><span class="p">))</span>
+            <span class="p">)</span>
+            <span class="n">all_langs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">langs</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">discovered_langs</span><span class="p">)))</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">all_langs</span><span class="p">:</span>
                 <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
-                    <span class="s2">&quot;[yellow]Warning: --gitbook requires --langs to generate links.[/yellow]&quot;</span>
+                    <span class="s2">&quot;[yellow]Warning: --gitbook requires translations to generate links.[/yellow]&quot;</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;SUMMARY.md&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">summary</span><span class="p">:</span>
                     <span class="n">summary</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;# Summary</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
                     <span class="n">summary</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;* [Introduction](</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">readme</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">target_codes</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">all_langs</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="n">args</span><span class="o">.</span><span class="n">src_lang</span><span class="p">:</span>
+                            <span class="k">continue</span>
                         <span class="n">lang_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">lang_codes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">))</span>
                         <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">no_split</span><span class="p">:</span>
                             <span class="n">summary</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;* [</span><span class="si">{</span><span class="n">lang_name</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">readme</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>

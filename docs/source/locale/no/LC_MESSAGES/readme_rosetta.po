@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -310,17 +310,37 @@ msgstr ""
 msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr "Søker etter eksisterende Sphinx-oversettelser i doc/source/locale."
 
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
+msgstr ""
+"Sikrer at RST-underlininger (===, ---, etc.) er minst så lange som "
+"oppfølgende tekst."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+msgid "The rST text."
+msgstr ""
+"Det er en enhet som skal holde opp datamaskinene i den virtuelle verden av "
+"Bitcoin og Ethereum."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+"_____________________________\n"
+".. _underlines:\n"
+"   | This is a fixed underlined text |\n"
+"   \n"
+"   The underscore character `_` can be used to create a fixed underlined text in reStructuredText (RST) documents. The fixed underlining is achieved by surrounding the text with double underscores on either side of the text.\n"
+"\n"
+"_____________________________"
+
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
 msgid "Replaces rST-specific syntax with placeholders to prevent translation."
 msgstr ""
 "Erstatt rST-ekspedisjonssyntaks med placeholder-forhold for å forhindre "
 "oversetting."
-
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
-msgid "The rST text."
-msgstr ""
-"Det er en enhet som skal holde opp datamaskinene i den virtuelle verden av "
-"Bitcoin og Ethereum."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -809,15 +809,31 @@ msgstr ""
 msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr "Scannet bestehende Sphinx-Übersetzungen in docs/source/locale."
 
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
+msgstr ""
+"Garantiert RST-Unterstriche (===, --, etc.) sind mindestens so lang wie das "
+"vorhergehende Text."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+msgid "The rST text."
+msgstr "Das RST-Textformat"
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+"Die _Text mit fester Strichlinie_ ist eine besondere Art von "
+"Textformatierung, die es ermöglicht, wichtige Wörter oder Phrasen durch "
+"Linien zu unterstreichen."
+
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
 msgid "Replaces rST-specific syntax with placeholders to prevent translation."
 msgstr ""
 "ersetzt rST spezifisches Syntax mit Platzhaltern, um die Übersetzung zu "
 "verhindern."
-
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
-msgid "The rST text."
-msgstr "Das RST-Textformat"
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."

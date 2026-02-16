@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: hu <LL@li.org>\n"
@@ -578,13 +578,16 @@ msgstr ""
 msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr "Szállít a meglévő Sphinx fordításokat a docs/source/localeban."
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
-msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
 msgstr ""
-"Általánosan a rST-szpecifikus szintaxist **{rst_specific_syntax}** néven "
-"említik, és általában **{placeholder}**-t használnak annak helyébe."
+"A rST aláírások (===, ---, etc.) hossza mindig legalább a előző szövegrészt "
+"tartalmazója legyen."
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
 msgid "The rST text."
 msgstr ""
 "**Szerkesztés a dokumentumokban**\n"
@@ -612,6 +615,29 @@ msgstr ""
 "\n"
 "*   **Érthetőség**: A dokumentum azonosítása\n"
 "*   **Áttekintés**: Az áttekintés és felhasználás szabványosítása"
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+".. _underlined_text:\n"
+"\n"
+"    .. _fixed_underline:\n"
+"       Underlined Text\n"
+"    _______\n"
+"\n"
+"         This is an example of underlined text.\n"
+"         It has a fixed underline on the bottom.\n"
+"         \n"
+"         .. _another_fixed_underline:\n"
+"            Another Fixed Underline\n"
+"         _______\n"
+"            This is another example of fixed underline."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
+msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+msgstr ""
+"Általánosan a rST-szpecifikus szintaxist **{rst_specific_syntax}** néven "
+"említik, és általában **{placeholder}**-t használnak annak helyébe."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."

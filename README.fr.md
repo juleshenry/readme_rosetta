@@ -1,19 +1,16 @@
-# README Rosetta
+#  README Rosetta
 
-**README Rosetta** est une puissante outil d'automatisation conçu pour traduire vos documents en plusieurs langues à l'aide de locaux LLMs via [Ollama](https://ollama.ai/). Il vous permet de rendre votre projet accessible à un public mondial tout en conservant les formats Markdown et la structure des documents parfaits.
+**README Rosetta** est une puissante outil d'automatisation conçu pour traduire vos documents en plusieurs langues en utilisant des LLM locaux via [Ollama](https://ollama.ai/). Il garantit que votre projet soit accessible à un public mondiau tout en conservant une mise en forme de Markdown parfaite et la structure documentaire.
+## 🌍 README Translation
 
----
+README Rosetta spécialise en rendant votre projet GitHub international avec un effort minimum.
 
-## README Translation
-
-README Rosetta est spécialisé dans la mise en langues internationales de votre projet GitHub avec effort minimum.
-
-- **Multi-langue:** Traduisez vos `README.md` en dozens de langues simultanément.
-- **Tableau de navigation:** Prépare automatiquement un "pierre" (table) de navigation à la tête de votre README, permettant aux utilisateurs de passer rapidement entre les langues.
-- **Mode flexible:**
-    - **Mode split (par défaut):** Génère des fichiers séparés (ex `README.es.md`, `README.fr.md`) pour une structure propre du projet.
-    - **Mode unifié (`--no-split`):** Ajoute toutes les traductions au fichier principal `README.md`, séparées par des commentaires HTML.
-- **Sauvegarde de Markdown:** Gère intelligemment les en-têtes, les listes et les code blocks pour assurer que l'output traduit reste fonctionnel et bien formaté.
+- **Multi-langue Support:** Traduire `README.md` dans des dizaines de langues simultanément.
+- **Tableau de navigation:** Ajouter automatiquement une pierre de navigation (table) au sommet de votre README, permettant aux utilisateurs de passer rapidement entre les langues.
+- **Modes flexibles:**
+    - **Mode Split (Par défaut):** Générer des fichiers séparés (par exemple `README.es.md`, `README.fr.md`) pour une structure de projet propre.
+    - **Mode Unifié (`--no-split`):** Ajouter toutes les traductions dans le fichier `README.md` principal, séparées par des commentaires HTML.
+- **Préservation du Markdown:** Gérer intelligemment les en-têtes, les listes et les code blocks pour assurer que l'output traduit reste fonctionnel et bien formatté.
 
 ```bash
 # Translate README.md to Spanish, French, and German
@@ -21,44 +18,38 @@ readme-rosetta --langs es fr de
 ```
 
 ---
+## 🛠 Interfaccé de ligne de commande (_CLI )
 
-## CLI Command Line Interface (CLI)
-
-Le CLI est conçu pour être intuitif mais puissant.
-
+L'interfaccé de ligne de commande est conçu pour être intuitif tout en étant puissant.
 ### Installation
 
 ```bash
 pip install readme-rosetta
 ```
 
-*Note: Demande à Ollama d'être installé et exécuté sur votre système.*
+*Remarque : Révèle nécessité [Ollama](https://ollama.ai/) à être installé et en exécution sur votre système.*
+### Options Globales
 
-### Options globales
-
-| Option | Décription | Défaut |
+| Option | Description | Défaut |
 | :--- | :--- | :--- |
-| `path` | Chemin du fichier source ou du projet. | `README.md` |
-| `--langs` | Liste des codes de langue cibles (ex `es fr de`). | `[]` |
-| `--src-lang` | Code de la langue source. | `en` |
-| `--model` | Identifiant du modèle Ollama à utiliser. | `llama3.2` |
-| `--readme` | Chemin du principal fichier README d'output. | `README.md` |
-| `--no-split` | Ajoute les traductions dans un seul fichier. | `False` |
-| `--dry-run` | Simule le processus sans écrire de fichiers. | `False` |
-| `--verbose` | Active la logique détaillée pour la débogage. | `False` |
+| `path` | Chemin vers le fichier source ou le répertoire de projet. | `README.md` |
+| `--langs` | Liste de codes de langue cible (par exemple, `es fr de`). | `[]` |
+| `--src-lang` | Code de langue source. | `en` |
+| `--model` | Identifiant modèle Ollama à utiliser. | `llama3.2` |
+| `--readme` | Chemin vers le fichier principal README d'output. | `README.md` |
+| `--no-split` | Ajouter les traductions dans un seul fichier. | `False` |
+| `--dry-run` | Simuler le processus sans écrire de fichiers. | `False` |
+| `--verbose` | Activer un journal détaillé pour la débogage. | `False` |
+## 📚 Intégration avec Sphinx
 
----
+Amplifiez votre documentation à des niveaux professionnels grâce à un soutien automatique pour l'internationalisation de Sphinx.
 
-## Sphinx Integration
-
-Échellez vos documents à des niveaux professionnels avec une automatisation de Sphinx i18n.
-
-Lorsque vous exécutez avec le drapeau `--sphinx`, README Rosetta:
-1.  **Initialise Sphinx:** Crée un `docs/` si ce n'est pas déjà fait.
-2.  **Configure les paramètres i18n:** Mise à jour `conf.py` avec les paramètres `locale_dirs` et `gettext` nécessaires.
-3.  **Extraire les chaînes de strings:** Exécute `gettext` pour trouver toutes les chaînes traduisibles dans vos documents.
-4.  **Translater PO Files:** Utilise le LLM pour traduire `.po`, en préservant la syntaxe Sphinx spécifique comme `:role:` ou `.. directive::`.
-5.  **Génère HTML:** Génère automatiquement les builds HTML localisés pour chaque langue cible.
+Lorsque vous exécutez avec la drapeau `--sphinx`, README Rosetta:
+1.  **Initialise Sphinx:** Met en place une `docs/` dans le répertoire si celui-ci n'existe pas.
+2.  **Auto-configure l'internationalisation:** Mise à jour la `conf.py` avec les paramètres nécessaires pour `locale_dirs` et `gettext`.
+3.  **Extraire les chaînes de traduction:** Exécute `gettext` pour trouver toutes les chaînes de traduction dans votre documentation.
+4.  **Traduire les fichiers PO:** Utilisez l'LLM pour traduire les fichiers `.po`, en conservant la syntaxe spécifique à Sphinx comme `:role:` ou `.. directive::`.
+5.  **Construction de l'HTML:** Génère automatiquement des builds HTML locaux pour chaque langue cible.
 
 ```bash
 # Setup Sphinx with translations for Spanish and Japanese
@@ -66,15 +57,14 @@ readme-rosetta --sphinx --langs es ja
 ```
 
 ---
+## 📖 Support GitBook
 
-## GitBook Support
+Maintenir facilement un livre multi-langue GitBook.
 
-Maintenez avec facilité un projet à plusieurs langues GitBook.
+La drapeau `--gitbook` génère un fichier `SUMMARY.md` qui mapppe les READMEs traduits dans une structure compatible avec la navigation du livre.
 
-Le drapeau `--gitbook` génère un `SUMMARY.md` qui mappait vos README traduits en une structure compatible avec la navigation de GitBook.
-
-- **Autolinking:** Lien le Introduction au principal README et crée des items de liste pour chaque version traduite.
-- **Noms de langues:** Résolve automatiquement les codes de langue (comme `es`) dans leurs noms complets (comme `Spanish`).
+- **Liaison automatique :** Ligne la Introduction au main README et crée des éléments de liste pour chaque version traduite.
+- **Nom de langues :** Résout automatiquement les codes de langue (comme `es`) dans leurs noms complets (comme `Spanish`).
 
 ```bash
 # Generate localized READMEs and a SUMMARY.md for GitBook
@@ -82,10 +72,9 @@ readme-rosetta --gitbook --langs hi zh pt
 ```
 
 ---
-
 ## ⚙️ Configuration
 
-Économisez du temps en définissant vos paramètres de projet dans `pyproject.toml` :
+Sauve temps en définissant vos préférences de projet dans `pyproject.toml` :
 
 ```toml
 [tool.readme-rosetta]
@@ -96,9 +85,20 @@ path = "README.md"
 sphinx = true
 gitbook = false
 ```
+⚠️ Les erreurs de traduction automatique par utilisateurs d'LLMs peuvent être puissantes mais introduisent parfois des artefacts de formatage, en particulier dans les environnements Sphinx/RST complexes.
+### Problèmes courants
+* **Malentendus de backticks :** Les LLMs peuvent échouer à fermer une `` `` `` or `` `` `` chaîne.
+* **Longueurs de titres :** Si un modèle ajoute du boulonnage (`**`) à un titre, la mise en saillie Sphinx peut ne pas plus correspondre à la longueur du texte.
+* **Hallucinations structurales :** Le modèle peut essayer d'ajouter ses propres résumés ou des blocs de code "utiles" qui ne sont pas dans la source.
+### Script de nettoyage
+Nous fournissent un script utilitaire pour identifier et nettoyer les erreurs de traduction courantes dans vos fichiers `.po`. Si une traduction est nettoyée, Sphinx retombera simplement sur le texte original en anglais pour cette chaîne.
 
----
+```bash
+# Run the cleanup utility
+python3 scripts/cleanup_translations.py
+```
 
-## 📜 License
+*Note: Révisez toujours vos builds de documentation. Même si Rosetta s'efforce de l'exactitude parfaite, la correction manuelle des fichiers `.po` localisés est parfois nécessaire pour les documents à haut risque.*
+## 📜 Licence
 
-Ce projet est licensé sous le license MIT - consultez le [LICENSE](LICENSE) file pour les détails.
+Ce projet est licence sous la MIT Licence - consultez le fichier [LICENSE](LICENSE) pour plus de détails.

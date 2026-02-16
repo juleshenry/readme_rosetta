@@ -1,64 +1,53 @@
-# 🗿 README Rosetta
+# 🗿 ПРЕЗАТЧИК Rosetta
 
-**README Rosetta** является мощным инструментом automation, предназначенным для перевода документации в कई языки с помощью местных LLMs по [Ollama](https://ollama.ai/). Он обеспечивает доступность проекта для глобального аудитории при сохранении perfect Markdown-форматирования и структуры документа.
-
----
-
+**ПРЕЗАТЧИК Rosetta** — мощный инструмент автоматизации, который обеспечивает перевод документации для различных языков utilizing local LLMs via [Ollama](https://ollama.ai/). Это ensures your project is accessible to a global audience while maintaining perfect Markdown formatting and document structure.
 ## 🌍 README Перевод
 
-README Rosetta specializes in making your GitHub project international with minimal effort.
+README Rosetta specializirovalosia v prodvizhenii vseh vashej GitHub projekts mezhdushnie s minimumi effortsom.
 
-- **Мultiязычная поддержка:** Переводите `README.md` в десятки языков одновременно.
-- **Столбец навигации:** Аутоматически добавляет столбец "камень" (таблицу) в начале README, позволяя пользователям быстро переключаться между языками.
-- **Flexible Modes:**
-    - **Split Mode (Default):** Генерирует отдельные файлы (например, `README.es.md`, `README.fr.md`) для чистой структуры проекта.
-    - **Unified Mode (`--no-split`):** Приставляет все переводы в основной `README.md` файл, разделенные на HTML комментарии.
-- **Применение Markdown:** Обходится умным путем с заголовками, списками и блоками кода для обеспечения преобразовавшегося результата оставался функциональным иwell-formatted.
+- **Mnogovzyrnye otchestva:** Perevedeny vos' `README.md` na desyatki yezov. 
+- **Nabroskaya tablitsa:** Avtomatichno prepredislyaet kapushku "stony" (tablitsu) v gorney rosti vashego README, allowing users to quickly switch between languages.
+- **Flexibil'nye moodi:**
+    - **Razdelenny mode (Poobshenniy):** Vyzhdut otrazhenie separate filey (etot `README.es.md`, `README.fr.md`) dlya chistogo struktury projekta.
+    - **Svoinzirannyi mode (`--no-split`):** Perevedeny vos' vse all translations to the main `README.md` file, separated by HTML comments.
+- **Mnogotipnye zapisy:** Intelligently handles headers, lists, and code blocks to ensure the translated output remains functional and well-formatted.
 
 ```bash
 # Translate README.md to Spanish, French, and German
 readme-rosetta --langs es fr de
 ```
+## 🔧 Клиентский интерфейс командной строки (КLI)
 
----
-
-## 🛠 Интерфейс командной строки (CLI)
-
-Клиентский интерфейс предназначен для быть интуитивно понятным, но и мощным.
-
-### Установка
+КЛИ проектируется с учетом интуитивного и мощного дизайна.
+### Installация
 
 ```bash
 pip install readme-rosetta
 ```
 
-*Примечание: Requirements [Ollama](https://ollama.ai/) должны быть installed и running на вашем системе.*
+*Примечание.Необходим[Оллама](https://ollama.ai/).Чтобы запустить,需 установить и запустить Олламу на своем устройстве.*
+### Глобальные настройки
 
-### Глобальные опции
-
-| Оptsion | Description | Default |
+| Опция | Beschreibung | Предварительный значения |
 | :--- | :--- | :--- |
-| `path` | Путь к исходному файлу или директории проекта. | `README.md` |
-| `--langs` | Список целевых языков кодов (например, `es fr de`). | `[]` |
-| `--src-lang` | Код исходного языка. | `en` |
-| `--model` | ID модели Ollama. | `llama3.2` |
-| `--readme` | Путь к основному выводу README файла. | `README.md` |
-| `--no-split` | Добавлять переводы в отдельный файл. | `False` |
-| `--dry-run` |_SIMулировать процесс без написания файлов. | `False` |
-| `--verbose` | Включить дETAЛЕЙНОВАНИЕ для отладки. | `False` |
+| `path` | Путь к файлу или директории источного проекта. | `README.md` |
+| `--langs` | Список кодов цели (например, `es fr de`). | `[]` |
+| `--src-lang` | Код языка источника. | `en` |
+| `--model` | ID модели Ollama, используемого. | `llama3.2` |
+| `--readme` | Путь к основному README с переводами. | `README.md` |
+| `--no-split` | Добавлять переводы вsingle файл. | `False` |
+| `--dry-run` | Симулировать процесс без записи файлов. | `False` |
+| `--verbose` | Включить详ный логи для отладки. | `False` |
+## 📚 Integratsiya Sphinx
 
----
-
-## 📚 Интеграция с Sphinx
-
-Увеличите уровень профессионализма документации с помощью автоматизированной поддержки i18n Sphinx.
+Повышайте качество документации до профессиональных уровней с использованием автоматизированной поддержки Sphinx i18n.
 
 Когда вы запускаете с флагом `--sphinx`, README Rosetta:
-1.  **Инициализируйте Sphinx:** Установите `docs/` directory if it doesn't exist.
-2.  **Аутоматически конфигурируйте i18n:** Updating `conf.py` with the necessary `locale_dirs` и `gettext` settings.
-3.  **Extract strings:** Run `gettext` to find all translatable strings in your documentation.
-4.  **Преобразовывайте PO Files:** Используйте LLM для перевода `.po` files, сохраняя Sphinx-specific syntax like `:role:` or `.. directive::`.
-5.  **Собрать HTML:** Аutomатически генерирует локализированную версию HTML для каждого целевого языка.
+1.  **Инициализируйте Sphinx:** Установите директорию `docs/`, если она नह существует.
+2.  **Автоматически конфигурируйте i18n:** Обновляйте `conf.py` с necessary `locale_dirs` и `gettext` настройками.
+3.  **Вытащите изделия:** Запустите `gettext`, чтобы найти все переводимые строки в вашей документации.
+4.  **Переведите файлы PO:** Используйте LLM для перевода `.po` файлов, сохраняя Sphinx-специфические синтаксис, как `:role:` или `.. directive::`.
+5.  **Строите HTML:** Аutomатически генерируйте localized HTML-построения для каждой цели языка.
 
 ```bash
 # Setup Sphinx with translations for Spanish and Japanese
@@ -66,15 +55,14 @@ readme-rosetta --sphinx --langs es ja
 ```
 
 ---
-
 ## 📖 Поддержка GitBook
 
-Легко поддерживать multi-language GitBook.
+Легко поддерживать мультиязычный GitBook.
 
-`--gitbook` flag generates a `SUMMARY.md` file that maps your translated READMEs into a structure compatible with GitBook's navigation.
+Флаг `--gitbook` генерирует файл `SUMMARY.md`, которыйитtranslated READMEs в структуру совместимую с навигацией в GitBook's navigation.
 
-- **Аtomатическая связь:** Связывает Introduction к вашему основному README и создает элементы списка для каждого переведенного варианта.
-- **Именование языков:** Атоматически решает код языка (например, `es`) в его полном виде (например, `Spanish`).
+- **Автоматическое_linkirovaniye:** Связывает Introduction со своей основной README и создает элементы списка для каждого переведенного варианта.
+- **Имя языка:** Авtomатически resolveет коды языков (как `es`) в их полные названия (как `Spanish`).
 
 ```bash
 # Generate localized READMEs and a SUMMARY.md for GitBook
@@ -82,10 +70,9 @@ readme-rosetta --gitbook --langs hi zh pt
 ```
 
 ---
+## ⚙️ Configурация
 
-## ⚙️ Конфигурация
-
-Сохраните время, defining your project defaults in `pyproject.toml`:
+Сохраните время, определяя defaults для своего проекта в `pyproject.toml`:
 
 ```toml
 [tool.readme-rosetta]
@@ -96,3 +83,22 @@ path = "README.md"
 sphinx = true
 gitbook = false
 ```
+
+---
+⚠️ ТROБОЙСКАЯ ДЕНЕГИРУЮЩАЯ РАБОТА с ГРУППОВОК АННОТАЦИЙ может быть мощным, но в некоторых случаях она может вносить форматные artefакты, особенно в сложных средах Sphinx/RST.
+### Общие Probleмы
+- **Случай не闭ения тегов**: модели LLM могут не закрывать `` `` `` or `` `` `` строку.
+- **Длина заголовков**: если модель добавляетbolding (`**`) к заголовку, подчеркивание Sphinx может больше не соответствовать длине текста.
+- **СтрUCTУРНЫЕ Г haluccinations**:(model может попробовать добавить свои собственные обзоры или "помощительные" блоки кода, которые нет в исходном тексте).
+### Скрипт очистки ошибок перевода
+Мы предлагаем utility-сクリпт, который выявляет и оценивает общие ошибки перевода в ваших `.po` файлах. Если перевод cleared, Sphinx просто будет fallback'ировать на исходный английский текст для этой строки.
+
+```bash
+# Run the cleanup utility
+python3 scripts/cleanup_translations.py
+```
+
+*Примечание: Always review your documentation builds. While Rosetta aims for perfection, manual correction of localized `.po` files is sometimes necessary for high-stakes documentation.*
+## 📜 Лाइसенция
+
+Этот проект лицензируется под сендером MIT - см. soubor [LICENSE](LICENSE).

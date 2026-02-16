@@ -16,6 +16,26 @@
 | Dutch | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.nl.md#🗿-readme-rosetta) |
 | Norwegian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.no.md#🗿-readme-rosetta) |
 | Portuguese | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.pt.md#🗿-readme-rosetta) |
+| Romanian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.ro.md#🗿-readme-rosetta) |
+| Russian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.ru.md#🗿-readme-rosetta) |
+| Swedish | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.sv.md#🗿-readme-rosetta) |
+| Turkish | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.tr.md#🗿-readme-rosetta) |
+| Chinese | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.zh.md#🗿-readme-rosetta) |
+| hihn | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.hihn.md#🗿-readme-rosetta) |
+| Afrikaans | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.af.md#🗿-readme-rosetta) |
+| Belarusian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.be.md#🗿-readme-rosetta) |
+| Czech | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.cs.md#🗿-readme-rosetta) |
+| Greek | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.el.md#🗿-readme-rosetta) |
+| Gujarati | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.gu.md#🗿-readme-rosetta) |
+| Hebrew | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.he.md#🗿-readme-rosetta) |
+| Indonesian | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.id.md#🗿-readme-rosetta) |
+| Kannada | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.kn.md#🗿-readme-rosetta) |
+| Korean | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.ko.md#🗿-readme-rosetta) |
+| Malayalam | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.ml.md#🗿-readme-rosetta) |
+| Polish | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.pl.md#🗿-readme-rosetta) |
+| Tamil | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.ta.md#🗿-readme-rosetta) |
+| Thai | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.th.md#🗿-readme-rosetta) |
+| Vietnamese | [Link to Head of Docs](https://github.com/juleshenry/readme_rosetta/blob/main/README.vi.md#🗿-readme-rosetta) |
 
 # 🗿 README Rosetta
 

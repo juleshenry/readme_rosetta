@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>readme_rosetta package &#8212; readme-rosetta 0.1.0 文档</title>
+    <title>README (rosetta) &#8212; readme-rosetta 0.1.0 文档</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
@@ -33,63 +33,84 @@
           <div class="body" role="main">
             
   <section id="readme-rosetta-package">
-<h1>readme_rosetta package<a class="headerlink" href="#readme-rosetta-package" title="链接到此标题。">¶</a></h1>
+<h1>README (rosetta)<a class="headerlink" href="#readme-rosetta-package" title="链接到此标题。">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="链接到此标题。">¶</a></h2>
+<h2>分子<a class="headerlink" href="#submodules" title="链接到此标题。">¶</a></h2>
 </section>
 <section id="module-readme_rosetta.cli">
-<span id="readme-rosetta-cli-module"></span><h2>readme_rosetta.cli module<a class="headerlink" href="#module-readme_rosetta.cli" title="链接到此标题。">¶</a></h2>
+<span id="readme-rosetta-cli-module"></span><h2>Possible incomplete section title.
+Treating the overline as ordinary text because it's so short.<a class="headerlink" href="#module-readme_rosetta.cli" title="链接到此标题。">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="readme_rosetta.cli.get_git_remote_url">
 <span class="sig-prename descclassname"><span class="pre">readme_rosetta.cli.</span></span><span class="sig-name descname"><span class="pre">get_git_remote_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/readme_rosetta/cli.html#get_git_remote_url"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.cli.get_git_remote_url" title="链接到此定义。">¶</a></dt>
-<dd><p>Attempts to get the git remote origin URL.</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">尝试获取</span> <span class="pre">Git</span> <span class="pre">远程origin</span> <span class="pre">URL。</span>
+<span class="pre">````````````````````</span></code></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="readme_rosetta.cli.load_config">
 <span class="sig-prename descclassname"><span class="pre">readme_rosetta.cli.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/cli.html#load_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.cli.load_config" title="链接到此定义。">¶</a></dt>
-<dd><p>Loads configuration from pyproject.toml if available.</p>
+<dd><p>加载从 pyproject.toml 中的配置文件，若可用。</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="readme_rosetta.cli.main">
 <span class="sig-prename descclassname"><span class="pre">readme_rosetta.cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/cli.html#main"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.cli.main" title="链接到此定义。">¶</a></dt>
-<dd><p>Main entry point for the README Rosetta CLI.</p>
+<dd><p>README</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="readme_rosetta.cli.setup_logging">
 <span class="sig-prename descclassname"><span class="pre">readme_rosetta.cli.</span></span><span class="sig-name descname"><span class="pre">setup_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/cli.html#setup_logging"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.cli.setup_logging" title="链接到此定义。">¶</a></dt>
-<dd><p>Sets up the logging configuration using Rich.</p>
+<dd><p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
+# 日志配置
+import logging
+from rich.log import RichLog</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>verbose</strong> -- Whether to enable verbose (DEBUG) logging.</p>
+<dd class="field-odd"><p><strong>verbose</strong> -- 是否启用详细（DEBUG）日志。</p>
 </dd>
 </dl>
 </dd></dl>
 
 </section>
 <section id="module-readme_rosetta.lang_codes">
-<span id="readme-rosetta-lang-codes-module"></span><h2>readme_rosetta.lang_codes module<a class="headerlink" href="#module-readme_rosetta.lang_codes" title="链接到此标题。">¶</a></h2>
+<span id="readme-rosetta-lang-codes-module"></span><h2><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>markdown
+# rosetta.lang_codes<a class="headerlink" href="#module-readme_rosetta.lang_codes" title="链接到此标题。">¶</a></h2>
 <p>Mapping of ISO language codes to their full English names.</p>
 </section>
 <section id="module-readme_rosetta.markdown_handler">
-<span id="readme-rosetta-markdown-handler-module"></span><h2>readme_rosetta.markdown_handler module<a class="headerlink" href="#module-readme_rosetta.markdown_handler" title="链接到此标题。">¶</a></h2>
+<span id="readme-rosetta-markdown-handler-module"></span><h2>README<a class="headerlink" href="#module-readme_rosetta.markdown_handler" title="链接到此标题。">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="readme_rosetta.markdown_handler.MarkdownHandler">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">readme_rosetta.markdown_handler.</span></span><span class="sig-name descname"><span class="pre">MarkdownHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#readme_rosetta.translator.Translator" title="readme_rosetta.translator.Translator"><span class="pre">Translator</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/readme_rosetta/markdown_handler.html#MarkdownHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.markdown_handler.MarkdownHandler" title="链接到此定义。">¶</a></dt>
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Handles parsing and translation of Markdown files.</p>
+<p>Markdown文件的解析和翻译。</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link">
 <span class="sig-name descname"><span class="pre">clean_header_for_link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/readme_rosetta/markdown_handler.html#MarkdownHandler.clean_header_for_link"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link" title="链接到此定义。">¶</a></dt>
-<dd><p>Cleans a Markdown header to be used as an anchor link.</p>
+<dd><p><strong>clean_markdown_header</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>header</strong> -- The header text.</p>
+<dd class="field-odd"><p><strong>header</strong> -- <strong>Title</strong></p>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
-<dd class="field-even"><p>The cleaned header link (e.g., &quot;#my-header&quot;).</p>
+<dd class="field-even"><p>清洗后的标题链接（例如 #my-header）。</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="readme_rosetta.markdown_handler.MarkdownHandler.discover_translations">
+<span class="sig-name descname"><span class="pre">discover_translations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readme_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/markdown_handler.html#MarkdownHandler.discover_translations"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.markdown_handler.MarkdownHandler.discover_translations" title="链接到此定义。">¶</a></dt>
+<dd><p>扫描目录中是否存在已翻译的README文件。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>readme_path</strong> -- README</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>语言代码列表</p>
 </dd>
 </dl>
 </dd></dl>
@@ -97,21 +118,22 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.markdown_handler.MarkdownHandler.forge_stone">
 <span class="sig-name descname"><span class="pre">forge_stone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/readme_rosetta/markdown_handler.html#MarkdownHandler.forge_stone"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.markdown_handler.MarkdownHandler.forge_stone" title="链接到此定义。">¶</a></dt>
-<dd><p>Generates or updates the Rosetta translation table in the README.</p>
+<dd><p>生成或更新罗萨塔翻译表格（Rosetta translation table）在README文件中。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>first_header</strong> -- The first header of the document.</p></li>
+<li><p><strong>first_header</strong> -- <strong>第一章: 介绍</strong></p></li>
 <li><p><strong>start_code</strong> -- The source language code.</p></li>
 <li><p><strong>end_code</strong> -- The target language code.</p></li>
-<li><p><strong>existing_table</strong> -- The existing Rosetta table, if any.</p></li>
-<li><p><strong>target_file</strong> -- The name of the target file (for split mode).</p></li>
-<li><p><strong>base_url</strong> -- The base URL for absolute links.</p></li>
+<li><p><strong>existing_table</strong> -- 原始罗sett表如果有任何。</p></li>
+<li><p><strong>target_file</strong> -- 目标文件名（用于分割模式）</p></li>
+<li><p><strong>base_url</strong> -- 基础 URL，用于绝对链接的起点。</p></li>
 <li><p><strong>raw</strong> -- Whether to append ?raw=true to links.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
-<dd class="field-even"><p>The updated Rosetta table Markdown.</p>
+<dd class="field-even"><p># 迪利奇-格罗特金斯系统
+# （由R.A. Dieterle和E.E. Grotehnssen编制）</p>
 </dd>
 </dl>
 </dd></dl>
@@ -119,13 +141,15 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks">
 <span class="sig-name descname"><span class="pre">protect_code_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/markdown_handler.html#MarkdownHandler.protect_code_blocks"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks" title="链接到此定义。">¶</a></dt>
-<dd><p>Replaces code blocks with placeholders to prevent translation.</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">`plaintext</span>
+<span class="pre">{{code_block}}</span>
+<span class="pre">````````````</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>text</strong> -- The Markdown text.</p>
+<dd class="field-odd"><p><strong>text</strong> -- # The Markdown text</p>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tuple containing the protected text and original code blocks.</p>
+<dd class="field-even"><p>保护文本和原始代码块的元组。</p>
 </dd>
 </dl>
 </dd></dl>
@@ -137,12 +161,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> -- The translated text with placeholders.</p></li>
-<li><p><strong>placeholders</strong> -- The list of original code blocks.</p></li>
+<li><p><strong>text</strong> -- <strong>{{ placeholder }}</strong></p></li>
+<li><p><strong>placeholders</strong> -- 原始代码块清单</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
-<dd class="field-even"><p>The restored Markdown text.</p>
+<dd class="field-even"><p><strong>Markdown文本的恢复</strong></p>
 </dd>
 </dl>
 </dd></dl>
@@ -150,24 +174,25 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown">
 <span class="sig-name descname"><span class="pre">translate_markdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md_text_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pbar_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_lang_to_header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/markdown_handler.html#MarkdownHandler.translate_markdown"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown" title="链接到此定义。">¶</a></dt>
-<dd><p>Translates a Markdown file using block-level context.</p>
+<dd><p>使用块级上下文的Markdown文件。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>md_text_path</strong> -- The path to the Markdown file.</p></li>
+<li><p><strong>md_text_path</strong> -- README</p></li>
 <li><p><strong>start_code</strong> -- The source language code.</p></li>
 <li><p><strong>end_code</strong> -- The target language code.</p></li>
-<li><p><strong>pbar_pos</strong> -- The position of the progress bar.</p></li>
-<li><p><strong>dry_run</strong> -- Whether to simulate translation.</p></li>
-<li><p><strong>add_lang_to_header</strong> -- Whether to add the target language name to the first header.</p></li>
-<li><p><strong>target_file</strong> -- The name of the target file (for split mode).</p></li>
-<li><p><strong>base_url</strong> -- The base URL for absolute links.</p></li>
+<li><p><strong>pbar_pos</strong> -- 进度条的位置。</p></li>
+<li><p><strong>dry_run</strong> -- <strong>是否进行翻译模拟</strong></p></li>
+<li><p><strong>add_lang_to_header</strong> -- ###</p></li>
+<li><p><strong>target_file</strong> -- 目标文件名（用于分割模式）</p></li>
+<li><p><strong>base_url</strong> -- 基础 URL，用于绝对链接的起点。</p></li>
 <li><p><strong>raw</strong> -- Whether to append ?raw=true to links.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tuple containing (translated_content, rosetta_table,
-original_content_without_rosetta, identified_first_header).</p>
+<dd class="field-even"><p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
+# 1. English to Chinese
+a = (&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -176,7 +201,7 @@ original_content_without_rosetta, identified_first_header).</p>
 
 </section>
 <section id="module-readme_rosetta.rosetta">
-<span id="readme-rosetta-rosetta-module"></span><h2>readme_rosetta.rosetta module<a class="headerlink" href="#module-readme_rosetta.rosetta" title="链接到此标题。">¶</a></h2>
+<span id="readme-rosetta-rosetta-module"></span><h2>rosetta_readme<a class="headerlink" href="#module-readme_rosetta.rosetta" title="链接到此标题。">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="readme_rosetta.rosetta.main">
 <span class="sig-prename descclassname"><span class="pre">readme_rosetta.rosetta.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/readme_rosetta/rosetta.html#main"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.rosetta.main" title="链接到此定义。">¶</a></dt>
@@ -184,22 +209,47 @@ original_content_without_rosetta, identified_first_header).</p>
 
 </section>
 <section id="module-readme_rosetta.sphinx_handler">
-<span id="readme-rosetta-sphinx-handler-module"></span><h2>readme_rosetta.sphinx_handler module<a class="headerlink" href="#module-readme_rosetta.sphinx_handler" title="链接到此标题。">¶</a></h2>
+<span id="readme-rosetta-sphinx-handler-module"></span><h2>rosetta_sphinx_handler 模块是用于在 Sphinx 中使用 Rosetta 的扩展。<a class="headerlink" href="#module-readme_rosetta.sphinx_handler" title="链接到此标题。">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">readme_rosetta.sphinx_handler.</span></span><span class="sig-name descname"><span class="pre">SphinxHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#readme_rosetta.translator.Translator" title="readme_rosetta.translator.Translator"><span class="pre">Translator</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler" title="链接到此定义。">¶</a></dt>
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Handles Sphinx documentation translation using gettext and PO files.</p>
+<p>### 使用gettext和PO文件进行Sphinx文档翻译</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.protect_rst">
-<span class="sig-name descname"><span class="pre">protect_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.protect_rst"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.protect_rst" title="链接到此定义。">¶</a></dt>
-<dd><p>Replaces rST-specific syntax with placeholders to prevent translation.</p>
+<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.discover_translations">
+<span class="sig-name descname"><span class="pre">discover_translations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.discover_translations"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.discover_translations" title="链接到此定义。">¶</a></dt>
+<dd><p>扫描 <cite>docs/source/locale</cite> 目录中的已存在的 Sphinx 译文。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>语言代码列表</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines">
+<span class="sig-name descname"><span class="pre">fix_rst_underlines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.fix_rst_underlines"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines" title="链接到此定义。">¶</a></dt>
+<dd><p>确保RST下划线（ ===，---，等等）至少等长于前面的文本。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>text</strong> -- The rST text.</p>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tuple containing the protected text and original constructs.</p>
+<dd class="field-even"><p>The rST text with fixed underlines.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.protect_rst">
+<span class="sig-name descname"><span class="pre">protect_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.protect_rst"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.protect_rst" title="链接到此定义。">¶</a></dt>
+<dd><p><strong>_原文中使用的rST特性已被替换为占位符_</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> -- The rST text.</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>保护文本和原始构造的元组</strong></p>
 </dd>
 </dl>
 </dd></dl>
@@ -207,16 +257,16 @@ original_content_without_rosetta, identified_first_header).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.restore_rst">
 <span class="sig-name descname"><span class="pre">restore_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placeholders</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.restore_rst"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.restore_rst" title="链接到此定义。">¶</a></dt>
-<dd><p>Restores rST-specific syntax from placeholders after translation.</p>
+<dd><p>修复rST特定语法自定义值后翻译。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> -- The translated text with placeholders.</p></li>
-<li><p><strong>placeholders</strong> -- The list of original rST constructs.</p></li>
+<li><p><strong>text</strong> -- <strong>{{ placeholder }}</strong></p></li>
+<li><p><strong>placeholders</strong> -- 原始 RST构造清单：</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
-<dd class="field-even"><p>The restored rST text.</p>
+<dd class="field-even"><p>The restored rST 语文：</p>
 </dd>
 </dl>
 </dd></dl>
@@ -224,11 +274,11 @@ original_content_without_rosetta, identified_first_header).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx">
 <span class="sig-name descname"><span class="pre">setup_sphinx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">langs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.setup_sphinx"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx" title="链接到此定义。">¶</a></dt>
-<dd><p>Sets up Sphinx documentation, generates API docs, and translates them.</p>
+<dd><p>设置Sphinx文档，生成API文档，并将其翻译。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>project_path</strong> -- The path to the project source code.</p></li>
+<li><p><strong>project_path</strong> -- 项目源代码的位置。</p></li>
 <li><p><strong>langs</strong> -- A list of target language codes.</p></li>
 <li><p><strong>start_code</strong> -- The source language code.</p></li>
 </ul>
@@ -238,15 +288,18 @@ original_content_without_rosetta, identified_first_header).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file">
-<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="链接到此定义。">¶</a></dt>
-<dd><p>Translates a Sphinx PO file.</p>
+<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="链接到此定义。">¶</a></dt>
+<dd><p>翻译SphinxPO文件。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>po_path</strong> -- The path to the .po file.</p></li>
+<li><p><strong>po_path</strong> -- . po 的路径</p></li>
 <li><p><strong>from_code</strong> -- The source language code.</p></li>
 <li><p><strong>to_code</strong> -- The target language code.</p></li>
 </ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if any translations were made, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -255,19 +308,19 @@ original_content_without_rosetta, identified_first_header).</p>
 
 </section>
 <section id="module-readme_rosetta.translator">
-<span id="readme-rosetta-translator-module"></span><h2>readme_rosetta.translator module<a class="headerlink" href="#module-readme_rosetta.translator" title="链接到此标题。">¶</a></h2>
+<span id="readme-rosetta-translator-module"></span><h2>README (rosetta)<a class="headerlink" href="#module-readme_rosetta.translator" title="链接到此标题。">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="readme_rosetta.translator.Translator">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">readme_rosetta.translator.</span></span><span class="sig-name descname"><span class="pre">Translator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'llama3.2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_files_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.rosetta_cache.json'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/readme_rosetta/translator.html#Translator"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.translator.Translator" title="链接到此定义。">¶</a></dt>
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Handles translation using Ollama LLM models.</p>
+<p>Ollama 机器翻译模型</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.translator.Translator.load">
 <span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_files_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/translator.html#Translator.load"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.translator.Translator.load" title="链接到此定义。">¶</a></dt>
-<dd><p>Ensure the model is available in Ollama.</p>
+<dd><p>请确保模型可用在Ollama。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>local_files_only</strong> -- Legacy parameter for compatibility.</p>
+<dd class="field-odd"><p><strong>local_files_only</strong> -- <strong>兼容性参数legacy</strong></p>
 </dd>
 </dl>
 </dd></dl>
@@ -275,11 +328,11 @@ original_content_without_rosetta, identified_first_header).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.translator.Translator.translate">
 <span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/readme_rosetta/translator.html#Translator.translate"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.translator.Translator.translate" title="链接到此定义。">¶</a></dt>
-<dd><p>Translate a single string from one language to another.</p>
+<dd><p><strong>Hello, world!</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> -- The text to translate.</p></li>
+<li><p><strong>text</strong> -- 请等待。</p></li>
 <li><p><strong>from_code</strong> -- The source language code.</p></li>
 <li><p><strong>to_code</strong> -- The target language code.</p></li>
 </ul>
@@ -293,11 +346,11 @@ original_content_without_rosetta, identified_first_header).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.translator.Translator.translate_batch">
 <span class="sig-name descname"><span class="pre">translate_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/translator.html#Translator.translate_batch"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#readme_rosetta.translator.Translator.translate_batch" title="链接到此定义。">¶</a></dt>
-<dd><p>Translate a list of strings from one language to another.</p>
+<dd><p><em>原文： Translate a list of strings from one language to another.</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>texts</strong> -- The list of strings to translate.</p></li>
+<li><p><strong>texts</strong> -- <cite>字符串列表中需要翻译的内容:</cite></p></li>
 <li><p><strong>from_code</strong> -- The source language code.</p></li>
 <li><p><strong>to_code</strong> -- The target language code.</p></li>
 </ul>
@@ -312,7 +365,7 @@ original_content_without_rosetta, identified_first_header).</p>
 
 </section>
 <section id="module-readme_rosetta">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-readme_rosetta" title="链接到此标题。">¶</a></h2>
+<span id="module-contents"></span><h2>模块内容<a class="headerlink" href="#module-readme_rosetta" title="链接到此标题。">¶</a></h2>
 </section>
 </section>
 
@@ -346,7 +399,7 @@ original_content_without_rosetta, identified_first_header).</p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">readme_rosetta</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="publish.html">publish module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">readme_rosetta package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">README (rosetta)</a></li>
 </ul>
 </li>
 </ul>

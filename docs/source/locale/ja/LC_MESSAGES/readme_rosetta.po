@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
@@ -422,13 +422,17 @@ msgstr "Sphinxドキュメントの翻訳をgettextとPOファイルで管理す
 msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr "既存のSphinx翻訳をdocs/source/locale内の存在するドキュメントで検索します。"
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
-msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
 msgstr ""
-"_______REPLACES ____RST-SPECIFIC SYNTAX WITH PLACEHOLDERS TO PREVENT "
-"TRANSLATION_____"
+"### `.. rst` 以下のアン더を前後のテキストと同じ長さにする\n"
+"\n"
+"`.. rst` 以下のアン더 (`===`, `----` etc.) の長さは、前のテキストと等しくする必要があります。"
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
 msgid "The rST text."
 msgstr ""
 ".. \n"
@@ -470,6 +474,33 @@ msgstr ""
 "\n"
 "   .. _project1: project1_page.rst\n"
 "   .. _project2: project2_page.rst"
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+"_________\n"
+"The RST Text With Fixed Underlines\n"
+"==================================\n"
+"\n"
+".. _fixed_underlines:\n"
+"\n"
+".. _rst_fixed_underline:\n"
+"\n"
+"Fixed underlines in reStructuredText (RST) are achieved by surrounding the underline text with a single underscore character ``_``.\n"
+"\n"
+".. _inline fixed_underline:\n"
+"\n"
+"Inline fixed underlines can be used to draw attention to specific words or phrases, as shown above.\n"
+"\n"
+".. _block fixed_underline:\n"
+"\n"
+"Block-level fixed underlines are also available and can be used to separate sections or to create emphasis within a document."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
+msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+msgstr ""
+"_______REPLACES ____RST-SPECIFIC SYNTAX WITH PLACEHOLDERS TO PREVENT "
+"TRANSLATION_____"
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."

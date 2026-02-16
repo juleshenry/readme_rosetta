@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -299,15 +299,35 @@ msgstr ""
 msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr "Busca traducciones existentes de Sphinx en docs/source/locale."
 
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
+msgstr ""
+"Asegura que las líneas de código en RST bajo (===, ----, etc.) sean al menos"
+" tan largas como el texto que precede."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+msgid "The rST text."
+msgstr "No texto proporcionado. ¿Qué deseas traducir?"
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+".. _fixed_underlines:\n"
+"\n"
+"*   **_Underlined Text_**\n"
+"    *   The _text underlined_ using `__` or `_`.\n"
+"        +   Examples:\n"
+"            *   __This is an example of underlined text__\n"
+"            *   *_Another example of underlined text_*"
+
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
 msgid "Replaces rST-specific syntax with placeholders to prevent translation."
 msgstr ""
 "Sustituye el lenguaje rST específico con lugares marcados como *reemplazos* "
 "para evitar la traducción."
-
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
-msgid "The rST text."
-msgstr "No texto proporcionado. ¿Qué deseas traducir?"
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."

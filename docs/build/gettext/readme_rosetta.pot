@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -214,12 +214,21 @@ msgstr ""
 msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr ""
 
-#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
-msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid "Ensures rST underlines (===, ---, etc.) are at least as long as the preceding text."
 msgstr ""
 
+#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
 #: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
 msgid "The rST text."
+msgstr ""
+
+#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+
+#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
+msgid "Replaces rST-specific syntax with placeholders to prevent translation."
 msgstr ""
 
 #: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4

@@ -1,19 +1,16 @@
 # 🗿 README Rosetta
 
-**README Rosetta** a hatékony automatizálási eszköz, amely számos nyelvre lefordítja dokumentációt helyi LLM-k segítségével a [Ollama](https://ollama.ai/) segítségével. Ezzel biztosítja projektjét a globális közönség számára, míg az eredeti Markdown formátumot és dokumentációs szerkezetet megőrzi.
+**README Rosetta** egy erősekő eszköz, amely automatizálja dokumentumait több nyelvbe fordítására a helyi LLM-k segítségével [Ollama](https://ollama.ai/) segítségével. Hitelesíti a projektet az egész világgazdagság érdekében, míg megőrzi a perfekt Markdown formátumot és dokumentum szerkezetét.
+## 🌍 README Fordulat
 
----
+Fordulat Rosetta a te GitHub projektjának nemzetközi értékét valódi minimmelényével biztosítja.
 
-## 🌍 README Fordítás
-
-A README Rosetta a GitHub projectnek nemzeti elérhetőséget biztosítja minimal erőfeszítéssel.
-
-*   **Többnyelvű támogatás:** Az `README.md` -et több száz nyelvre fordítsa egyetlen lépésben.
-*   **Navigációs tabla:** Automa-tikusan a navigációs "kő" (tábla) elrendezése a README tetején, lehetővé téve a felhasználóknak gyors csatolásokat nyílásban.
-*   **Módosított működési modelljei:**
-    *   **Szétválasztott módd (Állapotos):** Szétszorozza a fájlakat (pl. `README.es.md`, `README.fr.md`), hogy tiszta projektstruktúrát biztosítja.
-    *   **Egyesített módd (`--no-split`):** A fordított szöveget az eredeti `README.md` -be teszi, HTML- kommentekkel különíti el a fájlakat.
-*   **Markdown megőrzése:** Intelligens kezelésével a fejbetűk, listák és kód blokkokat garantálja, hogy a fordított eredmény funkcionál és jól formált maradjon.
+- **Több nyelvű támogatás:** Az `README.md` négyzethez százesztílusban dozzsd meg több tucat nyelve között.
+- **Navigációs asztal:** Automatikusan a README értéke előtt egy kivágott "köve" (asztal) létesíteni tudja, lehetőség van számos nyelvre kivágásra.
+- **Változó módok:
+    - **Rövidített modus (Általános):** Széleskörű tüntető fájlokat (pl. `README.es.md`, `README.fr.md`) generál és ezzel a tisztában maradsz.
+    - **Egyszeri modus (`--no-split`):** A fordításokat az egyes fájlokra hozzáadja a `README.md` fájlba, külön HTML-kommentekkel elkülöníteni tudja.
+- **Markdowntartalom:** Szakosan figyelembe veszi a fejezeteket, listákat és kód blokkokat, hogy a fordított kimenet függőleges maradjon és működjön.
 
 ```bash
 # Translate README.md to Spanish, French, and German
@@ -21,44 +18,39 @@ readme-rosetta --langs es fr de
 ```
 
 ---
+## ⚙️ Állomány szabályos felületű interfésze (CLI)
 
-## 🛠 Osztályozott felület (CLI)
-
-A CLI intuitív, de erősek.
-
-### Beállítás
-
+Az interfész intuitívan és erőszakosan is tervezett.
+### Telepítés
 ```bash
 pip install readme-rosetta
 ```
 
-*   **Note:** A [Ollama](https://ollama.ai/) kell beállítva és futtatva a rendszeren.
+*Megjegyzés: Ollama rendszerét kell telepíteni és indítani a számítógépen.* 
 
-### Globális opciók
+    [Ollama](https://ollama.ai/)
+### Globális Beállítások
 
-| Opción | Leírás | Álapértelmezett |
+| Opció | Leírás | Általános |
 | :--- | :--- | :--- |
-| `path` | Forrási fájl vagy projekt irányzata. | `README.md` |
-| `--langs` | Cél nyelvek listája (pl. `es fr de`). | `[]` |
-| `--src-lang` | Forrás nyelve kódja. | `en` |
-| `--model` | Ollama model ID. | `llama3.2` |
-| `--readme` | A fő kiadott README fájl irányzata. | `README.md` |
-| `--no-split` | Fordítások hozzáadása egyetlen fájlhoz. | `False` |
-| `--dry-run` | A folyamat simulálása a fileírás nélkül. | `False` |
-| `--verbose` | Rögzítési részletek gyorsítása a fejlesztők számára. | `False` |
+| `path` | Forrás file útvonala vagy projekt mappájának útvonala. | `README.md` |
+| `--langs` | Cél nyelvkódok listája (például `es fr de`). | `[]` |
+| `--src-lang` | Forrás nyelkód. | `en` |
+| `--model` | Ollama modell ID, amelyet használni kell. | `llama3.2` |
+| `--readme` | Az útvonal az üdvösségi fájl fő README fileje. | `README.md` |
+| `--no-split` | Fordításokat egyetlen fájlba juttatni. | `False` |
+| `--dry-run` | Folyamat simulálása anélkül, hogy fájlokat írja le. | `False` |
+| `--verbose` | Bonyolult jogutak engedélyezése a debuggeléshez. | `False` |
+## 📚 Sphinx Integrációs Elszerelés
 
----
+A professzionális szintekre kiterjesztett dokumentáció automatikus Sphinx i18n támogatásával lépjen be.
 
-## 📚 Sphinx Integráció
-
-A dokumentáció szintén szakemberek számára profi színvonalon lép ki automatizált Sphinx i18n támogatással.
-
-Ha a rosetta_cl.py -parancsot használja, az README Rosetta:
-1.  **Sphinx inicializálása:** Rendezettséget teremt a `docs/` kiterjesztésű irányzaton, ha nincsen.
-2.  **Auto-figyelem i18n:** Frissíti a `conf.py` -vel az egyes `locale_dirs` és `gettext` beállításokat.
-3.  **Szövegrészletek kivonása:** Rögzített szöveget keres a dokumentációban, hogy fordítsa a `gettext` -val.
-4.  **PO fájlok fordítása:** A LLM-t használva a fordított `.po` -fájlt tartalmazó PO fájlok megtartja a Sphinx-specifikus szintaxis, mint például a `:role:` vagy `.. directive::`.
-5.  **HTML létrehozás:** Automatikusan generálja az összes cél nyelvekhez kielégítő HTML építményt.
+Amikor a `--sphinx` zást isznak, README Rosetta:
+1.  **Beállítja a Sphinx-et:** Hozza létre egy `docs/` iránytort amely nem létezik.
+2.  **Automatikusan konfigurálja az i18n-t:** Frissíti a `conf.py`-et a szükséges `locale_dirs` és `gettext` beállításokkal.
+3.  **Kivonja Az Sztringeket:** A `gettext` segítségével keresi meg az összes forditható sztringet a dokumentációban.
+4.  **Fordítja PO Fájlokat:** Az LLM segítségével fordítja a `.po` fájlokat, úgyhogy megtartja a Sphinx-specifikus szintaxist mint például az `:role:` vagy az `.. directive::`.
+5.  **Gyűjti Ki Az HTML-t:** Automatikusan létrehozza a minden céltarget nyelv területén megvalósított helyi HTML buildet.
 
 ```bash
 # Setup Sphinx with translations for Spanish and Japanese
@@ -66,15 +58,14 @@ readme-rosetta --sphinx --langs es ja
 ```
 
 ---
+## 📖 GitBook Support
 
-## 📖 GitBook Támogatás
+Leányítási módszerrel egyszerűen karbantartható egy több nyelvű GitBook.
 
-A dokumentáció szintén könnyen támogatható GitBook használattal.
+A `--gitbook` zászló megenerálja a `SUMMARY.md` fájlt, amely a fordított README-eket a strukturával hozza ki egybe a navigációval rendelkező GitBook működésének kompatibilitásába.
 
-Az `--gitbook` -parancs generál egy `SUMMARY.md` fájlt, amely a fordított README-kat az úgynevezett "fordított átjáró" strukturába helyezi, hogy a GitBook navigációs funkcióit is megtekinthesse.
-
-*   **Automatikus összefüggés:** A bevezetőbe a fő README és a különböző fordított változatok között összekapcsolja az úgynevezett "fordított lista" (list item) segítségével.
-*   **Nyelvek neve:** Automatikusan meghatározza a nyelvek kódjának két szabását, mint például `es`.
+- **Automatikus Hozzászámlálás:** A bevezetőt a fő README-höz köti le, és listai elemeket létesít every fordított verzióra.
+- **Nyelvnevek:** Automatikusan megoldja a nyelkkódok (mint `es`) az egész nevüket (mint `Spanish`).
 
 ```bash
 # Generate localized READMEs and a SUMMARY.md for GitBook
@@ -82,10 +73,9 @@ readme-rosetta --gitbook --langs hi zh pt
 ```
 
 ---
+## ⚙️ Konfiguráció
 
-## ⚙️ Beállítások
-
-A projekt default beállításait az `pyproject.toml` -fájlba rögzíthetők.
+A projektekhez szabályosabb átmenettel meghatározhatja a saját előfőbbet `pyproject.toml`:
 
 ```toml
 [tool.readme-rosetta]
@@ -96,3 +86,24 @@ path = "README.md"
 sphinx = true
 gitbook = false
 ```
+
+---
+⚠️ Aviskodás & Korlátozások
+
+A számítógépes lefordítás LLM-kkal erősek, de az esetleges formátumhiányokat, különösen a komplex Sphinx/RST környezetben szintén megjeleníthetik.
+### Közös Hibák
+- **Ellenálló Visszaítéletek:** Az LLMeknek súlyos lehetőségük van arra, hogy be nem zárják  `` `` `` or `` `` `` ` stringot.
+- **Cím Hosszúságok:** Ha az LLMs hozzáadnak bontás ( ``**`` ) egy címhez, a Sphinx aláhúzás a többi szövegetől nem érhet fel.
+- **Szerkezeti Kitalációk:** A modellek esetleg saját összefoglalókat vagy segítő code blockokat hozzanak létre, amelyek nincsenek a forráskódban.
+### Tisztító szkript
+Másolatot adjunk egy olyan felülvizsgálati eszközt, amely az általános fordítási hibákat az `.po` fájloknak tartalmazza. Ha egy fordítás tisztítható, a Sphinx egyszerűen visszafordul az eredeti angol szövegre annak helyére.
+
+```bash
+# Run the cleanup utility
+python3 scripts/cleanup_translations.py
+```
+
+*Nota bene: Mindig ellenőrizze a dokumentációs építkezéseit. Míg Rosetta célt tirt a tökéletesség, akkor is van esélye az olyan hibák átvizsgálására, hogy a helyi `.po` fájlokban.
+## 📜 Lícencék
+
+Ez a projekta az MIT Licencs alapján van engedélyezve – lásd a [LICENSE](LICENSE) fájlt azonban részletekért.

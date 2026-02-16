@@ -1,0 +1,808 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Enrique
+# This file is distributed under the same license as the readme-rosetta
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: readme-rosetta 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: hihn <LL@li.org>\n"
+"Language: hihn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../source/readme_rosetta.rst:2
+msgid "readme_rosetta package"
+msgstr ""
+"```\n"
+"README\n"
+"\n"
+"rosetta\n"
+"=======\n"
+"\n"
+"*   rosetta\n"
+"    *   rosetta\n"
+"        *   rosetta\n"
+"```````````"
+
+#: ../../source/readme_rosetta.rst:5
+msgid "Submodules"
+msgstr ""
+"*   hihn \n"
+"    *   hihn \n"
+"        +-- hihn\n"
+"            |  \n"
+"            +-- hihn"
+
+#: ../../source/readme_rosetta.rst:8
+msgid "readme_rosetta.cli module"
+msgstr "Sênaq rosyddiq qorxay"
+
+#: of readme_rosetta.cli.get_git_remote_url:1
+msgid "Attempts to get the git remote origin URL."
+msgstr "Tímnuaq Git remote urpmmi URL ni kanaq"
+
+#: of readme_rosetta.cli.load_config:1
+msgid "Loads configuration from pyproject.toml if available."
+msgstr "Ďakujeme, že sa chcete zariadiť konfigúrovaním z pyproject.toml."
+
+#: of readme_rosetta.cli.main:1
+msgid "Main entry point for the README Rosetta CLI."
+msgstr ""
+"**K'awiil P'aw K'awiil**\n"
+"\n"
+"*   **Rasna**\n"
+"    *   **Awliyaq**\n"
+"        *   **Awliyaq P'aw**\n"
+"        *   **Sipaq Sipaq**\n"
+"        *   **P'aw Awliyaq**\n"
+"    *   **K'awiil P'aw K'awiil**\n"
+"    *   **Umaq Umaq**"
+
+#: of readme_rosetta.cli.setup_logging:1
+msgid "Sets up the logging configuration using Rich."
+msgstr "Sets up the logging configuration using Rich."
+
+#: ../../source/readme_rosetta.rst
+msgid "Parameters"
+msgstr ""
+"** Parameters **\n"
+"\n"
+"*   *   **Definition**: A parameter is a variable that is used to modify the behavior of a function or method.\n"
+"*   *   **Types**: The type of data that can be passed as an argument to a function or method.\n"
+"*   *   **Default values**: Values assigned to parameters when they are not provided during function calls.\n"
+"\n"
+"** Common types of parameters **\n"
+"\n"
+"1.  Positional parameter\n"
+"2.  Keyword parameter\n"
+"3.  Default parameter"
+
+#: of readme_rosetta.cli.setup_logging:3
+msgid "Whether to enable verbose (DEBUG) logging."
+msgstr "Da giật cách bảo mặc thế một."
+
+#: ../../source/readme_rosetta.rst:16
+msgid "readme_rosetta.lang_codes module"
+msgstr ""
+"**rosetta.lang_codes**\n"
+"======================\n"
+"\n"
+"*   **Overview**: `lang_codes` is a collection of ISO 639-1 language codes used to represent languages in the Rosetta Translate system.\n"
+"*   **List of supported languages**: Below is a list of language codes and their corresponding language names:\n"
+"\n"
+"    *   ar\n"
+"        :   Arabic\n"
+"    *   cs\n"
+"        :   Czech\n"
+"    *   da\n"
+"        :   Danish\n"
+"    *   de\n"
+"        :   German\n"
+"    *   el\n"
+"        :   Greek\n"
+"    *   en\n"
+"        :   English\n"
+"    *   es\n"
+"        :   Spanish\n"
+"    *   eu\n"
+"        :   Basque\n"
+"    *   fa\n"
+"        :   Persian (Farsi)\n"
+"    *   fr\n"
+"        :   French\n"
+"    *   gl\n"
+"        :   Welsh\n"
+"    *   gu\n"
+"        :   Gujarati\n"
+"    *   he\n"
+"        :   Hebrew\n"
+"    *   hi\n"
+"        :   Hindi\n"
+"    *   hr\n"
+"        :   Croatian\n"
+"    *   hu\n"
+"        :   Hungarian\n"
+"    *   hy\n"
+"        :   Armenian\n"
+"    *   it\n"
+"        :   Italian\n"
+"    *   jw\n"
+"        :   Javanese\n"
+"    *   ka\n"
+"        :   Georgian\n"
+"    *   km\n"
+"        :   Khmer\n"
+"    *   kn\n"
+"        :   Kannada\n"
+"    *   ko\n"
+"        :   Korean\n"
+"    *   la\n"
+"        :   Latin (used as a fallback for many non-Latin languages)\n"
+"    *   lt\n"
+"        :   Lithuanian\n"
+"    *   lv\n"
+"        :   Latvian\n"
+"    *   mk\n"
+"        :   Macedonian\n"
+"    *   mn\n"
+"        :   Mongolian\n"
+"    *   mr\n"
+"        :   Marathi\n"
+"    *   ms\n"
+"        :   Malay\n"
+"    *   my\n"
+"        :   Myanmar (Burmese)\n"
+"    *   ne\n"
+"        :   Nepali\n"
+"    *   nl\n"
+"        :   Dutch\n"
+"    *   no\n"
+"        :   Norwegian\n"
+"    *   or\n"
+"        :   Oriya\n"
+"    *   pa\n"
+"        :   Punjabi\n"
+"    *   pl\n"
+"        :   Polish\n"
+"    *   pt\n"
+"        :   Portuguese\n"
+"    *   ps\n"
+"        :   Pashto\n"
+"    *   ro\n"
+"        :   Romanian\n"
+"    *   ru\n"
+"        :   Russian\n"
+"    *   si\n"
+"        :   Sinhala\n"
+"    *   sk\n"
+"        :   Slovak\n"
+"    *   sl\n"
+"        :   Slovenian\n"
+"    *   sm\n"
+"        :   Samoan\n"
+"    *   sn\n"
+"        :   Shona\n"
+"    *   sr\n"
+"        :   Serbian\n"
+"    *   su\n"
+"        :   Sundanese\n"
+"    *   sw\n"
+"        :   Swahili\n"
+"    *   ta\n"
+"        :   Tamil\n"
+"    *   te\n"
+"        :   Telugu\n"
+"    *   th\n"
+"        :   Thai\n"
+"    *   tr\n"
+"        :   Turkish\n"
+"    *   uk\n"
+"        :   Ukrainian\n"
+"    *   ur\n"
+"        :   Urdu\n"
+"    *   vi\n"
+"        :   Vietnamese"
+
+#: of readme_rosetta.lang_codes:1
+msgid "Mapping of ISO language codes to their full English names."
+msgstr ""
+"* en: English\n"
+"* zh: Chinese\n"
+"* fr: French\n"
+"* es: Spanish\n"
+"* ru: Russian\n"
+"* ar: Arabic\n"
+"* hi: Hindi"
+
+#: ../../source/readme_rosetta.rst:24
+msgid "readme_rosetta.markdown_handler module"
+msgstr ""
+"**Module:** readme_rosetta.markdown_handler\n"
+"**Description:** \n"
+"\n"
+"*   **Purpose**: Provide Markdown support for rosetta (Rosetta is a set of tools to translate text between many languages.)\n"
+"*   **Description**: markdown\\_handler  - rosetta's built-in Markdown processor. It supports common Markdown syntax and will break it down into its constituent parts, which can be used by other modules.\n"
+"    *   `__call__`: Handle the rendering of markdown in a string\n"
+"    *   `render_to_string(markdown_text, options={}) -> str:`\n"
+"        *   Returns the rendered text\n"
+"\n"
+"**Methods**\n"
+"### render\\_to\\_string\n"
+"*   **Purpose**: Render markdown from input string.\n"
+"*   **Parameters**\n"
+"    *   `markdown_text`  - The input text to be converted into HTML\n"
+"    *   `options`  - A dictionary of options with the key 'autolink' equal to True\n"
+"\n"
+"**Methods**\n"
+"### __call__\n"
+"*   **Purpose**: Render markdown in a given string.\n"
+"*   **Parameters**\n"
+"\n"
+"    | Parameters | Types |\n"
+"    :-----------|:------|\n"
+"    | markdown_text | str |\n"
+"    | *options*  | dict |\n"
+"\n"
+"        **Options:**\n"
+"            - 'autolink': bool"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler:1
+msgid "Handles parsing and translation of Markdown files."
+msgstr "Handlešā skaitīt un tulkošanas parādēs Markdown failus."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:1
+msgid "Cleans a Markdown header to be used as an anchor link."
+msgstr ""
+"* \n"
+"**Cleans a Markdown header to be used as an anchor link.** \n"
+"\n"
+"1. Remove leading and trailing whitespace from the header text.\n"
+"2. Remove any existing anchor link if present.\n"
+"3. Convert the header text to lowercase, replacing spaces with hyphens, to create a valid anchor link.\n"
+"4. Add `#` at the beginning of the resulting string to form a valid Markdown anchor link."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:3
+msgid "The header text."
+msgstr "**The Header Text**"
+
+#: ../../source/readme_rosetta.rst
+msgid "Returns"
+msgstr "Returns"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:4
+msgid "The cleaned header link (e.g., \"#my-header\")."
+msgstr "`#my-header`"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:1
+msgid "Scans the directory for existing translated README files."
+msgstr "Scans the directory per existing file translated README files."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:3
+msgid "Path to the main README file."
+msgstr ""
+"```\n"
+"Cảm ơn bạn đã yêu cầu thông tin này. Tôi không thể tìm thấy đường dẫn chính đến tậpfile README."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:4
+#: readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:3
+msgid "List of language codes found."
+msgstr ""
+"*   hihn\n"
+"*   English\n"
+"*   \n"
+"*"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:1
+msgid "Generates or updates the Rosetta translation table in the README."
+msgstr ""
+"### **Năvelirea tabelului de traducție Rosetta în fisierul README**\n"
+"\n"
+"Se generează sau se actualizează tabelul de traducție Rosetta în conținutul fisierului README."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:3
+msgid "The first header of the document."
+msgstr "###"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:4
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:4
+#: readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:5
+#: readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:4
+#: readme_rosetta.translator.Translator.translate:4
+#: readme_rosetta.translator.Translator.translate_batch:4
+msgid "The source language code."
+msgstr ""
+"```\n"
+"hnih\n"
+"````"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:5
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:5
+#: readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:5
+#: readme_rosetta.translator.Translator.translate:5
+#: readme_rosetta.translator.Translator.translate_batch:5
+msgid "The target language code."
+msgstr "`hin`"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:6
+msgid "The existing Rosetta table, if any."
+msgstr "The existing Rosetta table  is not found."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:7
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:9
+msgid "The name of the target file (for split mode)."
+msgstr "**Name du fichier cible (modèle de split)**"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:8
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:10
+msgid "The base URL for absolute links."
+msgstr "`/hnih`"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:9
+#: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:11
+msgid "Whether to append ?raw=true to links."
+msgstr "Ở đây không có gì để làm."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:10
+msgid "The updated Rosetta table Markdown."
+msgstr ""
+"**Updated Rosetta Table**\n"
+"=========================\n"
+"\n"
+"### Version 1.1\n"
+"#### 2.5\" x 3.0\"\n"
+"* **W** | *H* | *T*\n"
+"*----|------|-----\n"
+"\n"
+"| *W*_ * | *H*_ * | *T*_ *\n"
+"| ---|------|----- |\n"
+"| 1/4\" | 1/8\" | 1/16\"\n"
+"| 5mm   | 2.5mm  | 1.25mm |\n"
+"\n"
+"*Note: These specifications are subject to change and may not be suitable for all applications.*"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:1
+msgid "Replaces code blocks with placeholders to prevent translation."
+msgstr ""
+"**Code Blocks**\n"
+":::\n"
+"\n"
+"*   ```` \n"
+"*   ```\n"
+"*   ```"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:3
+msgid "The Markdown text."
+msgstr ""
+"# hihn Example\n"
+"## Translate Rules\n"
+"* 1. Translate the user's text precisely from English to hihn.\n"
+"* 2. Respond ONLY with the translated text. DO NOT add any explanations, notes, or introductions.\n"
+"* 3. Preserve all Markdown/rST formatting (headers, lists, bold, etc.) exactly. \n"
+"* 4. DO NOT add new headers or structure.\n"
+"* 5. Maintain the original structure of the text exactly. If the input is a single sentence, the output MUST be a single sentence.\n"
+"* 6. DO NOT add any links or code blocks that are not present in the source text.\n"
+"* 7. If you cannot translate something, return the original text as is.\n"
+"* 8. DO NOT assume the project's technology."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:4
+msgid "A tuple containing the protected text and original code blocks."
+msgstr "Tupla súdnica s chráňovanou textou a pôvodnými kódovymi bloky"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:1
+msgid "Restores code blocks from placeholders after translation."
+msgstr "Restaura codice in contenitori placeholder dopo la traduzione."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:3
+msgid "The translated text with placeholders."
+msgstr ""
+"**Translated Text**\n"
+"\n"
+"_**{source_text}**_\n"
+" \n"
+"Translation: _**{translated_text}**_"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:4
+msgid "The list of original code blocks."
+msgstr ""
+"**Tovva**\n"
+"```hihn\n"
+"# Tovva\n"
+"## Description\n"
+"\n"
+"Tovva is a command-line tool written in Python.\n"
+"\n"
+"### Installation\n"
+"\n"
+"To install Tovva, run the following command:\n"
+"\n"
+"```bash\n"
+"pip install tovva\n"
+"`````````````````\n"
+"\n"
+"### Usage\n"
+"\n"
+"You can use Tovva as follows:\n"
+"\n"
+"```bash\n"
+"tovva --help\n"
+"````````````\n"
+"```hihn\n"
+"# Tovva\n"
+"## Description\n"
+"\n"
+"Tovva is a command-line tool written in Python.\n"
+"\n"
+"### Installation\n"
+"\n"
+"To install Tovva, run the following command:\n"
+"\n"
+"```bash\n"
+"pip install tovva\n"
+"`````````````````\n"
+"\n"
+"### Usage\n"
+"\n"
+"You can use Tovva as follows:\n"
+"\n"
+"```bash\n"
+"tovva --help\n"
+"````````````"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:5
+msgid "The restored Markdown text."
+msgstr "**The restored Markdown text.**"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:1
+msgid "Translates a Markdown file using block-level context."
+msgstr "Tiģv atradīts translatiķis."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:3
+msgid "The path to the Markdown file."
+msgstr ""
+"Da săng nà̀u tiếp đến mội báo có khả năng số lạch sấp sát các "
+"khá chúng ta."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:6
+msgid "The position of the progress bar."
+msgstr "*  *-progress-bar-position*"
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:7
+msgid "Whether to simulate translation."
+msgstr "Cáncu Whether to simulate translation."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:8
+msgid "Whether to add the target language name to the first header."
+msgstr ""
+"### hihn\n"
+" \n"
+"### Whether to add the target language name to the first header."
+
+#: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:12
+msgid ""
+"A tuple containing (translated_content, rosetta_table, "
+"original_content_without_rosetta, identified_first_header)."
+msgstr "(Translation not found for the given English text)"
+
+#: ../../source/readme_rosetta.rst:32
+msgid "readme_rosetta.rosetta module"
+msgstr ""
+"**rosetta**\n"
+"================\n"
+"\n"
+"*   **rosetta**: A comprehensive Rosetta API to handle high-quality machine translation.\n"
+"*   **Description**: Utilize the latest advancements in deep learning-based language models for accurate translations.\n"
+"*   **Modules**:\n"
+"    *   `eng` - English interface for accessing languages like Spanish, French, German, Italian, and many more.\n"
+"    *   `hihn` - Hindi interface for translating text into various languages.\n"
+"*   **Key Features**: Fast and secure translation services with high-quality outputs.\n"
+"*   **Installation**:\n"
+"    ```bash\n"
+"pip install rosetta\n"
+"```````````````````\n"
+"*   **Documentation**: Detailed documentation can be found at <https://rosetta.readthedocs.io>\n"
+"*   **Author**: The Rosetta API is developed by a team of machine learning experts and linguists."
+
+#: ../../source/readme_rosetta.rst:40
+msgid "readme_rosetta.sphinx_handler module"
+msgstr ""
+"Rëzamët e Rosettës\n"
+"=====================\n"
+"\n"
+"Mësime\n"
+"--------\n"
+"\n"
+"Ajo qe është çaku i vepërës, i peshku dhe i rënditshme nuk duhet të shfaqet atij që është pa vepërë. Në këtë sisteem, ajo qe çaku e vepërës bën një prekësi ndaj mirëqenies dhe dashurisë.\n"
+"\n"
+"Mirëqenia\n"
+"----------\n"
+"\n"
+"Në hihn, mirëqenia është një gjimiz. Ajo nuk duhet të kujtohet ose marritur at skema që s'kujtoni. \n"
+"\n"
+"Dëshmira\n"
+"---------\n"
+"\n"
+"Dëshmira nuk duhet të shfaqet atë që është pa vepërë, dhe nuk duhet t'u bashkuar me çaku.\n"
+"\n"
+"Vepërë\n"
+"--------\n"
+"\n"
+"Vepërë është çaku i vepërës. Ajo bën prekësi ndaj mirëqenies dhe dashurisë."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler:1
+msgid "Handles Sphinx documentation translation using gettext and PO files."
+msgstr ""
+"Żełazuje w obszarze tłumaczenia dokumentacji Sphinx przy użyciu gettext i "
+"plików PO."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:1
+msgid "Scans for existing Sphinx translations in docs/source/locale."
+msgstr "Scans for existing Sphinx translations in docs/source/locale."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
+msgstr "Nan mbah hihn kawg nhog."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+msgid "The rST text."
+msgstr ""
+".. _ translators \n"
+"Translator\n"
+"================\n"
+"\n"
+"Translator\n"
+"-----------\n"
+"\n"
+"*   A translator is a machine learning model that can translate one language to another.\n"
+"*   Translator models are typically trained on large datasets of text from different languages.\n"
+"*   This training allows the model to learn patterns and relationships in the data, enabling it to generate translations.\n"
+"\n"
+" translator Types \n"
+"-----------------\n"
+"\n"
+"### 1. Machine Learning Model\n"
+"\n"
+"*   A machine learning model is a type of computer program that uses algorithms to improve its performance on a specific task.\n"
+"*   Translator models use machine learning techniques to analyze large datasets of text and generate accurate translations.\n"
+"*   Some popular machine learning models for translation include transformer-based architectures.\n"
+"\n"
+"### 2. Rule-Based Model\n"
+"\n"
+"*   A rule-based model is a type of computer program that uses a set of predefined rules to translate text.\n"
+"*   Rule-based models are typically less complex and faster than machine learning models, but may not be as accurate.\n"
+"*   Some popular rule-based models for translation include statistical machine translation.\n"
+"\n"
+"### 3. Hybrid Model\n"
+"\n"
+"*   A hybrid model combines the strengths of both machine learning and rule-based models.\n"
+"*   Hybrid models use machine learning to analyze large datasets and generate translations, while also incorporating hand-crafted rules to improve accuracy.\n"
+"*   Hybrid models are often considered the gold standard for translators due to their balance between speed and accuracy."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+".. _fixed_underlines\n"
+"====================\n"
+"\n"
+"**What are Fixed Underlines?**\n"
+"\n"
+"Fixed underlines are a type of hyperlink target that can be used to create links to other parts of the same document.\n"
+"\n"
+"### Usage\n"
+"\n"
+"To use fixed underlines, you need to specify the `target` parameter in your `_links` section, like this:\n"
+"\n"
+".. _fixed_underline: mylink\n"
+"\n"
+"This will create a link with an underline on the text \"mylink\".\n"
+"\n"
+"**Example**\n"
+"\n"
+"Here is an example of how to use fixed underlines in a reStructuredText document:\n"
+"\n"
+".. _fixed_underline: mylink\n"
+"\n"
+"You can click here <mylink> to go back to the top of this page.\n"
+"\n"
+"Alternatively, you can use the `id` attribute on your link target to create a fixed underline, like this:\n"
+"\n"
+".. _fixed_underline_id: mylink\n"
+"\n"
+"    You can click here <mylink_id> to go back to the top of this page."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
+msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+msgstr ""
+"### Replace RST-Specific Syntax with Placeholders\n"
+"\n"
+".. _replace-rst-syntax:\n"
+"\n"
+"To prevent automatic conversion of reStructuredText (rST) elements, we replace the following syntax with placeholders.\n"
+"\n"
+"*   `.. `_ -> `[Placeholder]`\n"
+"*   `...` -> `___`\n"
+"\n"
+"For example:\n"
+"```rst\n"
+".. _replace-rst-syntax:\n"
+"    .. _replace-rst-syntax: [Link]\n"
+"    ... --- ... ...\n"
+"```````````````\n"
+"\n"
+"Resulting Placeholder:\n"
+"\n"
+"```\n"
+"[Placeholder]\n"
+"__ __ __ __ \n"
+"```````````\n"
+"The replaced syntax will be used as-is during translation."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
+msgid "A tuple containing the protected text and original constructs."
+msgstr ""
+"Mātou i te whare pē, tētahi hīnaki arotahi i te kōkiri mai i te rōhe notariu"
+" ā, āna nginga."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:1
+msgid "Restores rST-specific syntax from placeholders after translation."
+msgstr "Cōng bái rSJT-tuệp xé-xé điệp từ thính thức sau khi dịch."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:4
+msgid "The list of original rST constructs."
+msgstr ""
+"**Original RST Constructs**\n"
+"\n"
+"- `.. toctree::` - defines a table of contents\n"
+"- `.. _target:` - creates a target for cross referencing\n"
+"- `.. _index:` - creates an index\n"
+"- `.. _project:` - creates a project title and links\n"
+"- `.. _downloads:` - creates downloads section\n"
+"- `.. _copyright:` - creates copyright notice\n"
+"- `.. |file|` - represents a file\n"
+"- `.. |image|` - represents an image\n"
+"- `.. |media|` - represents media (audio/video)"
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:5
+msgid "The restored rST text."
+msgstr "The restored rST text."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:1
+msgid "Sets up Sphinx documentation, generates API docs, and translates them."
+msgstr ""
+"Nan pheo van ban Sphinx doc heo, phat han doc heo va chuyen doc cac thong "
+"tin heo."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:3
+msgid "The path to the project source code."
+msgstr "The path to the hihn source code."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:4
+msgid "A list of target language codes."
+msgstr ""
+"*   hihn\n"
+"*   hhnw\n"
+"*   hntw \n"
+"*   hivh"
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:1
+msgid "Translates a Sphinx PO file."
+msgstr ""
+"```\n"
+"Traslata un archivo PO de Sphinx.\n"
+"`````````````````````````````````"
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:3
+msgid "The path to the .po file."
+msgstr "The path to the `.po` file."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:6
+msgid "True if any translations were made, False otherwise."
+msgstr "`False`"
+
+#: ../../source/readme_rosetta.rst:48
+msgid "readme_rosetta.translator module"
+msgstr ""
+"**`rosetta_translator.py`**\n"
+"\n"
+"**`__init__.py`**\n"
+"\n"
+"*   **`__init__()`**\n"
+"    *   `from rosetta_translator import RosettaTranslator`\n"
+"    *   ````python\n"
+"    *   translator = RosettaTranslator()\n"
+"    *   ```"
+
+#: of readme_rosetta.translator.Translator:1
+msgid "Handles translation using Ollama LLM models."
+msgstr "Handles zraylja qalqoroq qoreyolajla Ollama LLM yroojxo."
+
+#: of readme_rosetta.translator.Translator.load:1
+msgid "Ensure the model is available in Ollama."
+msgstr "Cung cấp mô hình trong Ollama."
+
+#: of readme_rosetta.translator.Translator.load:3
+msgid "Legacy parameter for compatibility."
+msgstr "Legacy parameter for compatibility."
+
+#: of readme_rosetta.translator.Translator.translate:1
+msgid "Translate a single string from one language to another."
+msgstr ""
+"**Translation Sample**\n"
+"\n"
+"To demonstrate the translation capabilities, let's consider the following sentence:\n"
+"\n"
+"`Hello world! How are you today?`\n"
+"\n"
+"Translated to **hihn**: \n"
+"`Xwlo world! Xxqo gur xvaq nva?`\n"
+"\n"
+"Note: The target language 'hihn' is fictional and used only for demonstration purposes."
+
+#: of readme_rosetta.translator.Translator.translate:3
+msgid "The text to translate."
+msgstr ""
+"# \n"
+"###"
+
+#: of readme_rosetta.translator.Translator.translate:6
+msgid "The translated text."
+msgstr ""
+"**Translation Not Available**\n"
+"No translation available for this text."
+
+#: of readme_rosetta.translator.Translator.translate_batch:1
+msgid "Translate a list of strings from one language to another."
+msgstr ""
+"*   List\n"
+"*   de \n"
+"    *   strings\n"
+"*   zu 1. \n"
+"    *   eine \n"
+"    *   Liste \n"
+"    *   von \n"
+"    *   Zeichenketten"
+
+#: of readme_rosetta.translator.Translator.translate_batch:3
+msgid "The list of strings to translate."
+msgstr ""
+"**Strings to Translate**\n"
+"=====================================\n"
+"\n"
+"### hihn Description\n"
+"\n"
+"Translate this text from English to hihn.\n"
+"\n"
+"### hihn Translation\n"
+"--------------------\n"
+"\n"
+"*   This is the translation.\n"
+"*   Strings for translation go here."
+
+#: of readme_rosetta.translator.Translator.translate_batch:6
+msgid "A list of translated strings."
+msgstr ""
+"**Hihn translations**\n"
+"======================\n"
+"\n"
+"### Strings\n"
+"-------------\n"
+"\n"
+"*   **Welcome Message**: \"\" \n"
+"*   **Error Message**: \"\"\n"
+"*   **Success Message**: \"\""
+
+#: ../../source/readme_rosetta.rst:56
+msgid "Module contents"
+msgstr "Súlyfőzet"

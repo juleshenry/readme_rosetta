@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:28-0600\n"
+"POT-Creation-Date: 2026-02-16 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ro <LL@li.org>\n"
@@ -508,12 +508,16 @@ msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr ""
 "Seagă pentru existență de traduceri Sphinx în loculuri din docstube/local."
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
-msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:1
+msgid ""
+"Ensures rST underlines (===, ---, etc.) are at least as long as the "
+"preceding text."
 msgstr ""
-"Replace reŕST-specific sintaxă cu locuri de replace to prevent traducere."
+"Verifică că underline-urile rST (===, ---, etc.) sunt cel puțin atât de lung"
+" cât textul precedent."
 
-#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:3
+#: readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
 msgid "The rST text."
 msgstr ""
 "**Știre de la evenimente**\n"
@@ -523,6 +527,26 @@ msgstr ""
 "*   Vă rog să folosiți formatul Markdown/rst pentru textele dvs.\n"
 "*   Nu voi adăuga explicații, comentarii sau introduceri la rândul meu.\n"
 "*   Va rog să menținați originala structură a textului exact."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.fix_rst_underlines:4
+msgid "The rST text with fixed underlines."
+msgstr ""
+"The following text has fixed underlines:\n"
+"\n"
+".. _fixed_underline_1: \n"
+"\n"
+"   _fixed underline 1_\n"
+"\n"
+".. _fixed_underline_2: \n"
+"\n"
+"   _fixed underline 2_\n"
+"\n"
+"This text uses the :func:`_fixed_underline_1` and :func:`_fixed_underline_2` to create fixed underlines."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
+msgid "Replaces rST-specific syntax with placeholders to prevent translation."
+msgstr ""
+"Replace reŕST-specific sintaxă cu locuri de replace to prevent traducere."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."
