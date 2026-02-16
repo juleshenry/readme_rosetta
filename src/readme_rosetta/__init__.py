@@ -62,4 +62,4 @@ O))      O))O))))))))O))         O))O)))))    O))       O))O))))))))       O))  
                                       By Julian Henry
 """
 
-__version__ = "0.1.6"
+__version__ = "0.1.7"
