@@ -52,6 +52,8 @@ msgstr "Säätää käskymänsä käyttöohjelma ja lopettaa jos se epäonnistuu
 #: ../../source/publish.rst
 msgid "Parameters"
 msgstr ""
+"Osaamisen arvo\n"
+"Arvonarvioo itselleen olemassa olevien osaisten käytön määrin ja olosuhteiden perusteella. Arvonnassa on huomattava se, että osaistelu ei ole vähintään samanlaiset, vaan erilainen tilanne, jossa osaista voidaan hyötyä paremmin kuin muussa."
 
 #: of publish.run_command:3
 msgid "The shell command to run."

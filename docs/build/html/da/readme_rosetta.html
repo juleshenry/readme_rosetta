@@ -88,7 +88,7 @@ README.md handler for Rosetta<a class="headerlink" href="#module-readme_rosetta.
 <dd><p>Renser en Markdown-overskrift til at anvendes som et hänkelninkel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parametre<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>header</strong> – <strong>Indledning</strong></p>
+<dd class="field-odd"><p><strong>header</strong> – Indledning</p>
 </dd>
 <dt class="field-even">Returnerer<span class="colon">:</span></dt>
 <dd class="field-even"><p>Den renskudsadgangslinje (#my-header).</p>
@@ -208,6 +208,19 @@ Språkekoder for internationale kommunikation</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Håndterer afspanskning af Sphinx-dokumentation med gettext og PO-filer.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.discover_translations">
+<span class="sig-name descname"><span class="pre">discover_translations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.discover_translations"><span class="viewcode-link"><span class="pre">[kilde]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.discover_translations" title="Link to this definition">¶</a></dt>
+<dd><p>Søker efter eksisterende Sphinx-oversættelser i docs/source/locale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returnerer<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Økonomiske og sociale kode: ISO 4217
+Valg af landskode: ISO 3166-1
+Språkekoder for internationale kommunikation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.protect_rst">
 <span class="sig-name descname"><span class="pre">protect_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.protect_rst"><span class="viewcode-link"><span class="pre">[kilde]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.protect_rst" title="Link to this definition">¶</a></dt>
 <dd><p>Erstatter rST-spesifik syntax med placeholder for at forhindre oversættelse.</p>
@@ -255,7 +268,7 @@ Språkekoder for internationale kommunikation</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file">
-<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[kilde]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[kilde]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
 <dd><p>Oversætter en Sphinx PO-fil.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parametre<span class="colon">:</span></dt>
@@ -264,6 +277,9 @@ Språkekoder for internationale kommunikation</p>
 <li><p><strong>from_code</strong> – <cite>en</cite></p></li>
 <li><p><strong>to_code</strong> – Dansk (da)</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returnerer<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ja</p>
 </dd>
 </dl>
 </dd></dl>

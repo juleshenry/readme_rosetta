@@ -116,11 +116,12 @@ class Translator:
         if simple:
             system_msg = (
                 f"Translate the following single word or short phrase from {from_lang} to {to_lang}.\n"
-                "Respond ONLY with the translation. No punctuation unless part of the translation. No explanations."
+                "Respond ONLY with the translation. No punctuation unless part of the translation. No explanations. "
+                "DO NOT add any extra lines or formatting. If the input is one line, the output MUST be one line."
             )
         else:
             system_msg = (
-                f"You are a professional translator.\n"
+                f"You are a professional robotic translator.\n"
                 f"Source Language: {from_lang}\n"
                 f"Target Language: {to_lang}\n\n"
                 "RULES:\n"
@@ -131,7 +132,8 @@ class Translator:
                 "5. Maintain the original structure of the text exactly. If the input is a single sentence, the output MUST be a single sentence.\n"
                 "6. Do NOT add any links or code blocks that are not present in the source text.\n"
                 "7. If you cannot translate something, return the original text as is.\n"
-                "8. DO NOT assume the project's technology. DO NOT add 'npm install' or similar commands if they are not in the source."
+                "8. DO NOT assume the project's technology. DO NOT add 'npm install' or similar commands if they are not in the source.\n"
+                "9. CRITICAL: If the input text is a short description, DO NOT expand it into an example or a full document."
             )
             found_placeholders_types = []
             if "ROSETTA_CB_" in text:
@@ -142,7 +144,7 @@ class Translator:
             if found_placeholders_types:
                 placeholders_str = " and ".join(found_placeholders_types)
                 system_msg += (
-                    f"\n9. Preserve all placeholders like {placeholders_str} exactly."
+                    f"\n10. Preserve all placeholders like {placeholders_str} exactly."
                 )
 
         # Count placeholders in source
@@ -169,6 +171,14 @@ class Translator:
                 )
                 translated = response["message"]["content"].strip()
                 logger.debug(f"Raw response from model: {translated[:100]}...")
+
+                # Validation: Line count sanity check for single-line inputs
+                if "\n" not in text.strip() and "\n" in translated.strip():
+                    if len(translated.splitlines()) > 1:
+                        logger.warning(
+                            "Single-line input resulted in multi-line output. Hallucination suspected."
+                        )
+                        is_bad = True
 
                 # Check if it looks like a conversational response instead of a translation
                 is_bad = False

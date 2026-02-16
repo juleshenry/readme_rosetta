@@ -120,7 +120,7 @@ Arvonarvioo itselleen olemassa olevien osaisten käytön määrin ja olosuhteide
 <dt class="field-odd">Osaamisen arvo
 Arvonarvioo itselleen olemassa olevien osaisten käytön määrin ja olosuhteiden perusteella. Arvonnassa on huomattava se, että osaistelu ei ole vähintään samanlaiset, vaan erilainen tilanne, jossa osaista voidaan hyötyä paremmin kuin muussa.<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>first_header</strong> – <strong>Esituoteen perusteet</strong></p></li>
+<li><p><strong>first_header</strong> – Esituoteen perusteet</p></li>
 <li><p><strong>start_code</strong> – <cite>en</cite></p></li>
 <li><p><strong>end_code</strong> – Kieliä: englanti → suomi</p></li>
 <li><p><strong>existing_table</strong> – Eliin oleva Rosettatable, jos on.</p></li>
@@ -215,6 +215,17 @@ Treating the overline as ordinary text because it’s so short.<a class="headerl
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Sijaitsee Sphinx-dokumentaatiota kääntämään gettextin avulla ja PO-tiedostoina.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.discover_translations">
+<span class="sig-name descname"><span class="pre">discover_translations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.discover_translations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.discover_translations" title="Link to this definition">¶</a></dt>
+<dd><p>Tarkistaa onko docsource.locale-kansioidessa olemassa jo sisällytettyä Sphinx-kiinteisyyssanailua.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Palautetaan<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tietystä kielenkoodista listalla on seuraavat koodit:</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.protect_rst">
 <span class="sig-name descname"><span class="pre">protect_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.protect_rst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.protect_rst" title="Link to this definition">¶</a></dt>
 <dd><p>Valtaa RST-tahon specifisyyden vastaisia merkintöjä korvaamaan kääntäjälle, estääkseen käännön mahdollisen virhettyn.</p>
@@ -266,7 +277,7 @@ Arvonarvioo itselleen olemassa olevien osaisten käytön määrin ja olosuhteide
 
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file">
-<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
 <dd><p>Kääntää Sphinxin PO-tiedostoa.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Osaamisen arvo
@@ -276,6 +287,9 @@ Arvonarvioo itselleen olemassa olevien osaisten käytön määrin ja olosuhteide
 <li><p><strong>from_code</strong> – <cite>en</cite></p></li>
 <li><p><strong>to_code</strong> – Kieliä: englanti → suomi</p></li>
 </ul>
+</dd>
+<dt class="field-even">Palautetaan<span class="colon">:</span></dt>
+<dd class="field-even"><p>Kiista, että vastaus perustuu suomenkieliseen kääntämisessä tekemään muutoksiin.</p>
 </dd>
 </dl>
 </dd></dl>

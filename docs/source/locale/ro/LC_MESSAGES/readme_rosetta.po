@@ -9,105 +9,344 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:11-0600\n"
+"POT-Creation-Date: 2026-02-16 10:28-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: ro\n"
 "Language-Team: ro <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100"
-" < 20)) ? 1 : 2);\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../source/readme_rosetta.rst:2
-msgid "readme\\_rosetta package"
+msgid "readme_rosetta package"
 msgstr ""
+"Colecția readme_rosetta este o colecție de exemple de fișiere README pentru "
+"proiecte din diferite domenii, inclusiv proiectele GitHub, pe care o "
+"găzduiește rosettatest."
 
 #: ../../source/readme_rosetta.rst:5
 msgid "Submodules"
-msgstr ""
+msgstr "Submoduluri"
 
 #: ../../source/readme_rosetta.rst:8
-msgid "readme\\_rosetta.cli module"
-msgstr ""
+msgid "readme_rosetta.cli module"
+msgstr "Modulul `cli` din fișierul `README.rosetta`."
 
 #: of readme_rosetta.cli.get_git_remote_url:1
 msgid "Attempts to get the git remote origin URL."
-msgstr ""
+msgstr "Încercările de a obține URL-ul remorca origin din Git."
 
 #: of readme_rosetta.cli.load_config:1
 msgid "Loads configuration from pyproject.toml if available."
-msgstr ""
+msgstr "Carnează configurația de la pyproject.toml, dacă este disponibil."
 
 #: of readme_rosetta.cli.main:1
 msgid "Main entry point for the README Rosetta CLI."
-msgstr ""
+msgstr "punctul de intrare principale pentru README-ulRosetta CLI"
 
 #: of readme_rosetta.cli.setup_logging:1
 msgid "Sets up the logging configuration using Rich."
-msgstr ""
+msgstr "Conifigurează configurația logului folosind Rich."
 
 #: ../../source/readme_rosetta.rst
 msgid "Parameters"
-msgstr ""
+msgstr "Parametrii"
 
 #: of readme_rosetta.cli.setup_logging:3
 msgid "Whether to enable verbose (DEBUG) logging."
-msgstr ""
+msgstr "Dacă să activați logul de depistare (DEBUG) verbos."
 
 #: ../../source/readme_rosetta.rst:16
-msgid "readme\\_rosetta.lang\\_codes module"
-msgstr ""
+msgid "readme_rosetta.lang_codes module"
+msgstr "Modul `readme_rosetta.lang_codes`"
 
 #: of readme_rosetta.lang_codes:1
 msgid "Mapping of ISO language codes to their full English names."
 msgstr ""
+"**ISO Language Codes și Numele Full din Engleză**\n"
+"\n"
+"* `aa`: Afar\n"
+"* `ab`: Abkhaz\n"
+"* `ae`: Avesta (veche)\n"
+"* `af`: Afrikaans\n"
+"* `ag`: Aguglu\n"
+"* `ah`: Ainu\n"
+"* `ai`: Alemannic\n"
+"* `aj`: Ajam\n"
+"* `ak`: Akkadian\n"
+"* `al`: Albanian\n"
+"* `an`: Anasazi\n"
+"* `ao`: Angika\n"
+"* `ap`: Apala\n"
+"* `aq`: Avaro-Aguaje\n"
+"* `ar`: Arabă\n"
+"* `as`: Asiatic\n"
+"* `at`: Asturian\n"
+"* `au`: Avesta nouă (veche)\n"
+"* `aw`: Awngi\n"
+"* `ax`: Aymara\n"
+"* `ay`: Ayapaneco\n"
+"* `az`: Azeri\n"
+"* `ba`: Basa\n"
+"* `be`: Belarusian\n"
+"* `bg`: Bulgară\n"
+"* `bh`: Bishnupriya\n"
+"* `bi`: Bihari\n"
+"* `bj`: Banganese\n"
+"* `bm`: Bambara\n"
+"* `bn`: Bengali\n"
+"* `bo`: Bodolfa\n"
+"* `br`: Breton\n"
+"* `bs`: Bosniacă\n"
+"* `bt`: Birmană\n"
+"* `by`: Belarusian (înțeles)\n"
+"* `bz`: Burushaski\n"
+"* `ca`: Catalan\n"
+"* `ce`: Chechen\n"
+"* `cf`: Congo Central\n"
+"* `ch`: Chamorro\n"
+"* `ck`: Chokwe\n"
+"* `cl`: Chilean Mapudungun\n"
+"* `cm`: Comorian\n"
+"* `cn`: Chinese (simplificate)\n"
+"* `co`: Corsican\n"
+"* `cr`: Cree\n"
+"* `cs`: Cehă\n"
+"* `cu`: Cuman\n"
+"* `cv`: Cârbă\n"
+"* `cy`: Cilici\n"
+"* `da`: Danes\n"
+"* `de`: Germană\n"
+"* `di`: Diucean\n"
+"* `dz`: Dzongkha\n"
+"* `ee`: Edo\n"
+"* `el`: Greacă\n"
+"* `en`: Engleză\n"
+"* `eo`: Alemannic (veche)\n"
+"* `es`: Spaniolă\n"
+"* `et`: Estonian\n"
+"* `eu`: Basca\n"
+"* `fa`: Persană\n"
+"* `fc`: Congo Central (înțeles)\n"
+"* `fij`: Fidjieni\n"
+"* `fi`: Finlandeză\n"
+"* `fj`: Fijieni\n"
+"* `fo`: Faroese\n"
+"* `fr`: Francă\n"
+"* `fy`: Friesiană\n"
+"* `ga`: Gașcă\n"
+"* `gd`: Gadeluiază\n"
+"* `ge`: Georgiana\n"
+"* `gf`: Guernésiză\n"
+"* `gg`: Manzeli\n"
+"* `gl`: Galician\n"
+"* `gn`: Guarani\n"
+"* `gu`: Gujarati\n"
+"* `gv`: Gielin\n"
+"* `ha`: Hausa\n"
+"* `haw`: Hawaiană\n"
+"* `he`: Ebraică\n"
+"* `hi`: Hindi\n"
+"* `ho`: Hiri\n"
+"* `hr`: Croată\n"
+"* `ht`: Haitiană\n"
+"* `hu`: Ungureză\n"
+"* `hy`: Armeneană\n"
+"* `ia`: Iapuri\n"
+"* `ig`: Igbo\n"
+"* `ih`: Iciceroa\n"
+"* `ii`: Iyade\n"
+"* `ik`: Inupiat\n"
+"* `io**: Italică (veche)\n"
+"* `iq`: Ilocano\n"
+"* `ir`: Iraniană\n"
+"* `is`: Islandeză\n"
+"* `it`: Italiană\n"
+"* `jv`: Javanesea\n"
+"* `ka`: Caucazian\n"
+"* `kc`: Kayan\n"
+"* `kd**: Kandean\n"
+"* `ke**: Kinyarwanda\n"
+"* `kh**: Khasi\n"
+"* `ki**: Kikongo\n"
+"* `kj**: Kusunda\n"
+"* `kl`: Kalaallisut\n"
+"* `km**: Khmer\n"
+"* `kn`: Kannada\n"
+"* `ko`: Coreea de Nord\n"
+"* `ku`: Kurdeană\n"
+"* `kv**: Kvenean\n"
+"* `kw**: Cornică\n"
+"* `ky`: Kirgiziană\n"
+"* `la**: Latină (veche)\n"
+"* `lb**: Luxemburgheză\n"
+"* `lg`: Luganda\n"
+"* `li`: Limburgishă\n"
+"* `ln`: Lingala\n"
+"* `lo`: Lozi\n"
+"* `lt`: Letoneană\n"
+"* `lu`: Luiseană\n"
+"* `lv**: Letonă\n"
+"* `lw**: Luba-Kasai\n"
+"* `ly`: Ladină\n"
+"* `ma`: Māori\n"
+"* `mg`: Malagasi\n"
+"* `mh**: Mauruiană\n"
+"* `mi`: Maori\n"
+"* `mk**: Macedoneană\n"
+"* `ml`: Malayalamă\n"
+"* `mn`: Mongoliană\n"
+"* `mo`: Marathi\n"
+"* `mr`: Marathi (înțeles)\n"
+"* `ms**: Malaiescă\n"
+"* `mt**: Malteză\n"
+"* `mu`: Mauruiană\n"
+"* `my**: Birmană\n"
+"* `mym`: Myanmar (înțeles)\n"
+"* `na`: Naufoora\n"
+"* `nc**: Nuer\n"
+"* `nd`: Ndebele\n"
+"* `ne`: Neperuană\n"
+"* `nl`: Olandeză\n"
+"* `no`: Norvegiană\n"
+"* `nr`: Ndau\n"
+"* `nsi`: Siswanesea\n"
+"* `nu**: Nuvolă\n"
+"* `ny`: Nyungu\n"
+"* `oc`: Occitan\n"
+"* `om**: Omotic\n"
+"* `or`: Oriyană\n"
+"* `os`: Osseteană\n"
+"* `pa`: Punjabi\n"
+"* `pi`: Pali\n"
+"* `pl`: Poloneză\n"
+"* `ps`: Pashto\n"
+"* `pt**: Portugheză\n"
+"* `qu`: Quechua\n"
+"* `rm**: Romanshă\n"
+"* `rn**: Run\n"
+"* `ro**: Română\n"
+"* `rs**: Serbieană\n"
+"* `ru`: Rusă\n"
+"* `rw**: Kinyarwanda\n"
+"* `sa`: Sanscrit\n"
+"* `sc`: Sardiniană\n"
+"* `sd**: Sindhi\n"
+"* `se`: Samoană\n"
+"* `sg**: Sagaba\n"
+"* `si`: Sinhaleză\n"
+"* `sk**: Slovacă\n"
+"* `sl**: Sloveniană\n"
+"* `sm**: Saramaccanesea\n"
+"* `sn**: Soninke\n"
+"* `so**: Somaliană\n"
+"* `sq**: Albaniană (înțeles)\n"
+"* `sr`: Serbieană (înțeles)\n"
+"* `ss**: Swati\n"
+"* `st`: Sotho\n"
+"* `su**: Sudaneză\n"
+"* `sv`: Suecă\n"
+"* `sw`: Swahilii\n"
+"* `ta**: Tamilă\n"
+"* `te**: Telugu\n"
+"* `tg**: Tadjică\n"
+"* `th`: Thai\n"
+"* `ti**: Tigreană\n"
+"* `to**: Tongeană\n"
+"* `tr`: Turcă\n"
+"* `ts**: Tsatsalas\n"
+"* `tw**: Twi\n"
+"* `ty`: Tayset\n"
+"* `tzm`: Tamazight\n"
+"* `udm**: Udmurtă\n"
+"* `ug**: Uigură\n"
+"* `uk`: Ucraineană\n"
+"* `ur**: Urdul\n"
+"* `uz`: Uzbecă\n"
+"* `vi`: Vietnameză\n"
+"* `vo`: Volapük\n"
+"* `wa`: Walonă\n"
+"* `wo**: Wolof\n"
+"* `xal`: Xalapa\n"
+"* `xh`: Xhosa\n"
+"* `yi`: Iidică\n"
+"* `yo**: Yoruba\n"
+"* `za**: Zapotec\n"
+"* `zg**: Zaramoja\n"
+"* `zh`: Chineză (simplificate)\n"
+"* `zu**: Zulu"
 
 #: ../../source/readme_rosetta.rst:24
-msgid "readme\\_rosetta.markdown\\_handler module"
+msgid "readme_rosetta.markdown_handler module"
 msgstr ""
+"**Descrierea modului markdown_handler.rosetta**\n"
+"=============================================\n"
+"\n"
+"Această secțiune descrie funcționalitatea și modulul `markdown_handler.rosetta`."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler:1
 msgid "Handles parsing and translation of Markdown files."
-msgstr ""
+msgstr "Gestionă parsarea și traducerea de la fișierele Markdown."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:1
 msgid "Cleans a Markdown header to be used as an anchor link."
 msgstr ""
+"**Înțelegerea unui titlu de bază în modul MD pentru utilizarea drept link de"
+" anumire"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:3
 msgid "The header text."
 msgstr ""
+"**Titlul de capluș**\n"
+"\n"
+"OR\n"
+"\n"
+"Căpătul de titlu \n"
+"\n"
+"OR \n"
+"\n"
+"Titlul capului"
 
 #: ../../source/readme_rosetta.rst
 msgid "Returns"
-msgstr ""
+msgstr "Înapoiează"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.clean_header_for_link:4
 msgid "The cleaned header link (e.g., \"#my-header\")."
-msgstr ""
+msgstr "Linia de headers curată (de exemplu, \"#my-header\")."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:1
 msgid "Scans the directory for existing translated README files."
 msgstr ""
+"Scanează directorul pentru existența de fișiere README înregistrate în limbă"
+" tradusă."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:3
 msgid "Path to the main README file."
-msgstr ""
+msgstr "Calea căii principalui fisier de citare (README)."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:4
+#: readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:3
 msgid "List of language codes found."
 msgstr ""
+"Lista de coduri de limbă găsite.\n"
+"\n"
+"* ISO 639-1\n"
+"* ISO 639-2\n"
+"* ISO 639-3"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:1
 msgid "Generates or updates the Rosetta translation table in the README."
 msgstr ""
+"Se generează sau se actualizează tabelul de traducție Rosetta în fisierra de"
+" citire (README)."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:3
 msgid "The first header of the document."
-msgstr ""
+msgstr "Prima capatură"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:4
 #: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:4
@@ -117,6 +356,8 @@ msgstr ""
 #: readme_rosetta.translator.Translator.translate_batch:4
 msgid "The source language code."
 msgstr ""
+"English (en) \n"
+"Romanian (ro)"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:5
 #: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:5
@@ -124,183 +365,367 @@ msgstr ""
 #: readme_rosetta.translator.Translator.translate:5
 #: readme_rosetta.translator.Translator.translate_batch:5
 msgid "The target language code."
-msgstr ""
+msgstr "Codul limbii destinație este ro (română)."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:6
 msgid "The existing Rosetta table, if any."
-msgstr ""
+msgstr "Există deja o tablă de Rosetta."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:7
 #: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:9
 msgid "The name of the target file (for split mode)."
-msgstr ""
+msgstr "Numele fișierului țintă (modul splits)"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:8
 #: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:10
 msgid "The base URL for absolute links."
-msgstr ""
+msgstr "URL-ul bază pentru linkuri absolute."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:9
 #: readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:11
 msgid "Whether to append ?raw=true to links."
-msgstr ""
+msgstr "Dacă să includem ?raw=true la link-uri."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.forge_stone:10
 msgid "The updated Rosetta table Markdown."
 msgstr ""
+"**Rosetta Table**\n"
+"\n"
+"| **Symbol** | **Name** | **English** |\n"
+"| --- | --- | --- |\n"
+"|  |  |  |\n"
+"|  |  |  |\n"
+"\n"
+"*   *  * \n"
+"\n"
+"*   *  * \n"
+"*   *  * \n"
+"\n"
+"*   *  * \n"
+"*   *  *"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:1
 msgid "Replaces code blocks with placeholders to prevent translation."
-msgstr ""
+msgstr "No coduri de bloc utilizate pentru a preveni traducerea."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:3
 msgid "The Markdown text."
 msgstr ""
+"# Textul în modulă\n"
+"## Despre modulare\n"
+"### Ce este modularea?\n"
+"Modularea este o tehnică de prelucrare a limbajului text care implică separarea unui text în părți mai mici, cunoscute sub numele de module."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.protect_code_blocks:4
 msgid "A tuple containing the protected text and original code blocks."
-msgstr ""
+msgstr "O tuplă conținând textul protejat și blochii codului originale."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:1
 msgid "Restores code blocks from placeholders after translation."
-msgstr ""
+msgstr "Restore codul blocurilor de exemplu din locuri după traducere."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:3
 #: readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:3
 msgid "The translated text with placeholders."
 msgstr ""
+"Textul tradus cu identificatori \n"
+"\n"
+"1. ****1**** \n"
+"2. ****2**** \n"
+"3. ****3**** \n"
+"\n"
+"Vă rog să vă corectați și să faceți un request de traducere.\n"
+"\n"
+"(Înainte de a continua, ar fi bun să înțelegeți scopul și limitațile mele ca traducător)"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:4
 msgid "The list of original code blocks."
-msgstr ""
+msgstr "Lista codului original de blocuri."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.restore_code_blocks:5
 msgid "The restored Markdown text."
-msgstr ""
+msgstr "Textul restaurat în formatul Markdown."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:1
 msgid "Translates a Markdown file using block-level context."
 msgstr ""
+"Se traducă un fișier cu formatare de la linie (Markdown) folosind contextul "
+"nivel de bloc."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:3
 msgid "The path to the Markdown file."
-msgstr ""
+msgstr "Calea către fișierul de Markdown."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:6
 msgid "The position of the progress bar."
-msgstr ""
+msgstr "Poziția barului de progres."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:7
 msgid "Whether to simulate translation."
-msgstr ""
+msgstr "Dacă ar trebui să simulezez traducerea."
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:8
 msgid "Whether to add the target language name to the first header."
 msgstr ""
+"Dacă să includăm numele limbii țintă în primul capitol.\n"
+"\n"
+"**Optiona**\n"
+"\n"
+"- **Inclusiunea numelor limbi**\n"
+" \n"
+"- Înființarea unei norme \n"
+"- Comentarii\n"
+"- Oferirea unor exemple"
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.translate_markdown:12
 msgid ""
 "A tuple containing (translated_content, rosetta_table, "
 "original_content_without_rosetta, identified_first_header)."
 msgstr ""
+"O tupla conținând (contenutul tradus, tabelul Rosetta, conținutul original "
+"fără tabelul Rosetta, header-ul identificat primul)."
 
 #: ../../source/readme_rosetta.rst:32
-msgid "readme\\_rosetta.rosetta module"
+msgid "readme_rosetta.rosetta module"
 msgstr ""
+"Descoperirea rosettei se referă la procesul de traducere automată a textelor"
+" dintr-un limbaj în altul, folosind tehnologii precum mașinile cuvinte. "
+"Acest lucru este posibil din cauza prezenței unui număr foarte mare de "
+"cuvinte comune în diverse limbi."
 
 #: ../../source/readme_rosetta.rst:40
-msgid "readme\\_rosetta.sphinx\\_handler module"
-msgstr ""
+msgid "readme_rosetta.sphinx_handler module"
+msgstr "Modulului `readme_rosetta.sphinx_handler`"
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler:1
 msgid "Handles Sphinx documentation translation using gettext and PO files."
 msgstr ""
+"Se pot utiliza Sphinx pentru traducerea documentației, folosindu-se GETTEXT "
+"și fișierele PO."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:1
+msgid "Scans for existing Sphinx translations in docs/source/locale."
+msgstr ""
+"Seagă pentru existență de traduceri Sphinx în loculuri din docstube/local."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
 msgid "Replaces rST-specific syntax with placeholders to prevent translation."
 msgstr ""
+"Replace reŕST-specific sintaxă cu locuri de replace to prevent traducere."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:3
 msgid "The rST text."
 msgstr ""
+"**Știre de la evenimente**\n"
+"=========================\n"
+"\n"
+"*   Sunt disponibil pentru a traduce textul dvs. din engleză în română.\n"
+"*   Vă rog să folosiți formatul Markdown/rst pentru textele dvs.\n"
+"*   Nu voi adăuga explicații, comentarii sau introduceri la rândul meu.\n"
+"*   Va rog să menținați originala structură a textului exact."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:4
 msgid "A tuple containing the protected text and original constructs."
-msgstr ""
+msgstr "O tuplă conținând texte protejate și construcții originale."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:1
 msgid "Restores rST-specific syntax from placeholders after translation."
 msgstr ""
+"Conserving sintaxa specifică rST din locurile de întâmplare după traducere."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:4
 msgid "The list of original rST constructs."
 msgstr ""
+"**Construcțiile originale RST**\n"
+"\n"
+"* **Titluri și subtitluri**: \n"
+"    * `.. title:: Titlul documentului`\n"
+"    * `.. subtitle:: Subtitlul documentului`\n"
+"\n"
+"* **Cuvinte cheie**: \n"
+"    * `.. _keyword: Cuvânt cheie`\n"
+"\n"
+"* **Subdocumente**: \n"
+"    * `.. _subdoc1:: Subdocumentul 1`\n"
+"    * `.. subdocument:: Subdocumentul 2`\n"
+"\n"
+"* **Tabeluri**: \n"
+"    * `| col1 | Coloana 1 | ... | Coloana n |\n"
+"        :-----:|:---------:| ... | :------:`\n"
+"\n"
+"* **Lista cu titluri și puncte**:\n"
+"    * `* Titlul lista\n"
+"    * + Punctul lista`\n"
+"\n"
+"* **Câmpuri de exemplu**: \n"
+"    * `.. _example:: Exemplul câmpurilor`\n"
+"        :param1: Vârsta\n"
+"        :param2: Nume\n"
+"\n"
+"* **Folii de stocare**: \n"
+"    * `.. storage::\n"
+"        .. item:: Itemul stocării`\n"
+"\n"
+"* **Câmpuri de exemplu cu tabel**: \n"
+"    * `.. _example_table:: Exemplul câmpurilor tabel`\n"
+"        | Parametrul 1 | Valorile parametrului |\n"
+"        | --- | --- |\n"
+"        | Vârsta | 25 |\n"
+"        | Nume | Ion |"
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.restore_rst:5
 msgid "The restored rST text."
 msgstr ""
+"Textul restaurat în formatul rST a fost recunoscut ca fiind o problemă de "
+"implementare, care nu poate fi rezolvată de către sistemul nostru."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:1
 msgid "Sets up Sphinx documentation, generates API docs, and translates them."
 msgstr ""
+"Instalează și configuriști Sphinx pentru a crea documentație de aplicație, "
+"generezi documentația API și tradu-și-o în limba română."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:3
 msgid "The path to the project source code."
-msgstr ""
+msgstr "Calea spre sursa codului proiectului."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.setup_sphinx:4
 msgid "A list of target language codes."
 msgstr ""
+"*   `ar` - Arabic\n"
+"*   `bg` - Bulgarian\n"
+"*   `ca` - Catalan\n"
+"*   `cs` - Czech\n"
+"*   `da` - Danish\n"
+"*   `de` - German\n"
+"*   `el` - Greek\n"
+"*   `en` - English\n"
+"*   `es` - Spanish\n"
+"*   `et` - Estonian\n"
+"*   `fi` - Finnish\n"
+"*   `fr` - French\n"
+"*   `gl` - Galician\n"
+"*   `hr` - Croatian\n"
+"*   `hu` - Hungarian\n"
+"*   `ia` - Interlingua\n"
+"*   `id` - Indonesian\n"
+"*   `it` - Italian\n"
+"*   `ja` - Japanese\n"
+"*   `km` - Khmer\n"
+"*   `kn` - Kannada\n"
+"*   `ko` - Korean\n"
+"*   `ku` - Kurdish ( Kurmanji )\n"
+"*   `lv` - Latvian\n"
+"*   `lt` - Lithuanian\n"
+"*   `mk` - Macedonian\n"
+"*   `ml` - Malayalam\n"
+"*   `mt` - Maltese\n"
+"*   `nl` - Dutch\n"
+"*   `no` - Norwegian\n"
+"*   `oc` - Occitan\n"
+"*   `pa` - Punjabi\n"
+"*   `pl` - Polish\n"
+"*   `pt` - Portuguese\n"
+"*   `ro` - Romanian\n"
+"*   `ru` - Russian\n"
+"*   `scn` - Sardinian\n"
+"*   `sr` - Serbian ( Latin )\n"
+"*   `ss` - Sesotho\n"
+"*   `su` - Sundanese\n"
+"*   `sv` - Swedish\n"
+"*   `ta` - Tamil\n"
+"*   `te` - Telugu\n"
+"*   `th` - Thai\n"
+"*   `ti` - Tigre\n"
+"*   `tr` - Turkish\n"
+"*   `uk` - Ukrainian\n"
+"*   `ur` - Urdu\n"
+"*   `uz` - Uzbek\n"
+"*   `vi` - Vietnamese"
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:1
 msgid "Translates a Sphinx PO file."
-msgstr ""
+msgstr "Se traduce un fișier PO al Sphinx."
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:3
 msgid "The path to the .po file."
-msgstr ""
+msgstr "Calea către fișierul .po."
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:6
+msgid "True if any translations were made, False otherwise."
+msgstr "Da"
 
 #: ../../source/readme_rosetta.rst:48
-msgid "readme\\_rosetta.translator module"
-msgstr ""
+msgid "readme_rosetta.translator module"
+msgstr "Modulul `readme_rosetta.translator`"
 
 #: of readme_rosetta.translator.Translator:1
 msgid "Handles translation using Ollama LLM models."
-msgstr ""
+msgstr "Îndreaptă traducerea folosind modelul Ollama LLM."
 
 #: of readme_rosetta.translator.Translator.load:1
 msgid "Ensure the model is available in Ollama."
-msgstr ""
+msgstr "Asigură-te că modelul este disponibil în Ollama."
 
 #: of readme_rosetta.translator.Translator.load:3
 msgid "Legacy parameter for compatibility."
-msgstr ""
+msgstr "Parametru de următurile vechi pentru compatibilitate."
 
 #: of readme_rosetta.translator.Translator.translate:1
 msgid "Translate a single string from one language to another."
 msgstr ""
+"Era o zi de vară când am întâlnit-o pentru prima dată, și am înțeles imediat"
+" că nu ne cunoșteam deloc."
 
 #: of readme_rosetta.translator.Translator.translate:3
 msgid "The text to translate."
 msgstr ""
+"Vă rog să răspunțiți la această întrebare: Cum se spune „Hello World`` în "
+"română?"
 
 #: of readme_rosetta.translator.Translator.translate:6
 msgid "The translated text."
-msgstr ""
+msgstr "Textul nu este tradus."
 
 #: of readme_rosetta.translator.Translator.translate_batch:1
 msgid "Translate a list of strings from one language to another."
 msgstr ""
+"O listă de string-uri poate fi tradusă dintr-un limbaj în altul.\n"
+"\n"
+"În mod normal, un program de traducție folosește algoritmi matematice pentru a căuta cuvinte sinonimele pentru fiecare cuvant și să le combineze pentru a obține texte corect traduse."
 
 #: of readme_rosetta.translator.Translator.translate_batch:3
 msgid "The list of strings to translate."
-msgstr ""
+msgstr "Lista cu liste de string pentru traducere."
 
 #: of readme_rosetta.translator.Translator.translate_batch:6
 msgid "A list of translated strings."
-msgstr ""
+msgstr "Înregistrarea de traducție a stringurilor."
 
 #: ../../source/readme_rosetta.rst:56
 msgid "Module contents"
-msgstr ""
+msgstr "Conținutul modului"
 
+#~ msgid "readme\\_rosetta package"
+#~ msgstr "Descarcarea rosetta.ro pe package-ul readme."
+
+#~ msgid "readme\\_rosetta.cli module"
+#~ msgstr ""
+#~ "Modulul `readme_rosetta.cli` este un component de comandă al sistemului "
+#~ "RoSetta, care se folosește pentru a gestiona datele și metodele RoSetta "
+#~ "într-un mod eficient."
+
+#~ msgid "readme\\_rosetta.lang\\_codes module"
+#~ msgstr "Cântecul de documentație rosetta.lang_codes modul"
+
+#~ msgid "readme\\_rosetta.markdown\\_handler module"
+#~ msgstr "Fisierul de citire README.rosetta.markdown_handler modul"
+
+#~ msgid "readme\\_rosetta.rosetta module"
+#~ msgstr "Descoperirea modului rosetta pentru Romanian"
+
+#~ msgid "readme\\_rosetta.sphinx\\_handler module"
+#~ msgstr "Introducerea rosetta a manualului Sphinx"
+
+#~ msgid "readme\\_rosetta.translator module"
+#~ msgstr "Modulul `readme_rosetta.translator`"

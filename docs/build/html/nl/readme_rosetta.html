@@ -36,7 +36,7 @@
   <section id="readme-rosetta-package">
 <h1>Leesme de Roetra package<a class="headerlink" href="#readme-rosetta-package" title="Link to this heading">¶</a></h1>
 <section id="submodules">
-<h2><strong>Onderonderdelen</strong><a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<h2>Onderonderdelen<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-readme_rosetta.cli">
 <span id="readme-rosetta-cli-module"></span><h2>Leesme README file rozetta-cli module.<a class="headerlink" href="#module-readme_rosetta.cli" title="Link to this heading">¶</a></h2>
@@ -87,7 +87,7 @@
 <dd><p>Schoonmaakt een Markdown-kop als ankerlink gebruikelijk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameeters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>header</strong> – <strong>Het hoofdonderwerp</strong></p>
+<dd class="field-odd"><p><strong>header</strong> – Het hoofdonderwerp</p>
 </dd>
 <dt class="field-even">Terugkeert<span class="colon">:</span></dt>
 <dd class="field-even"><p>De geëste headerlink (bijv.: “#my-header”).</p>
@@ -116,9 +116,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameeters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>first_header</strong> – <strong>Eerste hoofdstuk</strong></p></li>
+<li><p><strong>first_header</strong> – Eerste hoofdstuk</p></li>
 <li><p><strong>start_code</strong> – English</p></li>
-<li><p><strong>end_code</strong> – <strong>Doeltaal:</strong> Nederlands</p></li>
+<li><p><strong>end_code</strong> – Doeltaal: Nederlands</p></li>
 <li><p><strong>existing_table</strong> – Er bestaat momenteel geen actief gebruik van de oude Rosetta-tabel.</p></li>
 <li><p><strong>target_file</strong> – Naam van het doelbestand (voor splitsmodus).</p></li>
 <li><p><strong>base_url</strong> – De basis URLs voor absoluut hyperlinks.</p></li>
@@ -152,7 +152,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameeters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> – De <strong>ge Translate</strong> tekst met <strong>vervangingen</strong>.</p></li>
+<li><p><strong>text</strong> – De ge Translate tekst met vervangingen.</p></li>
 <li><p><strong>placeholders</strong> – De lijst met oorspronkelijke codeblokken.</p></li>
 </ul>
 </dd>
@@ -171,7 +171,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>md_text_path</strong> – De route naar de Markdown-bestand.</p></li>
 <li><p><strong>start_code</strong> – English</p></li>
-<li><p><strong>end_code</strong> – <strong>Doeltaal:</strong> Nederlands</p></li>
+<li><p><strong>end_code</strong> – Doeltaal: Nederlands</p></li>
 <li><p><strong>pbar_pos</strong> – De positie van de voortgangsbare.</p></li>
 <li><p><strong>dry_run</strong> – Of welke manier de vertaling te simuleren.</p></li>
 <li><p><strong>add_lang_to_header</strong> – Of besluiten of het toevoegen van de naam van het doeltaal tot de eerste hoofdletters.</p></li>
@@ -205,6 +205,17 @@
 <dd><p>Basisklassen: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Sphinx-documentatie wordt gegradeerd met behulp van gettext en PO-bestanden.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.discover_translations">
+<span class="sig-name descname"><span class="pre">discover_translations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.discover_translations"><span class="viewcode-link"><span class="pre">[broncode]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.discover_translations" title="Link to this definition">¶</a></dt>
+<dd><p>Ziet scans voor bestaande Sphinx vertalingen in docs/source/locale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Terugkeert<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Lijst van taalcodes gevonden.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.protect_rst">
 <span class="sig-name descname"><span class="pre">protect_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.protect_rst"><span class="viewcode-link"><span class="pre">[broncode]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.protect_rst" title="Link to this definition">¶</a></dt>
 <dd><p>Vervangt rST-specifieke syntax met plaatshouders om de vertaling te blokkeren.</p>
@@ -225,7 +236,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameeters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> – De <strong>ge Translate</strong> tekst met <strong>vervangingen</strong>.</p></li>
+<li><p><strong>text</strong> – De ge Translate tekst met vervangingen.</p></li>
 <li><p><strong>placeholders</strong> – De lijst van originele RST-constructs.</p></li>
 </ul>
 </dd>
@@ -252,15 +263,18 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file">
-<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[broncode]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[broncode]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
 <dd><p>Sphinx-typing-tool vertaalt een Sphinx PO-bestand.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameeters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>po_path</strong> – De pad naar de .po-bestand.</p></li>
 <li><p><strong>from_code</strong> – English</p></li>
-<li><p><strong>to_code</strong> – <strong>Doeltaal:</strong> Nederlands</p></li>
+<li><p><strong>to_code</strong> – Doeltaal: Nederlands</p></li>
 </ul>
+</dd>
+<dt class="field-even">Terugkeert<span class="colon">:</span></dt>
+<dd class="field-even"><p>Niet waarschijnlijk</p>
 </dd>
 </dl>
 </dd></dl>
@@ -295,7 +309,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> – Ik heb nog nooit iemand tegengewoorden been gehad.</p></li>
 <li><p><strong>from_code</strong> – English</p></li>
-<li><p><strong>to_code</strong> – <strong>Doeltaal:</strong> Nederlands</p></li>
+<li><p><strong>to_code</strong> – Doeltaal: Nederlands</p></li>
 </ul>
 </dd>
 <dt class="field-even">Terugkeert<span class="colon">:</span></dt>
@@ -314,7 +328,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>texts</strong> – De lijst met teksten om te vertalen.</p></li>
 <li><p><strong>from_code</strong> – English</p></li>
-<li><p><strong>to_code</strong> – <strong>Doeltaal:</strong> Nederlands</p></li>
+<li><p><strong>to_code</strong> – Doeltaal: Nederlands</p></li>
 </ul>
 </dd>
 <dt class="field-even">Terugkeert<span class="colon">:</span></dt>

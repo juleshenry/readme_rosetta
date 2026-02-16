@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:11-0600\n"
+"POT-Creation-Date: 2026-02-16 10:28-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../source/readme_rosetta.rst:2
-msgid "readme\\_rosetta package"
+msgid "readme_rosetta package"
 msgstr ""
 
 #: ../../source/readme_rosetta.rst:5
@@ -29,7 +29,7 @@ msgid "Submodules"
 msgstr ""
 
 #: ../../source/readme_rosetta.rst:8
-msgid "readme\\_rosetta.cli module"
+msgid "readme_rosetta.cli module"
 msgstr ""
 
 #: of readme_rosetta.cli.get_git_remote_url:1
@@ -57,7 +57,7 @@ msgid "Whether to enable verbose (DEBUG) logging."
 msgstr ""
 
 #: ../../source/readme_rosetta.rst:16
-msgid "readme\\_rosetta.lang\\_codes module"
+msgid "readme_rosetta.lang_codes module"
 msgstr ""
 
 #: of readme_rosetta.lang_codes:1
@@ -65,7 +65,7 @@ msgid "Mapping of ISO language codes to their full English names."
 msgstr ""
 
 #: ../../source/readme_rosetta.rst:24
-msgid "readme\\_rosetta.markdown\\_handler module"
+msgid "readme_rosetta.markdown_handler module"
 msgstr ""
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler:1
@@ -97,6 +97,7 @@ msgid "Path to the main README file."
 msgstr ""
 
 #: of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:4
+#: readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:3
 msgid "List of language codes found."
 msgstr ""
 
@@ -204,15 +205,19 @@ msgid ""
 msgstr ""
 
 #: ../../source/readme_rosetta.rst:32
-msgid "readme\\_rosetta.rosetta module"
+msgid "readme_rosetta.rosetta module"
 msgstr ""
 
 #: ../../source/readme_rosetta.rst:40
-msgid "readme\\_rosetta.sphinx\\_handler module"
+msgid "readme_rosetta.sphinx_handler module"
 msgstr ""
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler:1
 msgid "Handles Sphinx documentation translation using gettext and PO files."
+msgstr ""
+
+#: of readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:1
+msgid "Scans for existing Sphinx translations in docs/source/locale."
 msgstr ""
 
 #: of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
@@ -259,8 +264,12 @@ msgstr ""
 msgid "The path to the .po file."
 msgstr ""
 
+#: of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:6
+msgid "True if any translations were made, False otherwise."
+msgstr ""
+
 #: ../../source/readme_rosetta.rst:48
-msgid "readme\\_rosetta.translator module"
+msgid "readme_rosetta.translator module"
 msgstr ""
 
 #: of readme_rosetta.translator.Translator:1
@@ -302,4 +311,25 @@ msgstr ""
 #: ../../source/readme_rosetta.rst:56
 msgid "Module contents"
 msgstr ""
+
+#~ msgid "readme\\_rosetta package"
+#~ msgstr ""
+
+#~ msgid "readme\\_rosetta.cli module"
+#~ msgstr ""
+
+#~ msgid "readme\\_rosetta.lang\\_codes module"
+#~ msgstr ""
+
+#~ msgid "readme\\_rosetta.markdown\\_handler module"
+#~ msgstr ""
+
+#~ msgid "readme\\_rosetta.rosetta module"
+#~ msgstr ""
+
+#~ msgid "readme\\_rosetta.sphinx\\_handler module"
+#~ msgstr ""
+
+#~ msgid "readme\\_rosetta.translator module"
+#~ msgstr ""
 

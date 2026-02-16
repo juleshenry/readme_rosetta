@@ -12,12 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2026-02-16 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: ja\n"
 "Language-Team: ja <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../source/publish.rst:2
@@ -26,59 +26,62 @@ msgstr "publish module"
 
 #: of publish.get_current_version:1
 msgid "Reads the current version from pyproject.toml."
-msgstr ""
+msgstr "`pyproject.toml`を読む。"
 
 #: ../../source/publish.rst
 msgid "Returns"
-msgstr ""
+msgstr "返済"
 
 #: of publish.get_current_version:3
 msgid "The version string."
-msgstr ""
+msgstr "バージョン番号"
 
 #: of publish.main:1
 msgid ""
-"Main entry point for the publish script. Increments version, updates "
-"files, builds the package, and pushes to git."
-msgstr ""
+"Main entry point for the publish script. Increments version, updates files, "
+"builds the package, and pushes to git."
+msgstr "主パブリッシュスクリプトのエントリーポイント。バージョンを増分し、ファイルを更新し、パッケージをビルドし、Git に 푸します。"
 
 #: of publish.run_command:1
 msgid "Runs a shell command and exits if it fails."
 msgstr ""
+"```\n"
+"# シェルコマンドを実行して failure になる場合は exit する\n"
+"./コマンド [オプション] [引数] || exit 1\n"
+"```"
 
 #: ../../source/publish.rst
 msgid "Parameters"
-msgstr ""
+msgstr "パラメータ"
 
 #: of publish.run_command:3
 msgid "The shell command to run."
-msgstr ""
+msgstr "コマンドを実行するシェルコマンド"
 
 #: of publish.run_command:4
 msgid "Optional error message to display on failure."
-msgstr ""
+msgstr "エラーの場合に表示するオプション的エラーメッセージを示します。"
 
 #: of publish.update_changelog:1
 msgid "Adds a new entry to the CHANGELOG.md file."
-msgstr ""
+msgstr "`CHANGELOG.md`に新しいエントリを追加します。"
 
 #: of publish.update_changelog:3
 msgid "The version string to add."
-msgstr ""
+msgstr "バージョン番号を追加すること。"
 
 #: of publish.update_file:1
 msgid "Replaces a pattern in a file with new text."
-msgstr ""
+msgstr "ファイルをパターンで置き換える"
 
 #: of publish.update_file:3
 msgid "Path to the file."
-msgstr ""
+msgstr "ファイルのパスです。"
 
 #: of publish.update_file:4
 msgid "Regex pattern to search for."
-msgstr ""
+msgstr "レガーコンメンストを検索するためのパターン"
 
 #: of publish.update_file:5
 msgid "Text to replace the pattern with."
-msgstr ""
-
+msgstr "パターンを置き換えるテキスト"

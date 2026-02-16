@@ -12,12 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2026-02-16 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../source/index.rst:23
@@ -57,7 +57,7 @@ msgid "API Reference"
 msgstr "API Reference"
 
 #: ../../source/index.rst:21
-#, fuzzy
 msgid "See the :doc:`modules` for the full API documentation."
-msgstr "Voir le :doc:`new/modules` pour la documentation complète de l'API."
-
+msgstr ""
+"Veuillez consulter la page :doc:`modules` pour obtenir les informations de "
+"détails complet sur l'API."

@@ -158,22 +158,24 @@
         <span class="k">if</span> <span class="n">simple</span><span class="p">:</span>
             <span class="n">system_msg</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Translate the following single word or short phrase from </span><span class="si">{</span><span class="n">from_lang</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">to_lang</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;Respond ONLY with the translation. No punctuation unless part of the translation. No explanations.&quot;</span>
+                <span class="s2">&quot;Respond ONLY with the translation. No punctuation unless part of the translation. No explanations. &quot;</span>
+                <span class="s2">&quot;DO NOT add any extra lines or formatting. If the input is one line, the output MUST be one line.&quot;</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">system_msg</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;You are a professional translator.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;You are a professional robotic translator.</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;Source Language: </span><span class="si">{</span><span class="n">from_lang</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;Target Language: </span><span class="si">{</span><span class="n">to_lang</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
                 <span class="s2">&quot;RULES:</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;1. Translate the user&#39;s text precisely from </span><span class="si">{</span><span class="n">from_lang</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">to_lang</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;2. Respond ONLY with the translated text. No notes, introductions, or explanations.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;3. Preserve all Markdown formatting (headers, lists, bold, etc.) exactly.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;4. Do NOT hallucinate. Do NOT add any new features, sections, links, or information.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;5. Maintain the original structure of the document segment.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;6. Do NOT add any links that are not present in the source text.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;2. Respond ONLY with the translated text. DO NOT add any explanations, notes, or introductions.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;3. Preserve all Markdown/rST formatting (headers, lists, bold, etc.) exactly. DO NOT add new headers or structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;4. DO NOT hallucinate. DO NOT add any new features, examples, sections, or information.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;5. Maintain the original structure of the text exactly. If the input is a single sentence, the output MUST be a single sentence.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;6. Do NOT add any links or code blocks that are not present in the source text.</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="s2">&quot;7. If you cannot translate something, return the original text as is.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;8. DO NOT assume the project&#39;s technology (e.g., don&#39;t add &#39;npm install&#39; if it&#39;s not there).&quot;</span>
+                <span class="s2">&quot;8. DO NOT assume the project&#39;s technology. DO NOT add &#39;npm install&#39; or similar commands if they are not in the source.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;9. CRITICAL: If the input text is a short description, DO NOT expand it into an example or a full document.&quot;</span>
             <span class="p">)</span>
             <span class="n">found_placeholders_types</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">if</span> <span class="s2">&quot;ROSETTA_CB_&quot;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
@@ -184,7 +186,7 @@
             <span class="k">if</span> <span class="n">found_placeholders_types</span><span class="p">:</span>
                 <span class="n">placeholders_str</span> <span class="o">=</span> <span class="s2">&quot; and &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">found_placeholders_types</span><span class="p">)</span>
                 <span class="n">system_msg</span> <span class="o">+=</span> <span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">9. Preserve all placeholders like </span><span class="si">{</span><span class="n">placeholders_str</span><span class="si">}</span><span class="s2"> exactly.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">10. Preserve all placeholders like </span><span class="si">{</span><span class="n">placeholders_str</span><span class="si">}</span><span class="s2"> exactly.&quot;</span>
                 <span class="p">)</span>
 
         <span class="c1"># Count placeholders in source</span>
@@ -211,6 +213,14 @@
                 <span class="p">)</span>
                 <span class="n">translated</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;content&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw response from model: </span><span class="si">{</span><span class="n">translated</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+                <span class="c1"># Validation: Line count sanity check for single-line inputs</span>
+                <span class="k">if</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">and</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">translated</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">translated</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                            <span class="s2">&quot;Single-line input resulted in multi-line output. Hallucination suspected.&quot;</span>
+                        <span class="p">)</span>
+                        <span class="n">is_bad</span> <span class="o">=</span> <span class="kc">True</span>
 
                 <span class="c1"># Check if it looks like a conversational response instead of a translation</span>
                 <span class="n">is_bad</span> <span class="o">=</span> <span class="kc">False</span>
@@ -375,9 +385,9 @@
     </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigare</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Conținuturi</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">readme_rosetta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Fișierul rosette</a></li>
 </ul>
 
 <div class="relations">

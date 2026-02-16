@@ -167,13 +167,13 @@
                 <span class="sa">f</span><span class="s2">&quot;Target Language: </span><span class="si">{</span><span class="n">to_lang</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
                 <span class="s2">&quot;RULES:</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;1. Translate the user&#39;s text precisely from </span><span class="si">{</span><span class="n">from_lang</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">to_lang</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;2. Respond ONLY with the translated text. No notes, introductions, or explanations.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;3. Preserve all Markdown formatting (headers, lists, bold, etc.) exactly.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;4. Do NOT hallucinate. Do NOT add any new features, sections, links, or information.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;5. Maintain the original structure of the document segment.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;6. Do NOT add any links that are not present in the source text.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;2. Respond ONLY with the translated text. DO NOT add any explanations, notes, or introductions.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;3. Preserve all Markdown/rST formatting (headers, lists, bold, etc.) exactly. DO NOT add new headers or structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;4. DO NOT hallucinate. DO NOT add any new features, examples, sections, or information.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;5. Maintain the original structure of the text exactly. If the input is a single sentence, the output MUST be a single sentence.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;6. Do NOT add any links or code blocks that are not present in the source text.</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="s2">&quot;7. If you cannot translate something, return the original text as is.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;8. DO NOT assume the project&#39;s technology (e.g., don&#39;t add &#39;npm install&#39; if it&#39;s not there).&quot;</span>
+                <span class="s2">&quot;8. DO NOT assume the project&#39;s technology. DO NOT add &#39;npm install&#39; or similar commands if they are not in the source.&quot;</span>
             <span class="p">)</span>
             <span class="n">found_placeholders_types</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">if</span> <span class="s2">&quot;ROSETTA_CB_&quot;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>

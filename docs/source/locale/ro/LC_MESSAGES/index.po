@@ -12,50 +12,84 @@ msgstr ""
 "POT-Creation-Date: 2026-02-16 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: ro\n"
 "Language-Team: ro <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100"
-" < 20)) ? 1 : 2);\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../source/index.rst:23
 msgid "Contents:"
-msgstr ""
+msgstr "Conținuturi"
 
 #: ../../source/index.rst:7
 msgid "readme-rosetta documentation"
-msgstr ""
+msgstr "Cântecul de lectură a rosetta"
 
 #: ../../source/index.rst:9
 msgid ""
 "Welcome to the documentation for readme-rosetta. This project helps you "
 "translate your README files into multiple languages."
 msgstr ""
+"Salutat în documentația pentru readme-rosetta. Acest proiect vă ajuta să "
+"traduceți fișele de informații despre proiect (README) în mai multe limbi."
 
 #: ../../source/index.rst:12
 msgid "Features"
-msgstr ""
+msgstr "Caracteristici"
 
 #: ../../source/index.rst:14
 msgid "Automatic translation of README files."
 msgstr ""
+"Traducerea automată a fișierelor de manual.\n"
+"\n"
+"Conținut\n"
+"---------\n"
+"\n"
+"Această secțiune descrie cum se poate folosi software-ul pentru traducerea fișierelor de manual.\n"
+"\n"
+"Instalarea\n"
+"------------\n"
+"\n"
+"Pentru a instala programul, fiecare fișier specific trebuie extras și tradus separat. Fiecare fișier va avea propria versiune de traducere asociată cu el.\n"
+"Într-un viitor pas, se speră că se vor implementa funcții pentru a identifica automat diferite categorii în fișierele de manual (p.ex. secțiuni despre hardware).\n"
+"Cum să folosești\n"
+"-----------------\n"
+"\n"
+"Când se traduce o fișier de manual, atenție la următoarele aspecte:\n"
+"*   Se va trebui să fie tradus un fișier de manual complet înainte ca altul.\n"
+"*   Pentru fiecare fișier care este tradus, un nou subiect va fi creat pentru acea secțiune a documentației.\n"
+"Unii utilizatori pot avea nevoie de câteva zile între o și trei pentru a se familiariza cu funcțiile noi.\n"
+"\n"
+"Limitări\n"
+"------------\n"
+"\n"
+"Pentru un moment în care nu există traducere automată, nu putem să oferim fișiere de manual complete."
 
 #: ../../source/index.rst:15
 msgid "Support for multiple languages."
-msgstr ""
+msgstr "Susținere pentru multe limbi."
 
 #: ../../source/index.rst:16
 msgid "Easy to use CLI."
-msgstr ""
+msgstr "Uzual de utilizat pentru interfața linie de comand (CLI)."
 
 #: ../../source/index.rst:19
 msgid "API Reference"
 msgstr ""
+"**Referință API**\n"
+"\n"
+"*   **Înființare**: URL-ul domeniului\n"
+"*   **Autentificare**: Utilizați contul dumneavoastră pentru autenticarea utilizatorilor.\n"
+"*   **Obtineri de date**: Puteți obține date prin solicitări GET.\n"
+"*   ** Întregiri**: Puteti face integri prin solicitiile POST.\n"
+"*   **Comunicație cu server**: Aplicația se conectează direct la serverul API.\n"
+"*   **Mensiunea aplicatiei**: Aplicația este utilizată pentru a gestiona informațiile pe site-ul nostru."
 
 #: ../../source/index.rst:21
 msgid "See the :doc:`modules` for the full API documentation."
 msgstr ""
-
+"Vă rugăm să consultați documentația API completă :doc:`modules` pentru "
+"informații suplimentare."

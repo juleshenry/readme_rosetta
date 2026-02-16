@@ -36,7 +36,7 @@
   <section id="readme-rosetta-package">
 <h1><strong>قالب قراءة rosetta</strong><a class="headerlink" href="#readme-rosetta-package" title="Link to this heading">¶</a></h1>
 <section id="submodules">
-<h2><strong>مطاعن إضافية</strong><a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<h2>مطاعن إضافية<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-readme_rosetta.cli">
 <span id="readme-rosetta-cli-module"></span><h2><cite>ملخص rosetta.cli模块</cite><a class="headerlink" href="#module-readme_rosetta.cli" title="Link to this heading">¶</a></h2>
@@ -64,7 +64,7 @@
 <dd><p>يستخدم التوجيهات للتوحيد اللازم لترجمة النصوص.</p>
 <dl class="field-list simple">
 <dt class="field-odd">الوامل<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>verbose</strong> -- <a href="#id1"><span class="problematic" id="id2">**</span></a>هل يُسمح بتشغيل التوجيه الم detalلي (التسجيل DEBUG)? **</p>
+<dd class="field-odd"><p><strong>verbose</strong> -- هل يُسمح بتشغيل التوجيه الم detalلي (التسجيل DEBUG)?</p>
 </dd>
 </dl>
 </dd></dl>
@@ -118,7 +118,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">الوامل<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>first_header</strong> -- <strong>العنوان</strong></p></li>
+<li><p><strong>first_header</strong> -- العنوان</p></li>
 <li><p><strong>start_code</strong> -- <cite>en</cite></p></li>
 <li><p><strong>end_code</strong> -- # لغة الترجمة
 اللغة المستهدفة هي العربية (<cite>ar</cite>)</p></li>
@@ -217,6 +217,17 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>تحسين الترجمة لドキュمانت Sphinx باستخدام gettext وملفات PO</strong></p>
 <dl class="py method">
+<dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.discover_translations">
+<span class="sig-name descname"><span class="pre">discover_translations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.discover_translations"><span class="viewcode-link"><span class="pre">[المصدر]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.discover_translations" title="Link to this definition">¶</a></dt>
+<dd><p>يحقق扫ر للتحقق من الأصلية لترجمات Sphinx الحالية في(docs/source/locale).</p>
+<dl class="field-list simple">
+<dt class="field-odd"># يرجى العودة<span class="colon">:</span></dt>
+<dd class="field-odd"><p># قائمة kodات اللغات المكتشفة</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.protect_rst">
 <span class="sig-name descname"><span class="pre">protect_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.protect_rst"><span class="viewcode-link"><span class="pre">[المصدر]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.protect_rst" title="Link to this definition">¶</a></dt>
 <dd><p><strong>Replacement of rST-Specific Syntax</strong></p>
@@ -264,7 +275,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file">
-<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[المصدر]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">translate_po_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/readme_rosetta/sphinx_handler.html#SphinxHandler.translate_po_file"><span class="viewcode-link"><span class="pre">[المصدر]</span></span></a><a class="headerlink" href="#readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file" title="Link to this definition">¶</a></dt>
 <dd><p><cite>ترجمة archivo.po للبروتوكول Sphinx</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">الوامل<span class="colon">:</span></dt>
@@ -274,6 +285,9 @@
 <li><p><strong>to_code</strong> -- # لغة الترجمة
 اللغة المستهدفة هي العربية (<cite>ar</cite>)</p></li>
 </ul>
+</dd>
+<dt class="field-even"># يرجى العودة<span class="colon">:</span></dt>
+<dd class="field-even"><p>False</p>
 </dd>
 </dl>
 </dd></dl>
@@ -291,7 +305,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="readme_rosetta.translator.Translator.load">
 <span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_files_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/readme_rosetta/translator.html#Translator.load"><span class="viewcode-link"><span class="pre">[المصدر]</span></span></a><a class="headerlink" href="#readme_rosetta.translator.Translator.load" title="Link to this definition">¶</a></dt>
-<dd><p><strong>وضح أن العدات المتاحة في Ollama.</strong></p>
+<dd><p>وضح أن العدات المتاحة في Ollama.</p>
 <dl class="field-list simple">
 <dt class="field-odd">الوامل<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>local_files_only</strong> -- Legacy parameter for compatibility.</p>

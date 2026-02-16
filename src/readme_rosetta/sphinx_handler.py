@@ -81,19 +81,58 @@ class SphinxHandler:
             return match.group(0)
 
         pattern = re.compile(r"ROSETTA[_\s-]*RST[_\s-]*(\d+)", re.IGNORECASE)
-        return pattern.sub(replace_match, text)
+        restored = pattern.sub(replace_match, text)
+        return self.fix_rst_underlines(restored)
 
-    def translate_po_file(self, po_path: str, from_code: str, to_code: str) -> None:
+    def fix_rst_underlines(self, text: str) -> str:
+        """
+        Ensures rST underlines (===, ---, etc.) are at least as long as the preceding text.
+
+        :param text: The rST text.
+        :return: The rST text with fixed underlines.
+        """
+        lines = text.splitlines()
+        fixed_lines = []
+        for i in range(len(lines)):
+            line = lines[i]
+            if i > 0 and re.match(r"^([=~`'\-\^\"*+#])\1+$", line):
+                prev_line = lines[i - 1].strip()
+                if prev_line:
+                    char = line[0]
+                    if len(line) < len(prev_line):
+                        line = char * len(prev_line)
+            fixed_lines.append(line)
+        return "\n".join(fixed_lines)
+
+    def discover_translations(self) -> List[str]:
+        """
+        Scans for existing Sphinx translations in docs/source/locale.
+
+        :return: List of language codes found.
+        """
+        locale_dir = os.path.join(os.getcwd(), "docs", "source", "locale")
+        if not os.path.exists(locale_dir):
+            return []
+
+        langs = []
+        for d in os.listdir(locale_dir):
+            if os.path.isdir(os.path.join(locale_dir, d)):
+                if os.path.exists(os.path.join(locale_dir, d, "LC_MESSAGES")):
+                    langs.append(d)
+        return sorted(langs)
+
+    def translate_po_file(self, po_path: str, from_code: str, to_code: str) -> bool:
         """
         Translates a Sphinx PO file.
 
         :param po_path: The path to the .po file.
         :param from_code: The source language code.
         :param to_code: The target language code.
+        :return: True if any translations were made, False otherwise.
         """
         if not polib:
             logger.warning("polib not installed, skipping PO translation")
-            return
+            return False
 
         po = polib.pofile(po_path)
         entries_to_translate = [
@@ -137,6 +176,8 @@ class SphinxHandler:
                     entry.flags.remove("fuzzy")
 
             po.save()
+            return True
+        return False
 
     def setup_sphinx(
         self, project_path: str, langs: List[str], start_code: str = "en"
@@ -230,6 +271,10 @@ class SphinxHandler:
             if lang == ".":
                 continue
 
+            # Check if we can skip updating if it's already done
+            locale_dir = os.path.join(source_dir, "locale", lang, "LC_MESSAGES")
+            html_output = os.path.join(docs_dir, "build", "html", lang)
+
             console.print(f"Updating catalogs for {lang}...")
             subprocess.run(
                 [
@@ -247,15 +292,22 @@ class SphinxHandler:
                 capture_output=True,
             )
 
-            locale_dir = os.path.join(source_dir, "locale", lang, "LC_MESSAGES")
+            any_translated = False
             if os.path.exists(locale_dir):
                 po_files = [f for f in os.listdir(locale_dir) if f.endswith(".po")]
                 for f in tqdm(po_files, desc=f"PO files ({lang})", leave=False):
-                    self.translate_po_file(
+                    if self.translate_po_file(
                         os.path.join(locale_dir, f), start_code, lang
-                    )
+                    ):
+                        any_translated = True
 
-            # Build HTML for this language
+            # Build HTML for this language if needed
+            if not any_translated and os.path.exists(html_output):
+                console.print(
+                    f"[blue]Sphinx translation for {lang} is up to date. Skipping build.[/blue]"
+                )
+                continue
+
             console.print(f"Building HTML for {lang}...")
             subprocess.run(
                 [

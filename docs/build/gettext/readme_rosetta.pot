@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: readme-rosetta 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 10:17-0600\n"
+"POT-Creation-Date: 2026-02-16 10:28-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,6 +93,7 @@ msgid "Path to the main README file."
 msgstr ""
 
 #: ../../../src/readme_rosetta/markdown_handler.py:docstring of readme_rosetta.markdown_handler.MarkdownHandler.discover_translations:4
+#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:3
 msgid "List of language codes found."
 msgstr ""
 
@@ -209,6 +210,10 @@ msgstr ""
 msgid "Handles Sphinx documentation translation using gettext and PO files."
 msgstr ""
 
+#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.discover_translations:1
+msgid "Scans for existing Sphinx translations in docs/source/locale."
+msgstr ""
+
 #: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.protect_rst:1
 msgid "Replaces rST-specific syntax with placeholders to prevent translation."
 msgstr ""
@@ -251,6 +256,10 @@ msgstr ""
 
 #: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:3
 msgid "The path to the .po file."
+msgstr ""
+
+#: ../../../src/readme_rosetta/sphinx_handler.py:docstring of readme_rosetta.sphinx_handler.SphinxHandler.translate_po_file:6
+msgid "True if any translations were made, False otherwise."
 msgstr ""
 
 #: ../../source/readme_rosetta.rst:48

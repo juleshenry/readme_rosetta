@@ -12,12 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2026-02-16 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: de\n"
 "Language-Team: de <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../source/publish.rst:2
@@ -26,59 +26,67 @@ msgstr "publish module"
 
 #: of publish.get_current_version:1
 msgid "Reads the current version from pyproject.toml."
-msgstr ""
+msgstr "Liest die aktuelle Version aus dem pyproject.toml."
 
 #: ../../source/publish.rst
 msgid "Returns"
 msgstr ""
+"**Keine Übersetzung gefunden**\n"
+"\n"
+"Keine Übersetzung gefunden. \n"
+"\n"
+"**Ursprünglicher Text**\n"
+" \n"
+" keines"
 
 #: of publish.get_current_version:3
 msgid "The version string."
-msgstr ""
+msgstr "Die Versionierung."
 
 #: of publish.main:1
 msgid ""
-"Main entry point for the publish script. Increments version, updates "
-"files, builds the package, and pushes to git."
+"Main entry point for the publish script. Increments version, updates files, "
+"builds the package, and pushes to git."
 msgstr ""
+"Der Haupteingangsplatz für den Veröffentlichungsskript. Die Version erhöht, "
+"die Dateien aktualisiert, das Paket buildet und auf Git pusht."
 
 #: of publish.run_command:1
 msgid "Runs a shell command and exits if it fails."
-msgstr ""
+msgstr "Führt eine Schellkommando aus und beendet sich, wenn es fehlschlägt."
 
 #: ../../source/publish.rst
 msgid "Parameters"
-msgstr ""
+msgstr "Parameter"
 
 #: of publish.run_command:3
 msgid "The shell command to run."
-msgstr ""
+msgstr "Die Shell-Befehlszeile zum Ausführen."
 
 #: of publish.run_command:4
 msgid "Optional error message to display on failure."
-msgstr ""
+msgstr "optional fehlermeldung zum anzeigen bei versagen"
 
 #: of publish.update_changelog:1
 msgid "Adds a new entry to the CHANGELOG.md file."
-msgstr ""
+msgstr "Fügt eine neue Eintrag hinzu zur DATEI CHANGELOG.md."
 
 #: of publish.update_changelog:3
 msgid "The version string to add."
-msgstr ""
+msgstr "Die Versionenstring zum Hinzufügen."
 
 #: of publish.update_file:1
 msgid "Replaces a pattern in a file with new text."
-msgstr ""
+msgstr "Ersetzt einen Muster im Datei mit neuem Text."
 
 #: of publish.update_file:3
 msgid "Path to the file."
-msgstr ""
+msgstr "Der Pfad zum Datei."
 
 #: of publish.update_file:4
 msgid "Regex pattern to search for."
-msgstr ""
+msgstr "RegEx-Muster zum Suchen nach."
 
 #: of publish.update_file:5
 msgid "Text to replace the pattern with."
-msgstr ""
-
+msgstr "Einen Text zu ersetzen."

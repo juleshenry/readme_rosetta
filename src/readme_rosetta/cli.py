@@ -224,7 +224,12 @@ def main() -> None:
                 logging.info(f"Source file detected: {src_file}")
 
                 # Discover existing translations to populate the stone
-                discovered_langs = md_handler.discover_translations(src_file)
+                discovered_md_langs = md_handler.discover_translations(src_file)
+                discovered_sphinx_langs = sphinx_handler.discover_translations()
+                discovered_langs = sorted(
+                    list(set(discovered_md_langs) | set(discovered_sphinx_langs))
+                )
+
                 if discovered_langs:
                     logging.info(
                         f"Discovered existing translations: {', '.join(discovered_langs)}"
@@ -346,7 +351,11 @@ def main() -> None:
 
         if args.gitbook and not args.dry_run:
             # Include both new translations and existing discovered ones
-            discovered_langs = md_handler.discover_translations(args.readme)
+            discovered_md_langs = md_handler.discover_translations(args.readme)
+            discovered_sphinx_langs = sphinx_handler.discover_translations()
+            discovered_langs = sorted(
+                list(set(discovered_md_langs) | set(discovered_sphinx_langs))
+            )
             all_langs = sorted(list(set(args.langs) | set(discovered_langs)))
 
             if not all_langs:

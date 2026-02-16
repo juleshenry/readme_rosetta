@@ -12,74 +12,76 @@ msgstr ""
 "POT-Creation-Date: 2026-02-16 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: ro\n"
 "Language-Team: ro <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100"
-" < 20)) ? 1 : 2);\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../source/publish.rst:2
 msgid "publish module"
-msgstr ""
+msgstr "Publică modulul."
 
 #: of publish.get_current_version:1
 msgid "Reads the current version from pyproject.toml."
-msgstr ""
+msgstr "Citeste actuala versiune din pyproject.toml."
 
 #: ../../source/publish.rst
 msgid "Returns"
-msgstr ""
+msgstr "Înapoiează"
 
 #: of publish.get_current_version:3
 msgid "The version string."
-msgstr ""
+msgstr "Versiunea de versiune."
 
 #: of publish.main:1
 msgid ""
-"Main entry point for the publish script. Increments version, updates "
-"files, builds the package, and pushes to git."
+"Main entry point for the publish script. Increments version, updates files, "
+"builds the package, and pushes to git."
 msgstr ""
+"Începutul principale pentru scrisul de publicare. Încrucișește versiunea, "
+"updatează fișierele, constrăiește paletele, și trimite la Git."
 
 #: of publish.run_command:1
 msgid "Runs a shell command and exits if it fails."
-msgstr ""
+msgstr "Rulă un comand de consolă și iese dacă eșuează."
 
 #: ../../source/publish.rst
 msgid "Parameters"
-msgstr ""
+msgstr "Parametrii"
 
 #: of publish.run_command:3
 msgid "The shell command to run."
-msgstr ""
+msgstr "Comanda de conștință de sistem pentru a executa."
 
 #: of publish.run_command:4
 msgid "Optional error message to display on failure."
-msgstr ""
+msgstr "Mesajul de eroare optional pentru a fi afișat în caz de eșec."
 
 #: of publish.update_changelog:1
 msgid "Adds a new entry to the CHANGELOG.md file."
-msgstr ""
+msgstr "Înființează un nov nerecordin în fișierul CHANGELOG.md."
 
 #: of publish.update_changelog:3
 msgid "The version string to add."
-msgstr ""
+msgstr "Numele versiunii pentru a adăuga."
 
 #: of publish.update_file:1
 msgid "Replaces a pattern in a file with new text."
-msgstr ""
+msgstr "Întreprinde înlocuirea unui patern într-o fișier cu text nou."
 
 #: of publish.update_file:3
 msgid "Path to the file."
-msgstr ""
+msgstr "Calea spre fișier."
 
 #: of publish.update_file:4
 msgid "Regex pattern to search for."
-msgstr ""
+msgstr "Paternul de regulă pentru căutare:"
 
 #: of publish.update_file:5
 msgid "Text to replace the pattern with."
 msgstr ""
-
+"Nu poti tradusi exact! \n"
+"În loc de a tradusi, o sa înapoi în original."

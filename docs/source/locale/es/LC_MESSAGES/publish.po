@@ -50,7 +50,7 @@ msgstr "Corre una comando de la consola y sale si falla."
 
 #: ../../source/publish.rst
 msgid "Parameters"
-msgstr ""
+msgstr "**Parámetros**"
 
 #: of publish.run_command:3
 msgid "The shell command to run."
@@ -79,6 +79,22 @@ msgstr "Camino al archivo."
 #: of publish.update_file:4
 msgid "Regex pattern to search for."
 msgstr ""
+"**Patrón de regex para buscar**\n"
+"```markdown\n"
+"# Descripción del patrón de regex\n"
+"El patrón de regex busca el texto especificado entre las comillas y o no está rodeado de comillas.\n"
+"\n"
+"## Patrón del regex\n"
+"`^\"([^\"]*)\"$`\n"
+"\n"
+"## Explicación del patrón\n"
+"- `^`: Indica el inicio de la línea.\n"
+"- `\" \"`: Busca un espacio dentro una comilla doble.\n"
+"- `[^\"]*`: Busca cualquier carácter excepto una comilla doble (sino se indica).\n"
+"- `$`: Indica el final de la línea.\n"
+"\n"
+"## Uso del patrón\n"
+"Si estás buscando un texto entre comillas y no quiere que el texto en sí esté rodeado de comillas, puedes usar esta regex."
 
 #: of publish.update_file:5
 msgid "Text to replace the pattern with."

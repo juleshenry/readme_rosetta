@@ -15,7 +15,7 @@
     <script src="_static/translations.js?v=e6b791cb"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="readme_rosetta package" href="readme_rosetta.html" />
+    <link rel="next" title="Lien vers le package readme-rosetta" href="readme_rosetta.html" />
     <link rel="prev" title="readme_rosetta" href="modules.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -39,10 +39,10 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="publish.get_current_version">
 <span class="sig-prename descclassname"><span class="pre">publish.</span></span><span class="sig-name descname"><span class="pre">get_current_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/publish.html#get_current_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#publish.get_current_version" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Reads the current version from pyproject.toml.</p>
+<dd><p>Lise actuellement la version actuelle de la plateforme provenant de pyproject.toml.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The version string.</p>
+<dd class="field-odd"><p>La chaîne de version.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -50,19 +50,18 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="publish.main">
 <span class="sig-prename descclassname"><span class="pre">publish.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/publish.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#publish.main" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Main entry point for the publish script.
-Increments version, updates files, builds the package, and pushes to git.</p>
+<dd><p>Point d’accueil principal pour le script de publication. Incrémente la version, met à jour les fichiers, construit la bibliothèque et pousse vers Git.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="publish.run_command">
 <span class="sig-prename descclassname"><span class="pre">publish.</span></span><span class="sig-name descname"><span class="pre">run_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/publish.html#run_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#publish.run_command" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Runs a shell command and exits if it fails.</p>
+<dd><p>Exécute une commande de ligne et quitte si celle-ci échoue.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>command</strong> – The shell command to run.</p></li>
-<li><p><strong>error_msg</strong> – Optional error message to display on failure.</p></li>
+<li><p><strong>command</strong> – La commande de l’invite de ligne de commande à exécuter.</p></li>
+<li><p><strong>error_msg</strong> – Message d’erreur optionnel à afficher au cas de échec :</p></li>
 </ul>
 </dd>
 </dl>
@@ -71,10 +70,10 @@ Increments version, updates files, builds the package, and pushes to git.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="publish.update_changelog">
 <span class="sig-prename descclassname"><span class="pre">publish.</span></span><span class="sig-name descname"><span class="pre">update_changelog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/publish.html#update_changelog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#publish.update_changelog" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Adds a new entry to the CHANGELOG.md file.</p>
+<dd><p>Ajoute une nouvelle entrée dans le fichier CHANGELOG.md.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>new_version</strong> – The version string to add.</p>
+<dd class="field-odd"><p><strong>new_version</strong> – La chaîne de version à ajouter.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -82,13 +81,14 @@ Increments version, updates files, builds the package, and pushes to git.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="publish.update_file">
 <span class="sig-prename descclassname"><span class="pre">publish.</span></span><span class="sig-name descname"><span class="pre">update_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/publish.html#update_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#publish.update_file" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Replaces a pattern in a file with new text.</p>
+<dd><p>Remplace un modèle dans un fichier avec du texte nouveau.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>file_path</strong> – Path to the file.</p></li>
-<li><p><strong>old_pattern</strong> – Regex pattern to search for.</p></li>
-<li><p><strong>new_text</strong> – Text to replace the pattern with.</p></li>
+<li><p><strong>file_path</strong> – chemin vers le fichier</p></li>
+<li><p><strong>old_pattern</strong> – <strong>Pattern de recherche régulière</strong>
+Recherchez le motif suivant : <cite>^(w+&#64;w+.w+(?:|w+.)*)$</cite></p></li>
+<li><p><strong>new_text</strong> – Remplissez le modèle par le texte suivant :</p></li>
 </ul>
 </dd>
 </dl>
@@ -126,7 +126,7 @@ Increments version, updates files, builds the package, and pushes to git.</p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">readme_rosetta</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">publish module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readme_rosetta.html">readme_rosetta package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme_rosetta.html">Lien vers le package readme-rosetta</a></li>
 </ul>
 </li>
 </ul>
@@ -137,7 +137,7 @@ Increments version, updates files, builds the package, and pushes to git.</p>
   <li><a href="index.html">Documentation overview</a><ul>
   <li><a href="modules.html">readme_rosetta</a><ul>
       <li>Previous: <a href="modules.html" title="Chapitre précédent">readme_rosetta</a></li>
-      <li>Next: <a href="readme_rosetta.html" title="Chapitre suivant">readme_rosetta package</a></li>
+      <li>Next: <a href="readme_rosetta.html" title="Chapitre suivant">Lien vers le package readme-rosetta</a></li>
   </ul></li>
   </ul></li>
 </ul>
