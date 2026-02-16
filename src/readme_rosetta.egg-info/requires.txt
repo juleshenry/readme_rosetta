@@ -1,0 +1,11 @@
+ollama
+tqdm
+polib
+rich
+
+[dev]
+ruff
+
+[test]
+pytest
+pytest-cov
