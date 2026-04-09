@@ -270,6 +270,7 @@ class SphinxHandler:
                     "-m",
                     "sphinx.cmd.quickstart",
                     "-q",
+                    "--sep",
                     "-p",
                     "Project",
                     "-a",
