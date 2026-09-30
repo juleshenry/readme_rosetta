@@ -18,7 +18,7 @@ Translation quality and reliability overhaul.
 * Fix: CLI crashed on Python < 3.11 (`tomllib`); now supports 3.10+ (3.9 is end-of-life).
 * Fix: `publish.py` also rewrote ruff's `target-version` when bumping the version.
 * Removed `--raw` and the implicit Spanish-only mode when no languages are given.
-* Repo: stop tracking build artifacts, compiled catalogs and coverage data.
+* Repo: stop tracking build artifacts, compiled catalogs and coverage data. Releases publish from `publish.yml` on tag push, after tests pass.
 
 ## v0.1.7 (2026-02-16)
 
