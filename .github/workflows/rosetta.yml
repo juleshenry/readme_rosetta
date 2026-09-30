@@ -1,9 +1,7 @@
 name: Translate README
 
+# Manual only: run it from the Actions tab ("Run workflow").
 on:
-  push:
-    branches: [main]
-    paths: [README.md]
   workflow_dispatch:
 
 permissions:
