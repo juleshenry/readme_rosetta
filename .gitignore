@@ -1,8 +1,27 @@
+# Python
 __pycache__/
-__pycache__
+*.py[cod]
+*.egg-info/
+build/
+dist/
 venv/
+.venv/
 .env
+
+# Test / coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+
+# Models
 *.model
 *.gguf
-.rosetta_cache/
+
+# Sphinx build output (sources and .po catalogs stay tracked)
+docs/build/
+docs/source/locale/**/*.mo
+
+# Cache from readme-rosetta 0.1.x (replaced by .rosetta/cache.json)
 .rosetta_cache.json

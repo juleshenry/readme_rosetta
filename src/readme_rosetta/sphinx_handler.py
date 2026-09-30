@@ -1,65 +1,5 @@
 """
-                                                 ▋▆▏                                                
-                                                 ▉▆▎                                                
-                                               ▎▋▂▇▃▌▏                                              
-                                           ▎▌▁▂▍▅▇▇█▂▁▂▉▌▎                                          
-                                      ▍▋▂▅█████▌▃▇▅█▊▄████▇▅▂▋▎                                     
-                                  ▏▊▄▆█████████▇▄▄▂▇███████████▇▃▋▏                                 
-                                 ▊▇██████████▇▆▅▇▋▁█▇▅▆███████████▆▌                                
-                                ▉██████▇▄▃▁▉▍▋▊▍▂▊▁██▌▊▌▋▊▃▃▄▇██████▋                               
-                               ▌████▅▃▁▌▊▍▊▊▋▂▃▉▆▋▋▆█▃▂▂▋▊▅▋▁▂▃▇█████▎                              
-                               ▉█▆▃▁▁▃▌▂▃▄▆████▂▁▂▌▇██████▇▅▄▅▆██████▋                              
-                               ▉▄▅▆▉▃▅████▆▄▄▂▁▉▂▄▎▇█▁▁▂▄▅▅████▇█▇███▊                              
-                               ▂█▅▅███▆▄▉▌▍▎▏   ▏▃▉▅▅    ▎▍▌▉▃▆██████▉                              
-                               ▂███▆▅▅▁▏   ▏▍▋▋▋▋▄▆▆▂▊▉▊▌▎▏ ▏▉███████▁                              
-                               ▂██▆▇██▅▍▉▂▉▌▎▏        ▏▎▋▆█▅▄▅███████▁                              
-                               ▂██████▇▆▁▌▌▍▎           ▎▋▃██████████▁                              
-                              ▏▆███████▄▃▂▄███▆▃▎   ▏▂▅██████████████▆▏                             
-                              ▃████████▉▁▆▆▅▆███▂▏  ▉████▅████████████▁                             
-                             ▋███████▇▄▅█▇▂▇▇▁▅▆█▋ ▌██▇▉▅█▃▅███████████▋                            
-                            ▎▇████████▏ ▏▁▄▄▁▊▌▍▏▏ ▊█▇▌▊▁▃▅▅▄▅██████████▍                           
-                           ▏▄█████████▎            ▉██▎      ▁██████████▅▏                          
-                           ▉███████████▁▎      ▍▌  ▍██▋    ▏▃████████████▉                          
-                          ▍▇████████▆▇███▄▌    ▁▅▅▂▄██▅▎ ▏▉▇██████████████▎                         
-                          ▄█████████▇▆█████▊   ▌▁▃██████▁▅████████████████▄                         
-                         ▋▇█████████▆▁██████▅▎ ▍▁▂▃▃███████████▅███████████▋                        
-                         ▂██████████▄▉███████▄▃█▅▂▂▂▃██████████▊███████████▂                        
-                        ▎▆██████████▂▁████████▇▇███████████████▋███████████▇▍                       
-                        ▋███████████▉▄████████▇▂▊▋▌▌▊▇████████▇▍▇███████████▊                       
-                        ▄███████████▋▂████████▅▌▎▌▊▁▄█████████▇▌▄███████████▅                       
-                       ▏▇███████████▎▃████████████████████████▆▎▇███████████▇▏                      
-                       ▏███████████▅▍▁████▇▎▅█████████████████▅▍▃███████████▇▏                      
-                        ▊██████████▂▋▉█████▌▍▆████████████████▃▋▁███████████▊                       
-                         ▌▄████████▊▉▊▅████▂ ▌▇███████████████▁▋▁▇████████▄▌                        
-                           ▎▊▂▄▆▆▇█▋▁▊▉████▇▏ ▁███████████████▁▊▂▃██▆▆▄▃▊▎                          
-                            ▏▌▉▃▇███████████▉ ▏▅█████████████████████▄▁▋▏                           
-                         ▏▄▆████████████▃▅███▋ ▌█████████████████████████▇▄▏                        
-                         ▎▃▁▇█████▄▃▂▇█▇▁▌▊▃▇▂▏ ▄██▃▌▄███▅████████████████▅▎                        
-                  ▏▍▌▊▁▃▆██▆▋▃▆▄▃▁▆▁▋▋▂▇██▄▂▊▌▊▉▁▃▃▋▊▂▉▊▊▉▄███▄▉▊▅█▆▅▅█▆▉███▆▄▁▊▌▎▏                 
-              ▏▋▃▆▄▃▂▁▂▄▆████▁▉▃▅██▄▅▂▌▌▉▃▆███▆▆▅▄▃▃▄▅▅███▇▄▉▌▋▂▅▄████▁▉▇██████████▆▂▋▏             
-            ▏▁▇▄▋▏       ▏▌▁▂█▆▁▁▃▃▇█▃▆▆▁▉▍▌▊▋▂▂▅▅▃▅▅▃▉▁▉▌▋▊▂▅█▇▂▃▃▄▂▉▅██████▄▍ ▏▋▅███▇▁▏           
-           ▎▆█▊        ▏▍▏▏▍▌▎▁▆█▃▁▂▁▇█▁▄▁▆▅▂▃▃▁▁▂▊▂▂▉▂▄▁▆▅▆▃▉▆██▁▊▂▇███████▇▏     ▁████▆▎          
-          ▏▅█▉          ▏ ▎▎▏   ▎▊▃▅▄▁▉▁▉▇▁▅▁█▃▂▉█▊█▊▂▂█▄▁▂▇▁▃▊▁▂▆██████████▉  ▏ ▏ ▏▇████▅▏         
-          ▋██▏      ▏   ▏▏▏         ▎▋▂▄▄▃▂▂▁▁▉▁▉▃▋▃▉▉▊▂▁▁▁▃▄▇█████████████▁▍▍▏▏  ▏▏▃█████▋         
-          ▃█▅ ▎  ▏▎▏    ▏▏▏         ▏   ▏▎▋▉▂▄▅▆▇▇▆▇▇▇▆▅▄▅▆▄▄▇██████████████▃▎▎▏  ▏▎▁█████▃         
-          ▆█▄ ▏▏▏▏                          ▏▏   ▏▏▏▏   ▏     ▎▋▂▇████████████▃▊▏  ▏▁█████▅         
-          ▇█▅▏        ▍▅▍                    ▏▊▂▃▌              ▎▇██████████████▇▅▅▉▆█████▆         
-          ▇█▇▏       ▎▇█▇▉▎   ▏▏             ▂████▁  ▏▏         ▏▄████████████████████████▇         
-          ▇██▎ ▏    ▏▆██████▅▍▎▎▏           ▉██████▉             ▍▌▍▍▍▍▂██████████████████▇         
-          ▆██▉   ▏  ▁██████▁▎              ▉██▇████▅▎▋▍▎▍               ▎▂████████████████▅         
-          ▅██▅     ▏█████▇▌                 ▎▊▁▇███▄▉█▃▊▎                ▎▌▇██████████████▅         
-
-
-O)))))))    O))))))))      O)       O)))))    O))       O))O))))))))       O)))))))                                 O))    O))            
-O))    O))  O))           O) ))     O))   O)) O) O))   O)))O))             O))    O))                               O))    O))            
-O))    O))  O))          O)  O))    O))    O))O)) O)) O O))O))             O))    O))     O))     O))))    O))    O)O) O)O)O) O)   O))    
-O) O))      O))))))     O))   O))   O))    O))O))  O))  O))O))))))         O) O))       O))  O)) O))     O)   O))   O))    O))   O))  O)) 
-O))  O))    O))        O)))))) O))  O))    O))O))   O)  O))O))             O))  O))    O))    O))  O))) O))))) O))  O))    O))  O))   O)) 
-O))    O))  O))       O))       O)) O))   O)) O))       O))O))             O))    O))   O))  O))     O))O)          O))    O))  O))   O)) 
-O))      O))O))))))))O))         O))O)))))    O))       O))O))))))))       O))      O))   O))    O)) O))  O))))      O))    O))   O)) O)))
-                                                                                                                                          
-
-                                      By Julian Henry                                                                                                                                        
+Sphinx i18n: gettext catalogs translated with the same segment translator.
 """
 
 import logging
@@ -67,14 +7,13 @@ import os
 import re
 import subprocess
 import sys
-from typing import List, Tuple
+from typing import List
 
 try:
     import polib
 except ImportError:
     polib = None
 from rich.console import Console
-from tqdm import tqdm
 
 from .translator import Translator
 
@@ -92,61 +31,6 @@ class SphinxHandler:
         :param translator: The Translator instance to use.
         """
         self.translator = translator
-
-    def protect_rst(self, text: str) -> Tuple[str, List[str]]:
-        """
-        Replaces rST-specific syntax with placeholders to prevent translation.
-
-        :param text: The rST text.
-        :return: A tuple containing the protected text and original constructs.
-        """
-        placeholders = []
-
-        def replace(match):
-            placeholder = f"ROSETTA_RST_{len(placeholders)}"
-            placeholders.append(match.group(0))
-            return placeholder
-
-        # Protect :role:`text`
-        protected_text = re.sub(r":\w+:`[^`]+`|:\w+:\".*?\"|:\w+:'.*?'", replace, text)
-        # Protect ``inline literal``
-        protected_text = re.sub(r"``[^`]+``", replace, protected_text)
-        # Protect `interpreted text` (single backticks)
-        protected_text = re.sub(r"(?<!`)(`[^`]+`)(?!`)", replace, protected_text)
-        # Protect `link <url>`_
-        protected_text = re.sub(r"`[^`]+ <[^>]+>`_+", replace, protected_text)
-        # Protect `target`_
-        protected_text = re.sub(r"`[^`]+`_+", replace, protected_text)
-        # Protect |substitution|
-        protected_text = re.sub(r"\|\w+\|", replace, protected_text)
-        # Protect directive-like things at the start of lines
-        protected_text = re.sub(
-            r"^\.\. \w+::", replace, protected_text, flags=re.MULTILINE
-        )
-
-        return protected_text, placeholders
-
-    def restore_rst(self, text: str, placeholders: List[str]) -> str:
-        """
-        Restores rST-specific syntax from placeholders after translation.
-
-        :param text: The translated text with placeholders.
-        :param placeholders: The list of original rST constructs.
-        :return: The restored rST text.
-        """
-
-        def replace_match(match):
-            try:
-                index = int(match.group(1))
-                if index < len(placeholders):
-                    return placeholders[index]
-            except Exception:
-                pass
-            return match.group(0)
-
-        pattern = re.compile(r"ROSETTA[_\s-]*RST[_\s-]*(\d+)", re.IGNORECASE)
-        restored = pattern.sub(replace_match, text)
-        return self.fix_rst_underlines(restored)
 
     def fix_rst_underlines(self, text: str) -> str:
         """
@@ -185,12 +69,11 @@ class SphinxHandler:
                     langs.append(d)
         return sorted(langs)
 
-    def translate_po_file(self, po_path: str, from_code: str, to_code: str) -> bool:
+    def translate_po_file(self, po_path: str, to_code: str) -> bool:
         """
         Translates a Sphinx PO file.
 
         :param po_path: The path to the .po file.
-        :param from_code: The source language code.
         :param to_code: The target language code.
         :return: True if any translations were made, False otherwise.
         """
@@ -203,45 +86,28 @@ class SphinxHandler:
             e for e in po if e.msgid and (not e.msgstr or "fuzzy" in e.flags)
         ]
 
-        if entries_to_translate:
-            console.print(
-                f"Translating {len(entries_to_translate)} entries in "
-                f"{os.path.basename(po_path)} to {to_code}..."
-            )
+        if not entries_to_translate:
+            return False
 
-            # Use batch translation for PO files
-            batch_size = 32
-            msgids = [e.msgid for e in entries_to_translate]
-            protected_msgids = []
-            all_placeholders = []
+        console.print(
+            f"Translating {len(entries_to_translate)} entries in "
+            f"{os.path.basename(po_path)} to {to_code}..."
+        )
+        msgids = [e.msgid for e in entries_to_translate]
+        translated = self.translator.translate_many(msgids, to_code, syntax="rst")
 
-            for msgid in msgids:
-                protected, placeholders = self.protect_rst(msgid)
-                protected_msgids.append(protected)
-                all_placeholders.append(placeholders)
-
-            translated_msgs = []
-            for i in tqdm(
-                range(0, len(protected_msgids), batch_size),
-                desc="Translating chunks",
-                leave=False,
+        for entry, trans in zip(entries_to_translate, translated):
+            if trans == entry.msgid and self.translator.needs_translation(
+                entry.msgid, "rst"
             ):
-                batch = protected_msgids[i : i + batch_size]
-                translated_msgs.extend(
-                    self.translator.translate_batch(batch, from_code, to_code)
-                )
+                # Translation failed validation; leave it empty so Sphinx shows the source.
+                continue
+            entry.msgstr = self.fix_rst_underlines(trans)
+            if "fuzzy" in entry.flags:
+                entry.flags.remove("fuzzy")
 
-            for entry, trans, placeholders in zip(
-                entries_to_translate, translated_msgs, all_placeholders
-            ):
-                final_trans = self.restore_rst(trans, placeholders)
-                entry.msgstr = final_trans
-                if "fuzzy" in entry.flags:
-                    entry.flags.remove("fuzzy")
-
-            po.save()
-            return True
-        return False
+        po.save()
+        return True
 
     def setup_sphinx(
         self, project_path: str, langs: List[str], start_code: str = "en"
@@ -257,6 +123,7 @@ class SphinxHandler:
         source_dir = os.path.join(docs_dir, "source")
 
         python_exe = sys.executable
+        project = os.path.basename(os.path.abspath(os.getcwd()))
         env = os.environ.copy()
         env["PYTHONPATH"] = os.path.abspath(os.path.join(os.getcwd(), "src"))
 
@@ -272,7 +139,7 @@ class SphinxHandler:
                     "-q",
                     "--sep",
                     "-p",
-                    "Project",
+                    project,
                     "-a",
                     "Author",
                     "-v",
@@ -280,6 +147,7 @@ class SphinxHandler:
                     docs_dir,
                 ],
                 env=env,
+                check=True,
             )
 
         # Ensure conf.py has i18n settings and sys.path for autodoc
@@ -315,6 +183,7 @@ class SphinxHandler:
                 "-f",
             ],
             env=env,
+            check=True,
         )
 
         # Generate gettext
@@ -329,10 +198,11 @@ class SphinxHandler:
                 os.path.join(docs_dir, "build"),
             ],
             env=env,
+            check=True,
         )
 
         # Update and translate PO files
-        for lang in tqdm(langs, desc="Sphinx Languages", position=0):
+        for lang in langs:
             if lang == ".":
                 continue
 
@@ -341,7 +211,7 @@ class SphinxHandler:
             html_output = os.path.join(docs_dir, "build", "html", lang)
 
             console.print(f"Updating catalogs for {lang}...")
-            subprocess.run(
+            result = subprocess.run(
                 [
                     python_exe,
                     "-m",
@@ -355,15 +225,24 @@ class SphinxHandler:
                 cwd=docs_dir,
                 env=env,
                 capture_output=True,
+                text=True,
             )
+            if result.returncode != 0:
+                console.print(
+                    f"[red]sphinx-intl failed for {lang}:[/red] {result.stderr.strip()}"
+                )
+                continue
 
             any_translated = False
             if os.path.exists(locale_dir):
-                po_files = [f for f in os.listdir(locale_dir) if f.endswith(".po")]
-                for f in tqdm(po_files, desc=f"PO files ({lang})", leave=False):
-                    if self.translate_po_file(
-                        os.path.join(locale_dir, f), start_code, lang
-                    ):
+                po_files = sorted(
+                    os.path.join(root, f)
+                    for root, _, files in os.walk(locale_dir)
+                    for f in files
+                    if f.endswith(".po")
+                )
+                for po_path in po_files:
+                    if self.translate_po_file(po_path, lang):
                         any_translated = True
 
             # Build HTML for this language if needed

@@ -10,3 +10,12 @@ LICENSE
 README.md
 *.jpg
 *.png
+src/
+tests/
+scripts/
+docs/
+.github/
+*.py
+*.yml
+*.toml
+*.md

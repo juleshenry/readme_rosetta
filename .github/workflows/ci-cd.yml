@@ -1,104 +1,39 @@
-# 
-# 
-# 
-# 
-#                                                                                                     
-#                                                  ▋▆▏                                                
-#                                                  ▉▆▎                                                
-#                                                ▎▋▂▇▃▌▏                                              
-#                                            ▎▌▁▂▍▅▇▇█▂▁▂▉▌▎                                          
-#                                       ▍▋▂▅█████▌▃▇▅█▊▄████▇▅▂▋▎                                     
-#                                   ▏▊▄▆█████████▇▄▄▂▇███████████▇▃▋▏                                 
-#                                  ▊▇██████████▇▆▅▇▋▁█▇▅▆███████████▆▌                                
-#                                 ▉██████▇▄▃▁▉▍▋▊▍▂▊▁██▌▊▌▋▊▃▃▄▇██████▋                               
-#                                ▌████▅▃▁▌▊▍▊▊▋▂▃▉▆▋▋▆█▃▂▂▋▊▅▋▁▂▃▇█████▎                              
-#                                ▉█▆▃▁▁▃▌▂▃▄▆████▂▁▂▌▇██████▇▅▄▅▆██████▋                              
-#                                ▉▄▅▆▉▃▅████▆▄▄▂▁▉▂▄▎▇█▁▁▂▄▅▅████▇█▇███▊                              
-#                                ▂█▅▅███▆▄▉▌▍▎▏   ▏▃▉▅▅    ▎▍▌▉▃▆██████▉                              
-#                                ▂███▆▅▅▁▏   ▏▍▋▋▋▋▄▆▆▂▊▉▊▌▎▏ ▏▉███████▁                              
-#                                ▂██▆▇██▅▍▉▂▉▌▎▏        ▏▎▋▆█▅▄▅███████▁                              
-#                                ▂██████▇▆▁▌▌▍▎           ▎▋▃██████████▁                              
-#                               ▏▆███████▄▃▂▄███▆▃▎   ▏▂▅██████████████▆▏                             
-#                               ▃████████▉▁▆▆▅▆███▂▏  ▉████▅████████████▁                             
-#                              ▋███████▇▄▅█▇▂▇▇▁▅▆█▋ ▌██▇▉▅█▃▅███████████▋                            
-#                             ▎▇████████▏ ▏▁▄▄▁▊▌▍▏▏ ▊█▇▌▊▁▃▅▅▄▅██████████▍                           
-#                            ▏▄█████████▎            ▉██▎      ▁██████████▅▏                          
-#                            ▉███████████▁▎      ▍▌  ▍██▋    ▏▃████████████▉                          
-#                           ▍▇████████▆▇███▄▌    ▁▅▅▂▄██▅▎ ▏▉▇██████████████▎                         
-#                           ▄█████████▇▆█████▊   ▌▁▃██████▁▅████████████████▄                         
-#                          ▋▇█████████▆▁██████▅▎ ▍▁▂▃▃███████████▅███████████▋                        
-#                          ▂██████████▄▉███████▄▃█▅▂▂▂▃██████████▊███████████▂                        
-#                         ▎▆██████████▂▁████████▇▇███████████████▋███████████▇▍                       
-#                         ▋███████████▉▄████████▇▂▊▋▌▌▊▇████████▇▍▇███████████▊                       
-#                         ▄███████████▋▂████████▅▌▎▌▊▁▄█████████▇▌▄███████████▅                       
-#                        ▏▇███████████▎▃████████████████████████▆▎▇███████████▇▏                      
-#                        ▏███████████▅▍▁████▇▎▅█████████████████▅▍▃███████████▇▏                      
-#                         ▊██████████▂▋▉█████▌▍▆████████████████▃▋▁███████████▊                       
-#                          ▌▄████████▊▉▊▅████▂ ▌▇███████████████▁▋▁▇████████▄▌                        
-#                            ▎▊▂▄▆▆▇█▋▁▊▉████▇▏ ▁███████████████▁▊▂▃██▆▆▄▃▊▎                          
-#                             ▏▌▉▃▇███████████▉ ▏▅█████████████████████▄▁▋▏                           
-#                          ▏▄▆████████████▃▅███▋ ▌█████████████████████████▇▄▏                        
-#                          ▎▃▁▇█████▄▃▂▇█▇▁▌▊▃▇▂▏ ▄██▃▌▄███▅████████████████▅▎                        
-#                   ▏▍▌▊▁▃▆██▆▋▃▆▄▃▁▆▁▋▋▂▇██▄▂▊▌▊▉▁▃▃▋▊▂▉▊▊▉▄███▄▉▊▅█▆▅▅█▆▉███▆▄▁▊▌▎▏                 
-#               ▏▋▃▆▄▃▂▁▂▄▆████▁▉▃▅██▄▅▂▌▌▉▃▆███▆▆▅▄▃▃▄▅▅███▇▄▉▌▋▂▅▄████▁▉▇██████████▆▂▋▏             
-#             ▏▁▇▄▋▏       ▏▌▁▂█▆▁▁▃▃▇█▃▆▆▁▉▍▌▊▋▂▂▅▅▃▅▅▃▉▁▉▌▋▊▂▅█▇▂▃▃▄▂▉▅██████▄▍ ▏▋▅███▇▁▏           
-#            ▎▆█▊        ▏▍▏▏▍▌▎▁▆█▃▁▂▁▇█▁▄▁▆▅▂▃▃▁▁▂▊▂▂▉▂▄▁▆▅▆▃▉▆██▁▊▂▇███████▇▏     ▁████▆▎          
-#           ▏▅█▉          ▏ ▎▎▏   ▎▊▃▅▄▁▉▁▉▇▁▅▁█▃▂▉█▊█▊▂▂█▄▁▂▇▁▃▊▁▂▆██████████▉  ▏ ▏ ▏▇████▅▏         
-#           ▋██▏      ▏   ▏▏▏         ▎▋▂▄▄▃▂▂▁▁▉▁▉▃▋▃▉▉▊▂▁▁▁▃▄▇█████████████▁▍▍▏▏  ▏▏▃█████▋         
-#           ▃█▅ ▎  ▏▎▏    ▏▏▏         ▏   ▏▎▋▉▂▄▅▆▇▇▆▇▇▇▆▅▄▅▆▄▄▇██████████████▃▎▎▏  ▏▎▁█████▃         
-#           ▆█▄ ▏▏▏▏                          ▏▏   ▏▏▏▏   ▏     ▎▋▂▇████████████▃▊▏  ▏▁█████▅         
-#           ▇█▅▏        ▍▅▍                    ▏▊▂▃▌              ▎▇██████████████▇▅▅▉▆█████▆         
-#           ▇█▇▏       ▎▇█▇▉▎   ▏▏             ▂████▁  ▏▏         ▏▄████████████████████████▇         
-#           ▇██▎ ▏    ▏▆██████▅▍▎▎▏           ▉██████▉             ▍▌▍▍▍▍▂██████████████████▇         
-#           ▆██▉   ▏  ▁██████▁▎              ▉██▇████▅▎▋▍▎▍               ▎▂████████████████▅         
-#           ▅██▅     ▏█████▇▌                 ▎▊▁▇███▄▉█▃▊▎                ▎▌▇██████████████▅         
-# 
-# 
-# O)))))))    O))))))))      O)       O)))))    O))       O))O))))))))       O)))))))                                 O))    O))            
-# O))    O))  O))           O) ))     O))   O)) O) O))   O)))O))             O))    O))                               O))    O))            
-# O))    O))  O))          O)  O))    O))    O))O)) O)) O O))O))             O))    O))     O))     O))))    O))    O)O) O)O)O) O)   O))    
-# O) O))      O))))))     O))   O))   O))    O))O))  O))  O))O))))))         O) O))       O))  O)) O))     O)   O))   O))    O))   O))  O)) 
-# O))  O))    O))        O)))))) O))  O))    O))O))   O)  O))O))             O))  O))    O))    O))  O))) O))))) O))  O))    O))  O))   O)) 
-# O))    O))  O))       O))       O)) O))   O)) O))       O))O))             O))    O))   O))  O))     O))O)          O))    O))  O))   O)) 
-# O))      O))O))))))))O))         O))O)))))    O))       O))O))))))))       O))      O))   O))    O)) O))  O))))      O))    O))   O)) O)))
-#                                                                                                                                           
-# 
-#                                       By Julian Henry                                                                                                                                        
-
 name: CI/CD
 
 on:
   push:
-    branches: [ main, master ]
-    tags:
-      - 'v*'
+    branches: [main]
+    tags: ["v*"]
   pull_request:
-    branches: [ main, master ]
+    branches: [main]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check src tests scripts
+      - run: ruff format --check src tests scripts
+
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12"]
-
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install .[test] || pip install -e .
-        pip install pytest pytest-cov
-    - name: Run tests
-      run: |
-        pytest
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[test]"
+      - run: pytest --cov=readme_rosetta --cov-report=term-missing
 
   publish:
-    needs: test
+    needs: [lint, test]
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     environment:
@@ -107,15 +42,9 @@ jobs:
     permissions:
       id-token: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
-    - name: Build package
-      run: |
-        python -m pip install --upgrade pip
-        pip install build
-        python -m build
-    - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build && python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1

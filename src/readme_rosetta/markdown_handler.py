@@ -1,375 +1,244 @@
 """
-                                                 ▋▆▏                                                
-                                                 ▉▆▎                                                
-                                               ▎▋▂▇▃▌▏                                              
-                                           ▎▌▁▂▍▅▇▇█▂▁▂▉▌▎                                          
-                                      ▍▋▂▅█████▌▃▇▅█▊▄████▇▅▂▋▎                                     
-                                  ▏▊▄▆█████████▇▄▄▂▇███████████▇▃▋▏                                 
-                                 ▊▇██████████▇▆▅▇▋▁█▇▅▆███████████▆▌                                
-                                ▉██████▇▄▃▁▉▍▋▊▍▂▊▁██▌▊▌▋▊▃▃▄▇██████▋                               
-                               ▌████▅▃▁▌▊▍▊▊▋▂▃▉▆▋▋▆█▃▂▂▋▊▅▋▁▂▃▇█████▎                              
-                               ▉█▆▃▁▁▃▌▂▃▄▆████▂▁▂▌▇██████▇▅▄▅▆██████▋                              
-                               ▉▄▅▆▉▃▅████▆▄▄▂▁▉▂▄▎▇█▁▁▂▄▅▅████▇█▇███▊                              
-                               ▂█▅▅███▆▄▉▌▍▎▏   ▏▃▉▅▅    ▎▍▌▉▃▆██████▉                              
-                               ▂███▆▅▅▁▏   ▏▍▋▋▋▋▄▆▆▂▊▉▊▌▎▏ ▏▉███████▁                              
-                               ▂██▆▇██▅▍▉▂▉▌▎▏        ▏▎▋▆█▅▄▅███████▁                              
-                               ▂██████▇▆▁▌▌▍▎           ▎▋▃██████████▁                              
-                              ▏▆███████▄▃▂▄███▆▃▎   ▏▂▅██████████████▆▏                             
-                              ▃████████▉▁▆▆▅▆███▂▏  ▉████▅████████████▁                             
-                             ▋███████▇▄▅█▇▂▇▇▁▅▆█▋ ▌██▇▉▅█▃▅███████████▋                            
-                            ▎▇████████▏ ▏▁▄▄▁▊▌▍▏▏ ▊█▇▌▊▁▃▅▅▄▅██████████▍                           
-                           ▏▄█████████▎            ▉██▎      ▁██████████▅▏                          
-                           ▉███████████▁▎      ▍▌  ▍██▋    ▏▃████████████▉                          
-                          ▍▇████████▆▇███▄▌    ▁▅▅▂▄██▅▎ ▏▉▇██████████████▎                         
-                          ▄█████████▇▆█████▊   ▌▁▃██████▁▅████████████████▄                         
-                         ▋▇█████████▆▁██████▅▎ ▍▁▂▃▃███████████▅███████████▋                        
-                         ▂██████████▄▉███████▄▃█▅▂▂▂▃██████████▊███████████▂                        
-                        ▎▆██████████▂▁████████▇▇███████████████▋███████████▇▍                       
-                        ▋███████████▉▄████████▇▂▊▋▌▌▊▇████████▇▍▇███████████▊                       
-                        ▄███████████▋▂████████▅▌▎▌▊▁▄█████████▇▌▄███████████▅                       
-                       ▏▇███████████▎▃████████████████████████▆▎▇███████████▇▏                      
-                       ▏███████████▅▍▁████▇▎▅█████████████████▅▍▃███████████▇▏                      
-                        ▊██████████▂▋▉█████▌▍▆████████████████▃▋▁███████████▊                       
-                         ▌▄████████▊▉▊▅████▂ ▌▇███████████████▁▋▁▇████████▄▌                        
-                           ▎▊▂▄▆▆▇█▋▁▊▉████▇▏ ▁███████████████▁▊▂▃██▆▆▄▃▊▎                          
-                            ▏▌▉▃▇███████████▉ ▏▅█████████████████████▄▁▋▏                           
-                         ▏▄▆████████████▃▅███▋ ▌█████████████████████████▇▄▏                        
-                         ▎▃▁▇█████▄▃▂▇█▇▁▌▊▃▇▂▏ ▄██▃▌▄███▅████████████████▅▎                        
-                  ▏▍▌▊▁▃▆██▆▋▃▆▄▃▁▆▁▋▋▂▇██▄▂▊▌▊▉▁▃▃▋▊▂▉▊▊▉▄███▄▉▊▅█▆▅▅█▆▉███▆▄▁▊▌▎▏                 
-              ▏▋▃▆▄▃▂▁▂▄▆████▁▉▃▅██▄▅▂▌▌▉▃▆███▆▆▅▄▃▃▄▅▅███▇▄▉▌▋▂▅▄████▁▉▇██████████▆▂▋▏             
-            ▏▁▇▄▋▏       ▏▌▁▂█▆▁▁▃▃▇█▃▆▆▁▉▍▌▊▋▂▂▅▅▃▅▅▃▉▁▉▌▋▊▂▅█▇▂▃▃▄▂▉▅██████▄▍ ▏▋▅███▇▁▏           
-           ▎▆█▊        ▏▍▏▏▍▌▎▁▆█▃▁▂▁▇█▁▄▁▆▅▂▃▃▁▁▂▊▂▂▉▂▄▁▆▅▆▃▉▆██▁▊▂▇███████▇▏     ▁████▆▎          
-          ▏▅█▉          ▏ ▎▎▏   ▎▊▃▅▄▁▉▁▉▇▁▅▁█▃▂▉█▊█▊▂▂█▄▁▂▇▁▃▊▁▂▆██████████▉  ▏ ▏ ▏▇████▅▏         
-          ▋██▏      ▏   ▏▏▏         ▎▋▂▄▄▃▂▂▁▁▉▁▉▃▋▃▉▉▊▂▁▁▁▃▄▇█████████████▁▍▍▏▏  ▏▏▃█████▋         
-          ▃█▅ ▎  ▏▎▏    ▏▏▏         ▏   ▏▎▋▉▂▄▅▆▇▇▆▇▇▇▆▅▄▅▆▄▄▇██████████████▃▎▎▏  ▏▎▁█████▃         
-          ▆█▄ ▏▏▏▏                          ▏▏   ▏▏▏▏   ▏     ▎▋▂▇████████████▃▊▏  ▏▁█████▅         
-          ▇█▅▏        ▍▅▍                    ▏▊▂▃▌              ▎▇██████████████▇▅▅▉▆█████▆         
-          ▇█▇▏       ▎▇█▇▉▎   ▏▏             ▂████▁  ▏▏         ▏▄████████████████████████▇         
-          ▇██▎ ▏    ▏▆██████▅▍▎▎▏           ▉██████▉             ▍▌▍▍▍▍▂██████████████████▇         
-          ▆██▉   ▏  ▁██████▁▎              ▉██▇████▅▎▋▍▎▍               ▎▂████████████████▅         
-          ▅██▅     ▏█████▇▌                 ▎▊▁▇███▄▉█▃▊▎                ▎▌▇██████████████▅         
+Structure-aware Markdown translation.
 
-
-O)))))))    O))))))))      O)       O)))))    O))       O))O))))))))       O)))))))                                 O))    O))            
-O))    O))  O))           O) ))     O))   O)) O) O))   O)))O))             O))    O))                               O))    O))            
-O))    O))  O))          O)  O))    O))    O))O)) O)) O O))O))             O))    O))     O))     O))))    O))    O)O) O)O)O) O)   O))    
-O) O))      O))))))     O))   O))   O))    O))O))  O))  O))O))))))         O) O))       O))  O)) O))     O)   O))   O))    O))   O))  O)) 
-O))  O))    O))        O)))))) O))  O))    O))O))   O)  O))O))             O))  O))    O))    O))  O))) O))))) O))  O))    O))  O))   O)) 
-O))    O))  O))       O))       O)) O))   O)) O))       O))O))             O))    O))   O))  O))     O))O)          O))    O))  O))   O)) 
-O))      O))O))))))))O))         O))O)))))    O))       O))O))))))))       O))      O))   O))    O)) O))  O))))      O))    O))   O)) O)))
-                                                                                                                                          
-
-                                      By Julian Henry                                                                                                                                        
+The document is parsed with markdown-it-py. Only prose-bearing leaf blocks —
+headings, paragraphs, table cells and the text lines of HTML blocks — are sent
+for translation. Everything else (fenced and indented code, front matter, link
+reference definitions, blank lines, table separators, list markers, blockquote
+markers) is copied from the source byte for byte, so the model has no chance to
+break it.
 """
 
-import logging
-import os
 import re
-from typing import List, Optional, Tuple
+from dataclasses import dataclass
+from typing import Callable, List, Optional, Tuple
 
-from .lang_codes import lang_codes
-from .translator import Translator
+from markdown_it import MarkdownIt
 
-logger = logging.getLogger(__name__)
+from .slug import heading_anchors
+from .translator import ProgressCallback, Translator
+
+Translate = Callable[[str], str]
+
+_FIRST_PREFIX = re.compile(
+    r"^((?:[ \t]*>[ \t]?)*[ \t]*(?:(?:[-*+]|\d{1,9}[.)])[ \t]+(?:\[[ xX]\][ \t]+)?)?)"
+)
+_CONT_PREFIX = re.compile(r"^((?:[ \t]*>[ \t]?)*[ \t]*)")
+_ATX = re.compile(
+    r"^((?:[ \t]*>[ \t]?)*[ \t]*#{1,6}(?:[ \t]+|$))(.*?)((?:[ \t]+#+)?[ \t]*)$"
+)
+_HARD_BREAK = re.compile(r"^(.*?)( {2,}|\\|<br\s*/?>)$")
+_RAW_HTML = re.compile(
+    r"^\s*<(?:pre|script|style|code|textarea|!--|\?|!)", re.IGNORECASE
+)
+_HTML_LINE = re.compile(r"^(\s*)(.*?)(\s*)$")
+_CODE_SPLIT = re.compile(
+    r"(^[ \t]*```.*?^[ \t]*```|`[^`\n]+`)", re.MULTILINE | re.DOTALL
+)
+_ANCHOR_LINK = re.compile(r"(\]\(#|href=[\"']#)([^)\"'\s]+)")
+
+
+@dataclass
+class Unit:
+    start: int
+    end: int
+    kind: str  # "paragraph" | "heading" | "setext" | "row" | "html"
+
+
+def split_front_matter(text: str) -> Tuple[str, str]:
+    """Splits YAML/TOML front matter off the top of a document."""
+    m = re.match(
+        r"^(---|\+\+\+)[ \t]*\n.*?\n(?:\1|\.\.\.)[ \t]*(?:\n|$)", text, re.DOTALL
+    )
+    if not m:
+        return "", text
+    return text[: m.end()], text[m.end() :]
+
+
+class Document:
+    def __init__(self, text: str) -> None:
+        self.trailing_newline = text.endswith("\n")
+        self.lines = text.split("\n")
+        if self.trailing_newline:
+            self.lines.pop()
+        self.units = self._find_units(text)
+
+    @staticmethod
+    def _find_units(text: str) -> List[Unit]:
+        md = MarkdownIt("commonmark", {"html": True}).enable(["table", "strikethrough"])
+        units: List[Unit] = []
+        for tok in md.parse(text):
+            if not tok.map:
+                continue
+            start, end = tok.map
+            if tok.type == "heading_open":
+                units.append(
+                    Unit(
+                        start,
+                        end,
+                        "heading" if tok.markup.startswith("#") else "setext",
+                    )
+                )
+            elif tok.type == "paragraph_open":
+                units.append(Unit(start, end, "paragraph"))
+            elif tok.type == "tr_open":
+                units.append(Unit(start, end, "row"))
+            elif tok.type == "html_block" and not _RAW_HTML.match(tok.content):
+                units.append(Unit(start, end, "html"))
+        units.sort(key=lambda u: u.start)
+        return units
+
+    # ---------------------------------------------------------------- render
+
+    def segments(self) -> List[str]:
+        """All segments that would be sent to the translator, in document order."""
+        found: List[str] = []
+
+        def collect(s: str) -> str:
+            found.append(s)
+            return s
+
+        self.render(collect)
+        return found
+
+    def render(self, tr: Translate) -> str:
+        out: List[str] = []
+        i = 0
+        for unit in self.units:
+            if unit.start < i:  # defensive: never process a line twice
+                continue
+            out.extend(self.lines[i : unit.start])
+            out.extend(self._render_unit(unit, tr))
+            i = unit.end
+        out.extend(self.lines[i:])
+        return "\n".join(out) + ("\n" if self.trailing_newline else "")
+
+    def _render_unit(self, unit: Unit, tr: Translate) -> List[str]:
+        lines = self.lines[unit.start : unit.end]
+        if unit.kind == "heading":
+            return [_render_atx(lines[0], tr)] + lines[1:]
+        if unit.kind == "setext":
+            return _render_paragraph(lines[:-1], tr) + lines[-1:]
+        if unit.kind == "row":
+            return [_render_row(line, tr) for line in lines]
+        if unit.kind == "html":
+            return [_render_html_line(line, tr) for line in lines]
+        return _render_paragraph(lines, tr)
+
+
+def _tr_keep_space(text: str, tr: Translate) -> str:
+    m = _HTML_LINE.match(text)
+    lead, core, trail = m.group(1), m.group(2), m.group(3)
+    return lead + tr(core) + trail if core else text
+
+
+def _render_atx(line: str, tr: Translate) -> str:
+    m = _ATX.match(line)
+    if not m or not m.group(2).strip():
+        return line
+    return m.group(1) + tr(m.group(2).strip()) + m.group(3)
+
+
+def _render_paragraph(lines: List[str], tr: Translate) -> List[str]:
+    first_prefix = _FIRST_PREFIX.match(lines[0]).group(1)
+    parts = [(first_prefix, lines[0][len(first_prefix) :])]
+    for line in lines[1:]:
+        prefix = _CONT_PREFIX.match(line).group(1)
+        parts.append((prefix, line[len(prefix) :]))
+
+    if any(_HARD_BREAK.match(content) for _, content in parts[:-1]):
+        # Hard line breaks are meaningful: translate line by line.
+        out = []
+        for prefix, content in parts:
+            m = _HARD_BREAK.match(content)
+            core, brk = (m.group(1), m.group(2)) if m else (content, "")
+            out.append(
+                prefix + (_tr_keep_space(core, tr) if core.strip() else core) + brk
+            )
+        return out
+
+    # Soft-wrapped paragraph: translate as one sentence group, emit one line.
+    text = " ".join(content.strip() for _, content in parts if content.strip())
+    return [first_prefix + tr(text)] if text else lines
+
+
+def split_row(line: str) -> List[str]:
+    """Splits a table row on unescaped pipes outside code spans."""
+    cells, buf = [], []
+    i, ticks = 0, 0
+    while i < len(line):
+        ch = line[i]
+        if ch == "\\" and i + 1 < len(line):
+            buf.append(line[i : i + 2])
+            i += 2
+            continue
+        if ch == "`":
+            run = len(line[i:]) - len(line[i:].lstrip("`"))
+            ticks = 0 if ticks == run else (run if ticks == 0 else ticks)
+            buf.append("`" * run)
+            i += run
+            continue
+        if ch == "|" and not ticks:
+            cells.append("".join(buf))
+            buf = []
+        else:
+            buf.append(ch)
+        i += 1
+    cells.append("".join(buf))
+    return cells
+
+
+def _render_row(line: str, tr: Translate) -> str:
+    return "|".join(
+        _tr_keep_space(cell, tr) if cell.strip() else cell for cell in split_row(line)
+    )
+
+
+def _render_html_line(line: str, tr: Translate) -> str:
+    return _tr_keep_space(line, tr) if line.strip() else line
 
 
 class MarkdownHandler:
-    """Handles parsing and translation of Markdown files."""
+    """Translates Markdown documents segment by segment."""
 
     def __init__(self, translator: Translator) -> None:
-        """
-        Initialize the MarkdownHandler.
-
-        :param translator: The Translator instance to use.
-        """
         self.translator = translator
 
-    def protect_code_blocks(self, text: str) -> Tuple[str, List[str]]:
-        """
-        Replaces code blocks with placeholders to prevent translation.
+    def segments(self, text: str) -> List[str]:
+        _, body = split_front_matter(text)
+        return Document(body).segments()
 
-        :param text: The Markdown text.
-        :return: A tuple containing the protected text and original code blocks.
-        """
-        placeholders = []
-
-        def replace(match):
-            placeholder = f"ROSETTA_CB_{len(placeholders)}"
-            placeholders.append(match.group(0))
-            return placeholder
-
-        # Protect triple backtick blocks
-        protected_text = re.sub(r"```[\s\S]*?```", replace, text)
-        # Protect inline code
-        protected_text = re.sub(r"`[^`\n]+`", replace, protected_text)
-
-        return protected_text, placeholders
-
-    def restore_code_blocks(self, text: str, placeholders: List[str]) -> str:
-        """
-        Restores code blocks from placeholders after translation.
-
-        :param text: The translated text with placeholders.
-        :param placeholders: The list of original code blocks.
-        :return: The restored Markdown text.
-        """
-
-        def replace_match(match):
-            try:
-                index = int(match.group(1))
-                if index < len(placeholders):
-                    return placeholders[index]
-            except Exception:
-                pass
-            return match.group(0)
-
-        # Regex to find ROSETTA_CB_N with potential minor alterations by the model
-        pattern = re.compile(r"ROSETTA[_\s-]*CB[_\s-]*(\d+)", re.IGNORECASE)
-        return pattern.sub(replace_match, text)
-
-    def clean_header_for_link(self, header: str) -> str:
-        """
-        Cleans a Markdown header to be used as an anchor link.
-
-        :param header: The header text.
-        :return: The cleaned header link (e.g., "#my-header").
-        """
-        header = re.sub(r"\[([^\]]+)\]\([^\)]+\)", r"\1", header)
-        header = header.strip().lstrip("#").strip()
-        return "#" + header.lower().replace(" ", "-")
-
-    def discover_translations(self, readme_path: str) -> List[str]:
-        """
-        Scans the directory for existing translated README files.
-
-        :param readme_path: Path to the main README file.
-        :return: List of language codes found.
-        """
-        base_path = os.path.abspath(readme_path)
-        directory = os.path.dirname(base_path)
-        filename = os.path.basename(base_path)
-        name, ext = os.path.splitext(filename)
-
-        pattern = re.compile(rf"^{re.escape(name)}\.([a-z]{{2}}){re.escape(ext)}$")
-        langs = []
-
-        if os.path.exists(directory):
-            for f in os.listdir(directory):
-                match = pattern.match(f)
-                if match:
-                    langs.append(match.group(1))
-
-        return sorted(langs)
-
-    def forge_stone(
-        self,
-        first_header: str,
-        start_code: str,
-        end_code: str,
-        existing_table: Optional[str] = None,
-        target_file: Optional[str] = None,
-        base_url: Optional[str] = None,
-        raw: bool = False,
+    def translate(
+        self, text: str, target: str, progress: Optional[ProgressCallback] = None
     ) -> str:
-        """
-        Generates or updates the Rosetta translation table in the README.
+        front, body = split_front_matter(text)
+        doc = Document(body)
+        segments = doc.segments()
+        translated = self.translator.translate_many(
+            segments, target, "markdown", progress
+        )
+        mapping = dict(zip(segments, translated))
+        return front + remap_anchors(body, doc.render(lambda s: mapping.get(s, s)))
 
-        :param first_header: The first header of the document.
-        :param start_code: The source language code.
-        :param end_code: The target language code.
-        :param existing_table: The existing Rosetta table, if any.
-        :param target_file: The name of the target file (for split mode).
-        :param base_url: The base URL for absolute links.
-        :param raw: Whether to append ?raw=true to links.
-        :return: The updated Rosetta table Markdown.
-        """
-        header_link = self.clean_header_for_link(first_header)
-        lang_name = str(lang_codes.get(end_code, end_code))
 
-        translated_lang_name = (
-            self.translator.translate(lang_name, start_code, end_code)
-            .strip()
-            .split("\n")[0]
-            .strip()
+def remap_anchors(source: str, translated: str) -> str:
+    """
+    Points in-page links (``[Install](#-installation)``) at the translated
+    headings. Headings correspond one to one because structure is preserved.
+    """
+    src = [a for _, a in heading_anchors(source)]
+    out = [a for _, a in heading_anchors(translated)]
+    if len(src) != len(out):
+        return translated
+    mapping = {s: t for s, t in zip(src, out) if s != t}
+    if not mapping:
+        return translated
+
+    def fix(chunk: str) -> str:
+        return _ANCHOR_LINK.sub(
+            lambda m: m.group(1) + mapping.get(m.group(2), m.group(2)), chunk
         )
 
-        # Clean the translated name for the link
-        clean_lang_link = translated_lang_name.lower().replace(" ", "-")
-        # Remove common punctuation that might be added
-        clean_lang_link = re.sub(r"[^\w-]", "", clean_lang_link)
-
-        if target_file:
-            if base_url:
-                target_url = f"{base_url.rstrip('/')}/{target_file}"
-                if raw:
-                    target_url += "?raw=true"
-                new_header_link = target_url + header_link
-            else:
-                new_header_link = target_file + header_link
-        else:
-            new_header_link = header_link + "-" + clean_lang_link
-
-        new_row = f"| {lang_name} | [Link to Head of Docs]({new_header_link}) |"
-
-        if existing_table and "<!-- <Original README.md> -->" in existing_table:
-            if f"| {lang_name} |" in existing_table:
-                logger.info(f"Language {lang_name} already detected in Rosetta table.")
-                return existing_table
-
-            lines = existing_table.strip().split("\n")
-            last_row_idx = -1
-            for i, line in enumerate(lines):
-                if line.startswith("|"):
-                    last_row_idx = i
-
-            if last_row_idx != -1:
-                lines.insert(last_row_idx + 1, new_row)
-                return "\n".join(lines) + "\n"
-
-        project_link = base_url if base_url else "#"
-        return f"""<!-- <Original README.md> -->
-# [Documentation Support in Multiple Languages]({project_link})
-| About | |
-| ------ | ---- |
-| English | [Link to Head of Docs]({header_link}) |
-{new_row}
-"""
-
-    def translate_markdown(
-        self,
-        md_text_path: str,
-        start_code: str,
-        end_code: str,
-        pbar_pos: int = 0,
-        dry_run: bool = False,
-        add_lang_to_header: bool = True,
-        target_file: Optional[str] = None,
-        base_url: Optional[str] = None,
-        raw: bool = False,
-    ) -> Tuple[str, str, str, str]:
-        """
-        Translates a Markdown file using block-level context.
-
-        :param md_text_path: The path to the Markdown file.
-        :param start_code: The source language code.
-        :param end_code: The target language code.
-        :param pbar_pos: The position of the progress bar.
-        :param dry_run: Whether to simulate translation.
-        :param add_lang_to_header: Whether to add the target language name to the first header.
-        :param target_file: The name of the target file (for split mode).
-        :param base_url: The base URL for absolute links.
-        :param raw: Whether to append ?raw=true to links.
-        :return: A tuple containing (translated_content, rosetta_table,
-                 original_content_without_rosetta, identified_first_header).
-        """
-        if not os.path.exists(md_text_path):
-            return "", "", "", ""
-
-        from tqdm import tqdm
-
-        with open(md_text_path, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-
-        first_header = ""
-        existing_table = ""
-        in_rosetta = False
-        content_lines = []
-        original_content_without_rosetta = []
-
-        # Extract headers and existing table
-        for o in lines:
-            if "<!-- <Original README.md> -->" in o:
-                in_rosetta = True
-                existing_table += o
-                continue
-
-            if in_rosetta:
-                if o.startswith("#") and "Documentation Support" not in o:
-                    in_rosetta = False
-                else:
-                    existing_table += o
-                    continue
-
-            if "<!-- <Rosetta Translations> -->" in o:
-                break
-
-            original_content_without_rosetta.append(o)
-
-            if o.startswith("#") and not first_header:
-                first_header = o
-                if add_lang_to_header:
-                    lang_name = str(lang_codes.get(end_code, end_code))
-                    header_for_translation = o.strip() + " (" + lang_name + ")\n"
-                    content_lines.append(header_for_translation)
-                else:
-                    content_lines.append(o)
-            else:
-                content_lines.append(o)
-
-        full_text = "".join(content_lines)
-        source_without_rosetta = "".join(original_content_without_rosetta)
-
-        if dry_run:
-            return (
-                "[DRY RUN] Translated Content",
-                "[DRY RUN] Rosetta Table",
-                source_without_rosetta,
-                first_header,
-            )
-
-        # Protect code blocks
-        protected_text, placeholders = self.protect_code_blocks(full_text)
-
-        # For small enough files, translate the whole thing at once for better context
-        # Otherwise, split by sections (headers)
-        if len(protected_text) < 4000:
-            logger.info(
-                "File size < 4000 chars, translating as a single chunk for better context."
-            )
-            final_translated_text = self.translator.translate(
-                protected_text, start_code, end_code
-            )
-        else:
-            # Split by headers (keeping the header with the following block)
-            # We use a lookahead to split BEFORE headers
-            parts = re.split(r"(?m)^(?=#+ )", protected_text)
-            translated_parts = []
-
-            logger.info(
-                f"File size >= 4000 chars, split into {len(parts)} sections for translation."
-            )
-
-            pbar = tqdm(
-                total=len([p for p in parts if p.strip()]),
-                desc=f"Translating to {end_code}",
-                leave=False,
-                position=pbar_pos,
-            )
-
-            for part in parts:
-                if not part.strip():
-                    translated_parts.append(part)
-                    continue
-
-                translated_parts.append(
-                    self.translator.translate(part, start_code, end_code)
-                )
-                pbar.update(1)
-
-            pbar.close()
-            final_translated_text = "".join(translated_parts)
-
-        # Restore code blocks
-        final_text = self.restore_code_blocks(final_translated_text, placeholders)
-
-        rosetta_table = self.forge_stone(
-            first_header,
-            start_code,
-            end_code,
-            existing_table,
-            target_file=target_file,
-            base_url=base_url,
-            raw=raw,
-        )
-
-        return final_text, rosetta_table, source_without_rosetta, first_header
+    # Leave code (fenced blocks and inline spans) alone.
+    parts = _CODE_SPLIT.split(translated)
+    return "".join(p if i % 2 else fix(p) for i, p in enumerate(parts))

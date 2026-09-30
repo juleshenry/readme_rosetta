@@ -1,0 +1,101 @@
+name: README Rosetta
+description: Translate your README into other languages with an LLM and open a pull request with the result.
+branding:
+  icon: globe
+  color: blue
+
+inputs:
+  langs:
+    description: Space-separated target language codes (e.g. "es fr ja"). Defaults to [tool.readme-rosetta] in pyproject.toml.
+    required: false
+    default: ""
+  source:
+    description: Source Markdown file.
+    required: false
+    default: README.md
+  backend:
+    description: ollama or anthropic.
+    required: false
+    default: ollama
+  model:
+    description: Model name. Defaults to qwen2.5:7b (ollama) or claude-opus-5-5 (anthropic).
+    required: false
+    default: ""
+  anthropic-api-key:
+    description: API key for the anthropic backend (pass a secret).
+    required: false
+    default: ""
+  extra-args:
+    description: Extra command-line arguments for readme-rosetta.
+    required: false
+    default: ""
+  create-pr:
+    description: Open a pull request with the changes ("true") or leave them in the workspace ("false").
+    required: false
+    default: "true"
+  version:
+    description: readme-rosetta version to install from PyPI. Empty installs the action's own checkout.
+    required: false
+    default: ""
+
+outputs:
+  pull-request-url:
+    description: URL of the pull request, if one was opened.
+    value: ${{ steps.pr.outputs.pull-request-url }}
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install readme-rosetta
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: |
+        if [ -n "$VERSION" ]; then
+          pip install "readme-rosetta[anthropic]==$VERSION"
+        else
+          pip install "$ACTION_PATH[anthropic]"
+        fi
+
+    - name: Start Ollama
+      if: inputs.backend == 'ollama'
+      shell: bash
+      run: |
+        curl -fsSL https://ollama.com/install.sh | sh
+        (ollama serve > /tmp/ollama.log 2>&1 &)
+        for i in $(seq 1 30); do curl -sf http://127.0.0.1:11434/api/version && break; sleep 1; done
+
+    - name: Translate
+      shell: bash
+      env:
+        ANTHROPIC_API_KEY: ${{ inputs.anthropic-api-key }}
+        SOURCE: ${{ inputs.source }}
+        LANGS: ${{ inputs.langs }}
+        BACKEND: ${{ inputs.backend }}
+        MODEL: ${{ inputs.model }}
+        EXTRA_ARGS: ${{ inputs.extra-args }}
+      run: |
+        args=("$SOURCE" --backend "$BACKEND")
+        [ -n "$LANGS" ] && args+=(--langs $LANGS)
+        [ -n "$MODEL" ] && args+=(--model "$MODEL")
+        readme-rosetta "${args[@]}" $EXTRA_ARGS
+
+    - name: Open pull request
+      id: pr
+      if: inputs.create-pr == 'true'
+      uses: peter-evans/create-pull-request@v7
+      with:
+        branch: readme-rosetta/translations
+        commit-message: "docs(i18n): update README translations"
+        title: "docs(i18n): update README translations"
+        body: |
+          Automated update from [README Rosetta](https://github.com/juleshenry/readme_rosetta).
+          Only segments that changed in the source were re-translated.
+        add-paths: |
+          *.md
+          .rosetta/cache.json

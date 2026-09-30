@@ -1,378 +1,342 @@
 """
-                                                 ▋▆▏                                                
-                                                 ▉▆▎                                                
-                                               ▎▋▂▇▃▌▏                                              
-                                           ▎▌▁▂▍▅▇▇█▂▁▂▉▌▎                                          
-                                      ▍▋▂▅█████▌▃▇▅█▊▄████▇▅▂▋▎                                     
-                                  ▏▊▄▆█████████▇▄▄▂▇███████████▇▃▋▏                                 
-                                 ▊▇██████████▇▆▅▇▋▁█▇▅▆███████████▆▌                                
-                                ▉██████▇▄▃▁▉▍▋▊▍▂▊▁██▌▊▌▋▊▃▃▄▇██████▋                               
-                               ▌████▅▃▁▌▊▍▊▊▋▂▃▉▆▋▋▆█▃▂▂▋▊▅▋▁▂▃▇█████▎                              
-                               ▉█▆▃▁▁▃▌▂▃▄▆████▂▁▂▌▇██████▇▅▄▅▆██████▋                              
-                               ▉▄▅▆▉▃▅████▆▄▄▂▁▉▂▄▎▇█▁▁▂▄▅▅████▇█▇███▊                              
-                               ▂█▅▅███▆▄▉▌▍▎▏   ▏▃▉▅▅    ▎▍▌▉▃▆██████▉                              
-                               ▂███▆▅▅▁▏   ▏▍▋▋▋▋▄▆▆▂▊▉▊▌▎▏ ▏▉███████▁                              
-                               ▂██▆▇██▅▍▉▂▉▌▎▏        ▏▎▋▆█▅▄▅███████▁                              
-                               ▂██████▇▆▁▌▌▍▎           ▎▋▃██████████▁                              
-                              ▏▆███████▄▃▂▄███▆▃▎   ▏▂▅██████████████▆▏                             
-                              ▃████████▉▁▆▆▅▆███▂▏  ▉████▅████████████▁                             
-                             ▋███████▇▄▅█▇▂▇▇▁▅▆█▋ ▌██▇▉▅█▃▅███████████▋                            
-                            ▎▇████████▏ ▏▁▄▄▁▊▌▍▏▏ ▊█▇▌▊▁▃▅▅▄▅██████████▍                           
-                           ▏▄█████████▎            ▉██▎      ▁██████████▅▏                          
-                           ▉███████████▁▎      ▍▌  ▍██▋    ▏▃████████████▉                          
-                          ▍▇████████▆▇███▄▌    ▁▅▅▂▄██▅▎ ▏▉▇██████████████▎                         
-                          ▄█████████▇▆█████▊   ▌▁▃██████▁▅████████████████▄                         
-                         ▋▇█████████▆▁██████▅▎ ▍▁▂▃▃███████████▅███████████▋                        
-                         ▂██████████▄▉███████▄▃█▅▂▂▂▃██████████▊███████████▂                        
-                        ▎▆██████████▂▁████████▇▇███████████████▋███████████▇▍                       
-                        ▋███████████▉▄████████▇▂▊▋▌▌▊▇████████▇▍▇███████████▊                       
-                        ▄███████████▋▂████████▅▌▎▌▊▁▄█████████▇▌▄███████████▅                       
-                       ▏▇███████████▎▃████████████████████████▆▎▇███████████▇▏                      
-                       ▏███████████▅▍▁████▇▎▅█████████████████▅▍▃███████████▇▏                      
-                        ▊██████████▂▋▉█████▌▍▆████████████████▃▋▁███████████▊                       
-                         ▌▄████████▊▉▊▅████▂ ▌▇███████████████▁▋▁▇████████▄▌                        
-                           ▎▊▂▄▆▆▇█▋▁▊▉████▇▏ ▁███████████████▁▊▂▃██▆▆▄▃▊▎                          
-                            ▏▌▉▃▇███████████▉ ▏▅█████████████████████▄▁▋▏                           
-                         ▏▄▆████████████▃▅███▋ ▌█████████████████████████▇▄▏                        
-                         ▎▃▁▇█████▄▃▂▇█▇▁▌▊▃▇▂▏ ▄██▃▌▄███▅████████████████▅▎                        
-                  ▏▍▌▊▁▃▆██▆▋▃▆▄▃▁▆▁▋▋▂▇██▄▂▊▌▊▉▁▃▃▋▊▂▉▊▊▉▄███▄▉▊▅█▆▅▅█▆▉███▆▄▁▊▌▎▏                 
-              ▏▋▃▆▄▃▂▁▂▄▆████▁▉▃▅██▄▅▂▌▌▉▃▆███▆▆▅▄▃▃▄▅▅███▇▄▉▌▋▂▅▄████▁▉▇██████████▆▂▋▏             
-            ▏▁▇▄▋▏       ▏▌▁▂█▆▁▁▃▃▇█▃▆▆▁▉▍▌▊▋▂▂▅▅▃▅▅▃▉▁▉▌▋▊▂▅█▇▂▃▃▄▂▉▅██████▄▍ ▏▋▅███▇▁▏           
-           ▎▆█▊        ▏▍▏▏▍▌▎▁▆█▃▁▂▁▇█▁▄▁▆▅▂▃▃▁▁▂▊▂▂▉▂▄▁▆▅▆▃▉▆██▁▊▂▇███████▇▏     ▁████▆▎          
-          ▏▅█▉          ▏ ▎▎▏   ▎▊▃▅▄▁▉▁▉▇▁▅▁█▃▂▉█▊█▊▂▂█▄▁▂▇▁▃▊▁▂▆██████████▉  ▏ ▏ ▏▇████▅▏         
-          ▋██▏      ▏   ▏▏▏         ▎▋▂▄▄▃▂▂▁▁▉▁▉▃▋▃▉▉▊▂▁▁▁▃▄▇█████████████▁▍▍▏▏  ▏▏▃█████▋         
-          ▃█▅ ▎  ▏▎▏    ▏▏▏         ▏   ▏▎▋▉▂▄▅▆▇▇▆▇▇▇▆▅▄▅▆▄▄▇██████████████▃▎▎▏  ▏▎▁█████▃         
-          ▆█▄ ▏▏▏▏                          ▏▏   ▏▏▏▏   ▏     ▎▋▂▇████████████▃▊▏  ▏▁█████▅         
-          ▇█▅▏        ▍▅▍                    ▏▊▂▃▌              ▎▇██████████████▇▅▅▉▆█████▆         
-          ▇█▇▏       ▎▇█▇▉▎   ▏▏             ▂████▁  ▏▏         ▏▄████████████████████████▇         
-          ▇██▎ ▏    ▏▆██████▅▍▎▎▏           ▉██████▉             ▍▌▍▍▍▍▂██████████████████▇         
-          ▆██▉   ▏  ▁██████▁▎              ▉██▇████▅▎▋▍▎▍               ▎▂████████████████▅         
-          ▅██▅     ▏█████▇▌                 ▎▊▁▇███▄▉█▃▊▎                ▎▌▇██████████████▅         
+Segment translation: batching, validation, retries and caching.
 
-
-O)))))))    O))))))))      O)       O)))))    O))       O))O))))))))       O)))))))                                 O))    O))            
-O))    O))  O))           O) ))     O))   O)) O) O))   O)))O))             O))    O))                               O))    O))            
-O))    O))  O))          O)  O))    O))    O))O)) O)) O O))O))             O))    O))     O))     O))))    O))    O)O) O)O)O) O)   O))    
-O) O))      O))))))     O))   O))   O))    O))O))  O))  O))O))))))         O) O))       O))  O)) O))     O)   O))   O))    O))   O))  O)) 
-O))  O))    O))        O)))))) O))  O))    O))O))   O)  O))O))             O))  O))    O))    O))  O))) O))))) O))  O))    O))  O))   O)) 
-O))    O))  O))       O))       O)) O))   O)) O))       O))O))             O))    O))   O))  O))     O))O)          O))    O))  O))   O)) 
-O))      O))O))))))))O))         O))O)))))    O))       O))O))))))))       O))      O))   O))    O)) O))  O))))      O))    O))   O)) O)))
-                                                                                                                                          
-
-                                      By Julian Henry                                                                                                                                        
+Handlers split documents into small segments (a paragraph, a heading, a table
+cell). The translator protects inline syntax in each segment, sends batches of
+segments to the backend, and accepts a translation only if it passes every
+check. Rejected segments are retried one by one with the rejection reason fed
+back to the model. Segments that still fail keep their source text and are
+recorded in ``failures`` so the CLI can report them and exit non-zero.
 """
 
 import hashlib
 import json
 import logging
-import os
 import re
-from typing import Dict, List, Optional
+import threading
+from dataclasses import dataclass
+from typing import Callable, Dict, List, Optional, Sequence, Tuple
 
-import ollama
-
-from .lang_codes import lang_codes
+from .backends import Backend, BackendError
+from .cache import Cache
+from .lang_codes import get_language
+from .langcheck import check_language
+from .protect import Protector, restore, token_problem
 
 logger = logging.getLogger(__name__)
 
+# Bump when the prompt or validation changes enough to invalidate old output.
+PROMPT_VERSION = 1
+
+BATCH_MAX_SEGMENTS = 12
+BATCH_MAX_CHARS = 2500
+
+_SEG_RE = re.compile(r'<seg id="(\d+)">(.*?)</seg>', re.DOTALL)
+_PREAMBLE_RE = re.compile(
+    r"^\s*(?:here(?:'s| is) (?:the |your )?translat\w*|translat\w*)[^\n]*:\s*\n",
+    re.IGNORECASE,
+)
+_LETTER_RE = re.compile(r"[^\W\d_]", re.UNICODE)
+
+ProgressCallback = Callable[[int], None]
+
+
+@dataclass
+class Failure:
+    target: str
+    source: str
+    reason: str
+
 
 class Translator:
-    """Handles translation using Ollama LLM models."""
-
     def __init__(
         self,
-        model_id: str = "llama3.2",
-        local_files_only: bool = True,
-        device: Optional[str] = None,
-        cache_path: str = ".rosetta_cache.json",
+        backend: Backend,
+        source_lang: str = "en",
+        cache: Optional[Cache] = None,
+        glossary: Optional[Dict[str, Dict[str, str]]] = None,
+        keep_terms: Sequence[str] = (),
+        max_retries: int = 2,
+        context: str = "",
     ) -> None:
-        """
-        Initialize the Translator.
+        self.backend = backend
+        self.source_lang = source_lang
+        self.cache = cache or Cache(None)
+        self.glossary = glossary or {}
+        self.keep_terms = list(keep_terms)
+        self.max_retries = max_retries
+        self.context = context
+        self.failures: List[Failure] = []
+        self.calls = 0
+        self._lock = threading.Lock()
+        self._protectors: Dict[str, Protector] = {}
 
-        :param model_id: The identifier of the Ollama model to use.
-        :param local_files_only: Whether to only use locally available files (legacy).
-        :param device: The device to run the model on (legacy).
-        :param cache_path: Path to the translation cache file.
-        """
-        self.model_id = model_id
-        self.cache_path = cache_path
-        self.cache: Dict[str, str] = self._load_cache()
+    # ------------------------------------------------------------------ keys
 
-    def _load_cache(self) -> Dict[str, str]:
-        if os.path.exists(self.cache_path):
-            try:
-                logger.info(f"Cache file detected: {self.cache_path}")
-                with open(self.cache_path, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except Exception as e:
-                logger.error(f"Error loading cache: {e}")
-        return {}
+    def _protector(self, syntax: str) -> Protector:
+        if syntax not in self._protectors:
+            self._protectors[syntax] = Protector(syntax, self.keep_terms)
+        return self._protectors[syntax]
 
-    def _save_cache(self) -> None:
-        try:
-            with open(self.cache_path, "w", encoding="utf-8") as f:
-                json.dump(self.cache, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            logger.error(f"Error saving cache: {e}")
+    def cache_key(self, text: str, target: str, syntax: str) -> str:
+        material = json.dumps(
+            [
+                PROMPT_VERSION,
+                self.backend.id,
+                self.source_lang,
+                target,
+                syntax,
+                self.keep_terms,
+                self._terms(target),
+                self.context,
+                text,
+            ],
+            ensure_ascii=False,
+            sort_keys=True,
+        )
+        return f"{target}:{hashlib.sha256(material.encode('utf-8')).hexdigest()[:32]}"
 
-    def _get_cache_key(self, text: str, from_code: str, to_code: str) -> str:
-        content_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
-        return f"{from_code}:{to_code}:{content_hash}"
+    # ---------------------------------------------------------------- public
 
-    def load(self, local_files_only: Optional[bool] = None) -> None:
-        """
-        Ensure the model is available in Ollama.
+    def needs_translation(self, text: str, syntax: str = "markdown") -> bool:
+        protected, _ = self._protector(syntax).protect(text)
+        return bool(_LETTER_RE.search(re.sub(r"⟦\d+⟧", "", protected)))
 
-        :param local_files_only: Legacy parameter for compatibility.
-        """
-        try:
-            logger.info(f"Checking Ollama model: {self.model_id}...")
-            try:
-                ollama.show(self.model_id)
-            except Exception:
-                logger.info(f"Model {self.model_id} not found, pulling...")
-                ollama.pull(self.model_id)
-        except Exception as e:
-            logger.error(f"Error ensuring model: {e}")
-
-    def translate(self, text: str, from_code: str, to_code: str) -> str:
-        """
-        Translate a single string from one language to another.
-
-        :param text: The text to translate.
-        :param from_code: The source language code.
-        :param to_code: The target language code.
-        :return: The translated text.
-        """
-        if not text.strip():
-            return text
-
-        cache_key = self._get_cache_key(text, from_code, to_code)
-        if cache_key in self.cache:
-            logger.debug(f"Cache hit for {from_code}->{to_code}")
-            return self.cache[cache_key]
-
-        # For single words/short strings, use a simpler query
-        if len(text.split()) < 3:
-            result = self._query_ollama(text, from_code, to_code, simple=True)
-        else:
-            result = self.translate_batch([text], from_code, to_code)[0]
-
-        self.cache[cache_key] = result
-        self._save_cache()
-        return result
-
-    def _query_ollama(
-        self, text: str, from_code: str, to_code: str, simple: bool = False
-    ) -> str:
-        """
-        Internal method to query Ollama for translation.
-
-        :param text: The text to translate.
-        :param from_code: The source language code.
-        :param to_code: The target language code.
-        :param simple: Whether to use a simpler prompt for short texts.
-        :return: The translated text.
-        """
-        from_lang = lang_codes.get(from_code, from_code)
-        to_lang = lang_codes.get(to_code, to_code)
-
-        if simple:
-            system_msg = (
-                f"Translate the following single word or short phrase from {from_lang} to {to_lang}.\n"
-                "Respond ONLY with the translation. No punctuation unless part of the translation. No explanations. "
-                "DO NOT add any extra lines or formatting. If the input is one line, the output MUST be one line."
-            )
-        else:
-            system_msg = (
-                f"You are a professional robotic translator.\n"
-                f"Source Language: {from_lang}\n"
-                f"Target Language: {to_lang}\n\n"
-                "RULES:\n"
-                f"1. Translate the user's text precisely from {from_lang} to {to_lang}.\n"
-                "2. Respond ONLY with the translated text. DO NOT add any explanations, notes, or introductions.\n"
-                "3. Preserve all Markdown/rST formatting (headers, lists, bold, etc.) exactly. DO NOT add new headers or structure.\n"
-                "4. DO NOT hallucinate. DO NOT add any new features, examples, sections, or information.\n"
-                "5. Maintain the original structure of the text exactly. If the input is a single sentence, the output MUST be a single sentence.\n"
-                "6. Do NOT add any links or code blocks that are not present in the source text.\n"
-                "7. If you cannot translate something, return the original text as is.\n"
-                "8. DO NOT assume the project's technology. DO NOT add 'npm install' or similar commands if they are not in the source.\n"
-                "9. CRITICAL: If the input text is a short description, DO NOT expand it into an example or a full document."
-            )
-            found_placeholders_types = []
-            if "ROSETTA_CB_" in text:
-                found_placeholders_types.append("ROSETTA_CB_N")
-            if "ROSETTA_RST_" in text:
-                found_placeholders_types.append("ROSETTA_RST_N")
-
-            if found_placeholders_types:
-                placeholders_str = " and ".join(found_placeholders_types)
-                system_msg += (
-                    f"\n10. Preserve all placeholders like {placeholders_str} exactly."
-                )
-
-        # Count placeholders in source
-        source_cb_count = len(re.findall(r"ROSETTA_CB_\d+", text))
-        source_rst_count = len(re.findall(r"ROSETTA_RST_\d+", text))
-        source_links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", text)
-        source_urls = [l[1] for l in source_links]
-
-        # Retry logic for common LLM failure modes
-        max_retries = 2
-        for attempt in range(max_retries + 1):
-            try:
-                logger.info(
-                    f"Querying {self.model_id} for translation ({from_code}->{to_code}, attempt {attempt + 1})"
-                )
-                logger.debug(f"Input text chunk: {text[:100]}...")
-
-                response = ollama.chat(
-                    model=self.model_id,
-                    messages=[
-                        {"role": "system", "content": system_msg},
-                        {"role": "user", "content": text},
-                    ],
-                )
-                translated = response["message"]["content"].strip()
-                logger.debug(f"Raw response from model: {translated[:100]}...")
-
-                # Validation: Line count sanity check for single-line inputs
-                if "\n" not in text.strip() and "\n" in translated.strip():
-                    if len(translated.splitlines()) > 1:
-                        logger.warning(
-                            "Single-line input resulted in multi-line output. Hallucination suspected."
-                        )
-                        is_bad = True
-
-                # Check if it looks like a conversational response instead of a translation
-                is_bad = False
-                bad_indicators = [
-                    "nothing to translate",
-                    "puedo ayudarte",
-                    "aquí tienes la traducción",
-                    "claro, aquí tienes",
-                    "i am an ai",
-                    "as an ai",
-                    "soy un modelo",
-                    "no hay nada que",
-                    "here is the translation",
-                ]
-                if any(ind in translated.lower() for ind in bad_indicators):
-                    if (
-                        len(translated.split()) < len(text.split()) * 0.5
-                        or len(translated.split()) < 10
-                    ):
-                        is_bad = True
-
-                # Check for placeholder mismatch
-                trans_cb_count = len(re.findall(r"ROSETTA_CB_\d+", translated))
-                trans_rst_count = len(re.findall(r"ROSETTA_RST_\d+", translated))
-
-                if (
-                    trans_cb_count != source_cb_count
-                    or trans_rst_count != source_rst_count
-                ):
-                    logger.warning(
-                        f"Placeholder count mismatch: CB {trans_cb_count}/{source_cb_count}, RST {trans_rst_count}/{source_rst_count}"
-                    )
-                    is_bad = True
-
-                # Check for hallucinated links
-                trans_links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", translated)
-                for _, url in trans_links:
-                    if url not in source_urls and not url.startswith("#"):
-                        # If it's a completely new external link, it's likely a hallucination
-                        if "http" in url and "github.com" in url:
-                            logger.warning(f"Detected hallucinated link: {url}")
-                            is_bad = True
-                            break
-
-                if is_bad and attempt < max_retries:
-                    logger.warning(
-                        f"Detected bad translation, retrying... (Attempt {attempt + 1})"
-                    )
-                    system_msg += "\nCRITICAL: DO NOT TALK. ONLY TRANSLATE. PRESERVE PLACEHOLDERS. DO NOT ADD LINKS."
-                    continue
-
-                # Clean up common LLM hallucinations related to placeholders
-                lines = translated.splitlines()
-                cleaned_lines = []
-                for line in lines:
-                    # Skip invalid placeholders or metadata headers
-                    if re.search(r"ROSETTA_(CB|RST)_(?!(\d+)\b)", line, re.IGNORECASE):
-                        continue
-                    if any(
-                        x in line
-                        for x in [
-                            "ROSETTA_CB_SOURCE",
-                            "ROSETTA_CB_TARGET",
-                            "ROSETTA_CB_NEXTRA",
-                        ]
-                    ):
-                        continue
-                    cleaned_lines.append(line)
-
-                translated = "\n".join(cleaned_lines)
-
-                # Clean up common LLM artifacts
-                if translated.startswith('"') and translated.endswith('"'):
-                    translated = translated[1:-1].strip()
-
-                # Preserve trailing newline if it existed
-                if text.endswith("\n") and not translated.endswith("\n"):
-                    translated += "\n"
-
-                # Cross-check: If translation is empty but source wasn't, or it's mostly garbage
-                if not translated.strip() and text.strip():
-                    if attempt < max_retries:
-                        continue
-                    return text  # Fallback to original
-
-                return translated
-            except Exception as e:
-                logger.error(f"Ollama error (attempt {attempt}): {e}")
-                if attempt == max_retries:
-                    return text
-        return text  # Ultimate fallback
-
-    def translate_batch(
-        self, texts: List[str], from_code: str, to_code: str
-    ) -> List[str]:
-        """
-        Translate a list of strings from one language to another.
-
-        :param texts: The list of strings to translate.
-        :param from_code: The source language code.
-        :param to_code: The target language code.
-        :return: A list of translated strings.
-        """
-        if not texts:
-            return []
-
-        from tqdm import tqdm
-
-        results = []
-        # Use progress bar if there's more than one item
-        iterable = (
-            tqdm(texts, desc="Translating items", leave=False)
-            if len(texts) > 1
-            else texts
+    def pending(
+        self, texts: Sequence[str], target: str, syntax: str = "markdown"
+    ) -> int:
+        """Number of segments that would be sent to the model (for --dry-run)."""
+        return sum(
+            1
+            for t in dict.fromkeys(texts)
+            if self.needs_translation(t, syntax)
+            and self.cache.get(self.cache_key(t, target, syntax)) is None
         )
 
-        for text in iterable:
-            if not text.strip():
-                results.append(text)
+    def translate(self, text: str, target: str, syntax: str = "markdown") -> str:
+        return self.translate_many([text], target, syntax)[0]
+
+    def translate_many(
+        self,
+        texts: Sequence[str],
+        target: str,
+        syntax: str = "markdown",
+        progress: Optional[ProgressCallback] = None,
+    ) -> List[str]:
+        results: Dict[str, str] = {}
+        todo: List[Tuple[str, str, List[str]]] = []  # (source, protected, saved)
+        protector = self._protector(syntax)
+
+        for text in dict.fromkeys(texts):
+            if not self.needs_translation(text, syntax):
+                results[text] = text
                 continue
-
-            cache_key = self._get_cache_key(text, from_code, to_code)
-            if cache_key in self.cache:
-                logger.debug(f"Cache hit for {from_code}->{to_code}")
-                results.append(self.cache[cache_key])
+            cached = self.cache.get(self.cache_key(text, target, syntax))
+            if cached is not None:
+                results[text] = cached
                 continue
+            protected, saved = protector.protect(text)
+            todo.append((text, protected, saved))
 
-            translated = self._query_ollama(text, from_code, to_code)
-            results.append(translated)
-            self.cache[cache_key] = translated
+        if progress:
+            progress(len(texts) - len(todo))
 
-        self._save_cache()
-        return results
+        for batch in self._batches(todo):
+            outputs = self._translate_batch(batch, target)
+            for (text, _, saved), out in zip(batch, outputs):
+                if out is None:
+                    results[text] = text
+                    continue
+                final = restore(out, saved)
+                self.cache.set(self.cache_key(text, target, syntax), final)
+                results[text] = final
+            if progress:
+                progress(len(batch))
+
+        return [results[t] for t in texts]
+
+    # -------------------------------------------------------------- batching
+
+    @staticmethod
+    def _batches(todo: List[Tuple[str, str, List[str]]]):
+        batch: List[Tuple[str, str, List[str]]] = []
+        size = 0
+        for item in todo:
+            if batch and (
+                len(batch) >= BATCH_MAX_SEGMENTS
+                or size + len(item[1]) > BATCH_MAX_CHARS
+            ):
+                yield batch
+                batch, size = [], 0
+            batch.append(item)
+            size += len(item[1])
+        if batch:
+            yield batch
+
+    def _translate_batch(
+        self, batch: List[Tuple[str, str, List[str]]], target: str
+    ) -> List[Optional[str]]:
+        system = self.system_prompt(target)
+        request = "\n".join(
+            f'<seg id="{i}">{p}</seg>' for i, (_, p, _) in enumerate(batch)
+        )
+        outputs: List[Optional[str]] = [None] * len(batch)
+        reasons: Dict[int, str] = {}
+
+        try:
+            parsed = self._parse(
+                self._call(system, [{"role": "user", "content": request}])
+            )
+        except BackendError:
+            raise
+        except (
+            Exception
+        ) as e:  # network hiccups etc.: fall through to per-segment retries
+            logger.warning(f"Batch request failed: {e}")
+            parsed = {}
+
+        for i, (source, protected, saved) in enumerate(batch):
+            out = parsed.get(i)
+            reason = (
+                "missing from the response"
+                if out is None
+                else self.problem(protected, out, len(saved), target)
+            )
+            if reason:
+                reasons[i] = reason
+            else:
+                outputs[i] = out
+
+        # Retry rejected segments individually, telling the model what was wrong.
+        for i, reason in reasons.items():
+            source, protected, saved = batch[i]
+            outputs[i] = self._retry_single(
+                system, protected, len(saved), target, reason, source
+            )
+        return outputs
+
+    def _retry_single(
+        self,
+        system: str,
+        protected: str,
+        n_tokens: int,
+        target: str,
+        reason: str,
+        source: str,
+    ) -> Optional[str]:
+        messages = [
+            {
+                "role": "user",
+                "content": (
+                    f'<seg id="0">{protected}</seg>\n\n(A previous translation of this segment '
+                    f"was rejected because it {reason}.)"
+                ),
+            }
+        ]
+        for attempt in range(self.max_retries):
+            try:
+                reply = self._call(system, messages)
+            except BackendError:
+                raise
+            except Exception as e:
+                reason = f"request failed: {e}"
+                continue
+            out = self._parse(reply).get(0)
+            if out is None and "<seg" not in reply:
+                # One segment was asked for; a bare reply is still usable.
+                out = _PREAMBLE_RE.sub("", reply).strip()
+            reason = (
+                "response was not in <seg> format"
+                if out is None
+                else self.problem(protected, out, n_tokens, target)
+            )
+            if not reason:
+                return out
+            logger.debug(f"Retry {attempt + 1} for {target} rejected: {reason}")
+            messages += [
+                {"role": "assistant", "content": reply},
+                {
+                    "role": "user",
+                    "content": (
+                        f"That translation was rejected: it {reason}. Translate the segment "
+                        f"again into {get_language(target).name}. Reply only with "
+                        '<seg id="0">…</seg> and keep every ⟦n⟧ token exactly once.'
+                    ),
+                },
+            ]
+        with self._lock:
+            self.failures.append(Failure(target, source, reason))
+        logger.warning(f"[{target}] kept source text ({reason}): {source[:60]!r}")
+        return None
+
+    def _call(self, system: str, messages: List[Dict[str, str]]) -> str:
+        with self._lock:
+            self.calls += 1
+        return self.backend.complete(system, messages)
+
+    @staticmethod
+    def _parse(reply: str) -> Dict[int, str]:
+        reply = _PREAMBLE_RE.sub("", reply)
+        return {int(i): body.strip() for i, body in _SEG_RE.findall(reply)}
+
+    # ------------------------------------------------------------ validation
+
+    def problem(self, protected: str, out: str, n_tokens: int, target: str) -> str:
+        """Returns why ``out`` is not an acceptable translation, or ''."""
+        if not out.strip():
+            return "is empty"
+        if "<seg" in out or "</seg" in out:
+            return "contains nested <seg> tags"
+        tokens = token_problem(out, n_tokens)
+        if tokens:
+            return f"has broken placeholders ({tokens})"
+        if "\n" not in protected.strip() and "\n" in out.strip():
+            return "split a single line into several lines"
+        ratio = len(out) / max(len(protected), 1)
+        if len(protected) > 40 and not 0.25 <= ratio <= 4:
+            return (
+                f"has a suspicious length ({len(out)} vs {len(protected)} characters)"
+            )
+        lang_issue = check_language(protected, out, target, self.source_lang)
+        if lang_issue:
+            return lang_issue
+        return ""
+
+    # ---------------------------------------------------------------- prompt
+
+    def _terms(self, target: str) -> Dict[str, str]:
+        return (
+            self.glossary.get(target) or self.glossary.get(target.split("-")[0]) or {}
+        )
+
+    def system_prompt(self, target: str) -> str:
+        src = get_language(self.source_lang).name
+        tgt = get_language(target).name
+        lines = [
+            f"You are a professional technical translator localizing a software project's "
+            f"documentation from {src} into {tgt}.",
+            "",
+            'The user sends segments formatted as <seg id="N">…</seg>. Reply with every segment '
+            "translated, using the same ids and the same format, and nothing else.",
+            "",
+            "Rules:",
+            f"- Write natural, idiomatic {tgt}, the way a native technical writer would. "
+            f"Use only {tgt}; never switch to another language.",
+            "- Tokens such as ⟦0⟧ stand for code, links or markup. Copy each token exactly once, "
+            f"unchanged. You may move a token if {tgt} word order requires it.",
+            "- Keep Markdown markers (**, *, _, ~~, [ and ]) around the same words.",
+            "- Keep product names, commands, file names and other identifiers as they are.",
+            "- Do not add, drop, summarize or explain anything. A segment that is one line "
+            "stays one line.",
+        ]
+        if self.keep_terms:
+            lines.append(
+                "- Never translate these terms: " + ", ".join(self.keep_terms) + "."
+            )
+        terms = self._terms(target)
+        if terms:
+            lines.append("- Use these translations for recurring terms:")
+            lines += [f"    {k} → {v}" for k, v in sorted(terms.items())]
+        if self.context:
+            lines += ["", f"Context: {self.context}"]
+        return "\n".join(lines)

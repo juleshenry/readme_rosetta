@@ -1,11 +1,9 @@
 import os
+import re
 import subprocess
 import sys
-import re
 from datetime import datetime
-
-
-from typing import Optional, List
+from typing import Optional
 
 
 def run_command(command: str, error_msg: Optional[str] = None) -> None:
@@ -120,7 +118,8 @@ def main() -> None:
 
     # 1. Update version files
     print(f"Updating pyproject.toml to v{new_version}...")
-    update_file("pyproject.toml", r'version = ".*"', f'version = "{new_version}"')
+    # Anchored so it doesn't also rewrite keys like ruff's `target-version`.
+    update_file("pyproject.toml", r'(?m)^version = ".*"', f'version = "{new_version}"')
 
     print(f"Updating src/readme_rosetta/__init__.py to v{new_version}...")
     update_file(
@@ -148,7 +147,7 @@ def main() -> None:
     # 4. Git Operations
     print("Committing and tagging in git...")
     tag_version = new_version if new_version.startswith("v") else f"v{new_version}"
-    run_command(f"git add pyproject.toml src/readme_rosetta/__init__.py CHANGELOG.md")
+    run_command("git add pyproject.toml src/readme_rosetta/__init__.py CHANGELOG.md")
     # Check if there are changes to commit
     status = subprocess.run("git diff --cached --quiet", shell=True).returncode
     if status != 0:
@@ -168,8 +167,8 @@ def main() -> None:
 
     # 5. Push to git to trigger CI/CD
     print("\nPushing to git to trigger CI/CD...")
-    run_command(f"git push origin main")
-    run_command(f"git push origin --tags")
+    run_command("git push origin main")
+    run_command("git push origin --tags")
     print("\nDone! Push complete. GitHub Actions should handle the publication.")
 
     print(f"\nSuccessfully processed {tag_version}.")

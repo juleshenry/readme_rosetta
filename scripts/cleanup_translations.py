@@ -1,6 +1,7 @@
-import polib
 import os
 import re
+
+import polib
 
 
 def is_bad_translation(msgid, msgstr):
@@ -27,8 +28,8 @@ def is_bad_translation(msgid, msgstr):
             return True
 
     # Check for mismatched ROSETTA placeholders
-    id_placeholders = set(re.findall(r"ROSETTA_(?:CB|RST)_\d+", msgid))
-    str_placeholders = set(re.findall(r"ROSETTA_(?:CB|RST)_\d+", msgstr))
+    id_placeholders = set(re.findall(r"ROSETTA_(?:CB|RST)_\d+|⟦\d+⟧", msgid))
+    str_placeholders = set(re.findall(r"ROSETTA_(?:CB|RST)_\d+|⟦\d+⟧", msgstr))
     if id_placeholders != str_placeholders:
         return True
 

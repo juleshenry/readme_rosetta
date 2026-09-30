@@ -1,39 +1,52 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=77.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "readme-rosetta"
 version = "0.1.7"
-description = "A tool to facilitate the translation of GitHub README.md files using Ollama."
+description = "Translate your README and Sphinx docs into dozens of languages with local or hosted LLMs, without breaking the Markdown."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 license = "MIT"
 authors = [
     {name = "Julian Henry"}
 ]
+keywords = ["readme", "translation", "i18n", "markdown", "sphinx", "llm", "ollama"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
+    "Topic :: Documentation",
+    "Topic :: Software Development :: Localization",
 ]
 dependencies = [
-    "ollama",
-    "tqdm",
+    "markdown-it-py>=3.0",
+    "ollama>=0.4",
     "polib",
     "rich",
+    "tomli>=1.1; python_version < '3.11'",
 ]
 
 [project.optional-dependencies]
+anthropic = ["anthropic>=1.9"]
 test = ["pytest", "pytest-cov"]
 dev = ["ruff"]
 
+[project.urls]
+Homepage = "https://github.com/juleshenry/readme_rosetta"
+Issues = "https://github.com/juleshenry/readme_rosetta/issues"
+
 [tool.ruff]
 line-length = 88
-target-version = "0.1.7"
+target-version = "py39"
+extend-exclude = ["tests/examples", "docs"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "N"]
-ignore = []
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/test_markdown.py" = ["W291"]  # hard line breaks in fixtures
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -45,3 +58,8 @@ readme-rosetta = "readme_rosetta.cli:main"
 pythonpath = "src"
 testpaths = "tests"
 python_files = "test_*.py"
+
+# README Rosetta translating its own README.
+[tool.readme-rosetta]
+langs = ["ar", "da", "de", "es", "fi", "fr", "hi", "hu", "it", "ja", "nl", "no", "pt", "ro", "ru", "sv", "tr", "zh"]
+do-not-translate = ["README Rosetta", "Rosetta", "Ollama", "Sphinx", "GitBook"]

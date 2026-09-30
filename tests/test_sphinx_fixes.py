@@ -1,6 +1,6 @@
-import pytest
-from readme_rosetta.sphinx_handler import SphinxHandler
 from unittest.mock import MagicMock
+
+from readme_rosetta.sphinx_handler import SphinxHandler
 
 
 def test_fix_rst_underlines():
