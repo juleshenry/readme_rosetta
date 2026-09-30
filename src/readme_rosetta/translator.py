@@ -21,6 +21,7 @@ from .backends import Backend, BackendError
 from .cache import Cache
 from .lang_codes import get_language
 from .langcheck import check_language
+from .markup import invented_markup, unwrap
 from .protect import Protector, restore, token_problem
 
 logger = logging.getLogger(__name__)
@@ -197,6 +198,8 @@ class Translator:
 
         for i, (source, protected, saved) in enumerate(batch):
             out = parsed.get(i)
+            if out is not None:
+                out = unwrap(protected, out)
             reason = (
                 "missing from the response"
                 if out is None
@@ -245,6 +248,8 @@ class Translator:
             if out is None and "<seg" not in reply:
                 # One segment was asked for; a bare reply is still usable.
                 out = _PREAMBLE_RE.sub("", reply).strip()
+            if out is not None:
+                out = unwrap(protected, out)
             reason = (
                 "response was not in <seg> format"
                 if out is None
@@ -290,6 +295,9 @@ class Translator:
         tokens = token_problem(out, n_tokens)
         if tokens:
             return f"has broken placeholders ({tokens})"
+        markup = invented_markup(protected, out)
+        if markup:
+            return markup
         if "\n" not in protected.strip() and "\n" in out.strip():
             return "split a single line into several lines"
         ratio = len(out) / max(len(protected), 1)

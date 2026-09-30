@@ -103,3 +103,17 @@ def test_backend_is_part_of_translator_id(make_translator):
     translator, _ = make_translator()
     assert isinstance(translator, Translator)
     assert translator.backend.id == "fake:test"
+
+
+def test_wrapped_reply_is_unwrapped_without_retry(make_translator):
+    translator, backend = make_translator(hook=lambda text, n: f"<span>{text}</span>")
+    assert translator.translate("Hello world", "es") == "olleHx dlrowx"
+    assert len(backend.requests) == 1
+
+
+def test_invented_inline_html_is_retried(make_translator):
+    translator, backend = make_translator(
+        hook=lambda text, n: text.replace("dlrowx", "<b>dlrowx</b>") if n == 1 else text
+    )
+    assert translator.translate("Hello world again", "es") == "olleHx dlrowx niagax"
+    assert "HTML tags" in backend.requests[1][0]["content"]

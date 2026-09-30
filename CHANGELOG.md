@@ -6,6 +6,7 @@ Translation quality and reliability overhaul.
 
 * Parse Markdown with markdown-it-py and translate only prose (headings, paragraphs, table cells, HTML text). Code, front matter, URLs, inline HTML, emoji and link targets are never sent to the model.
 * Validate every segment (placeholders, line structure, length, output language/script) and retry rejected segments with the reason fed back to the model.
+* Reject markup the model invents (HTML tags, code spans, links, headings); unwrap harmless wrappers such as a `<span>` or code fence around the whole reply.
 * Report segments that could not be translated and exit non-zero (`--allow-fallback` to accept).
 * Segment-level cache (`.rosetta/cache.json`) keyed on text, languages, backend, model and glossary: re-runs only translate changed paragraphs.
 * New `anthropic` backend (`pip install "readme-rosetta[anthropic]"`); default Ollama model is now `qwen2.5:7b`.
