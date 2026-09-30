@@ -1,3 +1,7 @@
+<!-- rosetta:nav:start -->
+🌐 **English** · [العربية](README.ar.md) · [Dansk](README.da.md) · [Deutsch](README.de.md) · [Español](README.es.md) · [Suomi](README.fi.md) · [Français](README.fr.md) · [हिन्दी](README.hi.md) · [Magyar](README.hu.md) · [Italiano](README.it.md) · [日本語](README.ja.md) · [Nederlands](README.nl.md) · [Norsk](README.no.md) · [Português](README.pt.md) · [Română](README.ro.md) · [Русский](README.ru.md) · [Svenska](README.sv.md) · [Türkçe](README.tr.md) · [中文](README.zh.md)
+<!-- rosetta:nav:end -->
+
 # 🗿 README Rosetta
 
 **README Rosetta** translates your README (and your Sphinx docs) into dozens of languages with a local model via [Ollama](https://ollama.com/) or with Claude. It parses your Markdown instead of trusting the model with it, so code blocks, tables, links and badges come through untouched, and it checks every translation before writing it.
