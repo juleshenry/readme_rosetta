@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.2.0 (2026-09-30)
 
 Translation quality and reliability overhaul.
 
@@ -15,7 +15,7 @@ Translation quality and reliability overhaul.
 * `do-not-translate` terms and per-language `glossary` in `[tool.readme-rosetta]`.
 * `--jobs` for parallel languages, `--list-languages`, regional codes such as `pt-BR`, dry-run shows segments to translate.
 * Reusable GitHub Action (`uses: juleshenry/readme_rosetta@main`) that opens a pull request.
-* Fix: CLI crashed on Python < 3.11 (`tomllib`); now supports 3.9+.
+* Fix: CLI crashed on Python < 3.11 (`tomllib`); now supports 3.10+ (3.9 is end-of-life).
 * Fix: `publish.py` also rewrote ruff's `target-version` when bumping the version.
 * Removed `--raw` and the implicit Spanish-only mode when no languages are given.
 * Repo: stop tracking build artifacts, compiled catalogs and coverage data.
