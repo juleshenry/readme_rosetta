@@ -115,3 +115,39 @@ def test_gitbook_summary(project):
     assert cli.main(["--langs", "es", "--gitbook"]) == 0
     summary = (tmp_path / "SUMMARY.md").read_text(encoding="utf-8")
     assert "* [Español](README.es.md)" in summary
+
+
+def test_interrupted_run_keeps_finished_languages_and_cache(project, monkeypatch):
+    tmp_path, backends = project
+    original = FakeBackend.complete
+
+    def complete(self, system, messages):
+        if "into French" in system:
+            raise KeyboardInterrupt  # e.g. Ctrl-C or kill while French is running
+        return original(self, system, messages)
+
+    monkeypatch.setattr(FakeBackend, "complete", complete)
+    assert cli.main(["--langs", "es", "fr"]) == 130
+
+    # Spanish finished before the interruption: its file and cache entries survive.
+    assert (tmp_path / "README.es.md").exists()
+    assert not (tmp_path / "README.fr.md").exists()
+    cache = json.loads((tmp_path / ".rosetta" / "cache.json").read_text())
+    assert any(k.startswith("es:") for k in cache["entries"])
+
+    # Resuming only asks the model for French.
+    monkeypatch.setattr(FakeBackend, "complete", original)
+    assert cli.main(["--langs", "es", "fr"]) == 0
+    assert len(backends[-1].requests) == 1
+
+
+def test_pause_between_requests(make_translator, monkeypatch):
+    from readme_rosetta import translator as tr_module
+
+    sleeps = []
+    monkeypatch.setattr(tr_module.time, "sleep", sleeps.append)
+    translator, _ = make_translator(pause=2.5)
+    translator.translate_many(
+        [f"Sentence {i} " + "word " * 600 for i in range(3)], "es"
+    )
+    assert sleeps == [2.5, 2.5]

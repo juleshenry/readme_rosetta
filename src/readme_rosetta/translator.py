@@ -14,6 +14,7 @@ import json
 import logging
 import re
 import threading
+import time
 from dataclasses import dataclass
 from typing import Callable, Dict, List, Optional, Sequence, Tuple
 
@@ -59,6 +60,7 @@ class Translator:
         keep_terms: Sequence[str] = (),
         max_retries: int = 2,
         context: str = "",
+        pause: float = 0,
     ) -> None:
         self.backend = backend
         self.source_lang = source_lang
@@ -67,6 +69,7 @@ class Translator:
         self.keep_terms = list(keep_terms)
         self.max_retries = max_retries
         self.context = context
+        self.pause = pause
         self.failures: List[Failure] = []
         self.calls = 0
         self._lock = threading.Lock()
@@ -76,7 +79,9 @@ class Translator:
 
     def _protector(self, syntax: str) -> Protector:
         if syntax not in self._protectors:
-            self._protectors[syntax] = Protector(syntax, self.keep_terms)
+            # Do-not-translate terms stay visible: as opaque tokens the model loses
+            # the sentence's meaning and tends to drop them. They are checked instead.
+            self._protectors[syntax] = Protector(syntax)
         return self._protectors[syntax]
 
     def cache_key(self, text: str, target: str, syntax: str) -> str:
@@ -101,6 +106,8 @@ class Translator:
 
     def needs_translation(self, text: str, syntax: str = "markdown") -> bool:
         protected, _ = self._protector(syntax).protect(text)
+        for term in self.keep_terms:
+            protected = protected.replace(term, "")
         return bool(_LETTER_RE.search(re.sub(r"⟦\d+⟧", "", protected)))
 
     def pending(
@@ -133,7 +140,7 @@ class Translator:
                 results[text] = text
                 continue
             cached = self.cache.get(self.cache_key(text, target, syntax))
-            if cached is not None:
+            if cached is not None and self._still_valid(text, cached, target):
                 results[text] = cached
                 continue
             protected, saved = protector.protect(text)
@@ -151,6 +158,8 @@ class Translator:
                 final = restore(out, saved)
                 self.cache.set(self.cache_key(text, target, syntax), final)
                 results[text] = final
+            # Checkpoint after every batch so an interrupted run loses almost nothing.
+            self.cache.save()
             if progress:
                 progress(len(batch))
 
@@ -277,6 +286,9 @@ class Translator:
     def _call(self, system: str, messages: List[Dict[str, str]]) -> str:
         with self._lock:
             self.calls += 1
+            first = self.calls == 1
+        if self.pause and not first:
+            time.sleep(self.pause)
         return self.backend.complete(system, messages)
 
     @staticmethod
@@ -285,6 +297,28 @@ class Translator:
         return {int(i): body.strip() for i, body in _SEG_RE.findall(reply)}
 
     # ------------------------------------------------------------ validation
+
+    def _still_valid(self, source: str, cached: str, target: str) -> bool:
+        """
+        Re-checks a cached translation, so entries written before a check
+        existed are translated again instead of being reused forever.
+        """
+        # Judge the language on prose only, as the original check did.
+        protector = self._protector("markdown")
+        problem = invented_markup(source, cached) or check_language(
+            protector.protect(source)[0],
+            protector.protect(cached)[0],
+            target,
+            self.source_lang,
+        )
+        if not problem:
+            for term in self.keep_terms:
+                pattern = r"(?<!\w)" + re.escape(term) + r"(?!\w)"
+                if len(re.findall(pattern, cached)) < len(re.findall(pattern, source)):
+                    problem = f'lost "{term}"'
+        if problem:
+            logger.info(f"[{target}] re-translating cached segment ({problem})")
+        return not problem
 
     def problem(self, protected: str, out: str, n_tokens: int, target: str) -> str:
         """Returns why ``out`` is not an acceptable translation, or ''."""
@@ -298,6 +332,10 @@ class Translator:
         markup = invented_markup(protected, out)
         if markup:
             return markup
+        for term in self.keep_terms:
+            pattern = r"(?<!\w)" + re.escape(term) + r"(?!\w)"
+            if len(re.findall(pattern, out)) < len(re.findall(pattern, protected)):
+                return f'translated or dropped "{term}", which must stay as is'
         if "\n" not in protected.strip() and "\n" in out.strip():
             return "split a single line into several lines"
         ratio = len(out) / max(len(protected), 1)

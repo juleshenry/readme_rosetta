@@ -56,4 +56,12 @@ def invented_markup(protected: str, out: str) -> str:
     for name, pattern in _CONSTRUCTS:
         if len(pattern.findall(out)) > len(pattern.findall(protected)):
             problems.append(name)
-    return "adds " + ", ".join(problems) if problems else ""
+    if problems:
+        return "adds " + ", ".join(problems)
+    for char, name in (("[", "an opening bracket"), ("]", "a closing bracket")):
+        if out.count(char) != protected.count(char):
+            verb = "adds" if out.count(char) > protected.count(char) else "drops"
+            return f"{verb} {name}, which breaks link syntax"
+    if out.count("**") % 2 != protected.count("**") % 2:
+        return "leaves an unclosed ** bold marker"
+    return ""

@@ -38,3 +38,14 @@ def test_clean_translation_passes():
     )
     # Comparisons in prose are not tags.
     assert invented_markup("if a < b", "si a < b") == ""
+
+
+def test_stray_bracket_breaking_a_link_is_rejected():
+    # Seen from qwen2.5:7b in German: "im [LICENSE]-Datei](LICENSE)".
+    src = "See [LICENSE⟦0⟧ for details."
+    assert "adds a closing bracket" in invented_markup(src, "Siehe [LICENSE]-Datei⟦0⟧.")
+    assert invented_markup(src, "Siehe die Datei [LICENSE⟦0⟧.") == ""
+
+
+def test_unclosed_bold_is_rejected():
+    assert "bold" in invented_markup("**Fast** tool", "**Schnelles Werkzeug")

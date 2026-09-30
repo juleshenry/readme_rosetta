@@ -5,7 +5,9 @@ Command-line interface for README Rosetta.
 import argparse
 import logging
 import os
+import signal
 import sys
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict, List, Optional
 
@@ -125,6 +127,12 @@ def build_parser(config: Dict[str, Any]) -> argparse.ArgumentParser:
         type=int,
         default=config.get("jobs", 1),
         help="Languages to translate in parallel (default: 1).",
+    )
+    p.add_argument(
+        "--pause",
+        type=float,
+        default=config.get("pause", 0),
+        help="Seconds to wait between model requests, to keep a laptop cool (default: 0).",
     )
     p.add_argument(
         "--cache",
@@ -260,7 +268,14 @@ def main(argv: Optional[List[str]] = None) -> int:
         cache=cache,
         glossary=config.get("glossary", {}),
         keep_terms=config.get("do-not-translate", []),
+        pause=args.pause,
     )
+
+    def on_sigterm(signum, frame):
+        raise KeyboardInterrupt
+
+    # A plain `kill` saves progress too, like Ctrl-C.
+    signal.signal(signal.SIGTERM, on_sigterm)
 
     try:
         if os.path.exists(src_file):
@@ -352,6 +367,22 @@ def translate_readme(
         f"with {translator.backend.id}"
     )
     results: Dict[str, str] = {}
+    changed: List[str] = []
+    codes = sorted(set(discover_translations(readme)) | set(langs))
+    note = GENERATED_NOTE.format(source=os.path.basename(src_file))
+    lock = threading.Lock()
+
+    def finish(code: str, translated: str) -> None:
+        # Checkpoint: in split mode each language is written as soon as it is done.
+        with lock:
+            results[code] = translated
+            if args.no_split:
+                return
+            path = translation_path(readme, code)
+            nav = build_nav(code, codes, readme, src_lang, args.base_url)
+            if write_if_changed(path, with_nav(translated, nav, note)):
+                changed.append(path)
+
     with Progress(
         TextColumn("{task.description:>8}"),
         BarColumn(),
@@ -365,26 +396,22 @@ def translate_readme(
             def advance(n: int) -> None:
                 progress.advance(tasks[code], n)
 
-            results[code] = handler.translate(body, code, progress=advance)
+            finish(code, handler.translate(body, code, progress=advance))
             progress.update(tasks[code], completed=len(segments))
 
-        with ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:
-            for future in [pool.submit(run, code) for code in langs]:
-                future.result()
+        if args.jobs <= 1:
+            for code in langs:
+                run(code)
+        else:
+            with ThreadPoolExecutor(max_workers=args.jobs) as pool:
+                for future in [pool.submit(run, code) for code in langs]:
+                    future.result()
 
-    changed = []
     if args.no_split:
         content = build_unified(body, results, readme, src_lang)
         if write_if_changed(readme, content):
             changed.append(readme)
     else:
-        codes = sorted(set(discover_translations(readme)) | set(langs))
-        note = GENERATED_NOTE.format(source=os.path.basename(src_file))
-        for code in langs:
-            path = translation_path(readme, code)
-            nav = build_nav(code, codes, readme, src_lang, args.base_url)
-            if write_if_changed(path, with_nav(results[code], nav, note)):
-                changed.append(path)
         nav = build_nav(src_lang, codes, readme, src_lang, args.base_url)
         if write_if_changed(readme, with_nav(body, nav)):
             changed.append(readme)

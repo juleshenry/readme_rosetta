@@ -62,11 +62,20 @@ def test_wrong_script_is_rejected(make_translator):
     assert translator.failures and "not written in" in translator.failures[0].reason
 
 
-def test_keep_terms_are_not_sent_to_model(make_translator):
+def test_keep_terms_stay_readable_and_must_survive(make_translator):
+    # The model sees the term (so the sentence makes sense) ...
+    translator, backend = make_translator(keep_terms=["Rosetta"])
+    translator.translate("Rosetta sets up translations", "es")
+    assert "Rosetta" in backend.requests[0][0]["content"]
+    # ... and a reply that translates it is rejected.
+    assert translator.failures
+    assert 'translated or dropped "Rosetta"' in translator.failures[0].reason
+
+
+def test_segment_of_only_keep_terms_skips_the_model(make_translator):
     translator, backend = make_translator(keep_terms=["README Rosetta"])
-    out = translator.translate("README Rosetta is great", "es")
-    assert out == "README Rosetta six taergx"
-    assert "README Rosetta" not in backend.requests[0][0]["content"]
+    assert translator.translate("🗿 README Rosetta", "es") == "🗿 README Rosetta"
+    assert backend.requests == []
 
 
 def test_cache_key_depends_on_model_and_glossary(make_translator):
@@ -117,3 +126,35 @@ def test_invented_inline_html_is_retried(make_translator):
     )
     assert translator.translate("Hello world again", "es") == "olleHx dlrowx niagax"
     assert "HTML tags" in backend.requests[1][0]["content"]
+
+
+def test_bad_cached_entry_is_retranslated(make_translator):
+    translator, backend = make_translator()
+    source = "See [LICENSE](LICENSE) for details."
+    key = translator.cache_key(source, "es", "markdown")
+    translator.cache.set(
+        key, "Siehe [LICENSE]-Datei](LICENSE)."
+    )  # written by an older version
+    assert (
+        translator.translate(source, "es") == "eeSx [ESNECILx](LICENSE) rofx sliatedx."
+    )
+    assert len(backend.requests) == 1
+
+
+def test_good_cached_entry_is_reused(make_translator):
+    translator, backend = make_translator()
+    source = "See [LICENSE](LICENSE) for details."
+    translator.cache.set(
+        translator.cache_key(source, "es", "markdown"), "Ver [LICENSE](LICENSE)."
+    )
+    assert translator.translate(source, "es") == "Ver [LICENSE](LICENSE)."
+    assert backend.requests == []
+
+
+def test_cache_recheck_ignores_code_when_judging_script(make_translator):
+    translator, backend = make_translator("ja")
+    source = "Run `readme-rosetta --backend ollama --model qwen2.5:7b` to translate"
+    good = "`readme-rosetta --backend ollama --model qwen2.5:7b` を実行して翻訳します"
+    translator.cache.set(translator.cache_key(source, "ja", "markdown"), good)
+    assert translator.translate(source, "ja") == good
+    assert backend.requests == []

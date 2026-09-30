@@ -82,5 +82,6 @@ class Cache:
                     indent=1,
                 )
                 f.write("\n")
+            os.chmod(tmp, 0o644)  # mkstemp creates 0600
             os.replace(tmp, self.path)
             self.dirty = False
