@@ -7,7 +7,7 @@ name = "readme-rosetta"
 version = "0.1.7"
 description = "Translate your README and Sphinx docs into dozens of languages with local or hosted LLMs, without breaking the Markdown."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "MIT"
 authors = [
     {name = "Julian Henry"}
@@ -38,7 +38,7 @@ Issues = "https://github.com/juleshenry/readme_rosetta/issues"
 
 [tool.ruff]
 line-length = 88
-target-version = "py39"
+target-version = "py310"
 extend-exclude = ["tests/examples", "docs"]
 
 [tool.ruff.lint]
